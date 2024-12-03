@@ -3,7 +3,7 @@ import s from './styles/calculatorPage.module.css'
 import { IOption } from "../../common/types/IOption"
 import { RoomTypes } from "../../common/types/RoomTypes"
 import { CostTable } from "./components/CostTable"
-import { SmetaFormData } from "../../App"
+import {SmetaFormData} from "../../pages/MainPage/MainPage.tsx";
 
 
 const roomTypes: IOption[] = [
