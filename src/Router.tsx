@@ -10,8 +10,8 @@ function Router() {
   return (
     <BrowserRouter>
           <Routes>
-            <Route path="/main" element={<MainPage />} />
-            <Route path="*" element={<Navigate to="/main" replace />} />
+            <Route path="/" element={<MainPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/smeta" element={<SmetaPage />} />
             <Route path="/find-company" element={<FindCompanyPage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
