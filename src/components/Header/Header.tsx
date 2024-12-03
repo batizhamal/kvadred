@@ -16,7 +16,7 @@ function Header(props: Props) {
 
   return (
     <div className={'header'}>
-      <img src={'src/assets/icons/logo_black.svg'} height={64} alt={'logo'}/>
+      <img src={'public/logo_black.svg'} height={64} alt={'logo'}/>
       <Button
         label='Хочу быть тут'
         variant='contained'
