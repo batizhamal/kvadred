@@ -1,0 +1,28 @@
+body {
+    margin: 0
+}
+
+.background-container {
+    width: 100vw;
+    min-height: 100vh;
+    max-height: max-content;
+    background-color: #0C0C0C;
+}
+
+.app-container {
+    max-width: 70rem;
+    background-color: #F4F4F4;
+    margin: 0 auto 0 auto;
+    min-height: 100vh;
+    max-height: max-content;
+    padding: 1rem;
+}
+
+
+.hide-tbody .ant-table-tbody {
+    display: none;
+}
+
+.table-default-bold {
+    font-weight: 600;
+}

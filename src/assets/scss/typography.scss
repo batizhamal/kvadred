@@ -1,0 +1,7 @@
+@import './fonts';
+
+h1 {
+  @include roboto;
+  font-size: $base-font-size * 4;
+  font-weight: lighter;
+}

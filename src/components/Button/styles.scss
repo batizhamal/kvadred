@@ -1,0 +1,116 @@
+@import '../../assets/scss/fonts';
+
+.button {
+  @include montserrat;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 4px;
+  }
+
+  &__label {
+    display: inline-block;
+  }
+
+  &--default-size {
+    font-size: 14px;
+    padding: 8px 16px;
+    letter-spacing: calc(14px * 0.2);
+  }
+
+  &--small-size {
+    @include roboto;
+    font-size: 12px;
+    padding: 4px 12px;
+    text-transform: none;
+    font-weight: normal;
+  }
+
+  &--contained {
+    &.button--primary {
+      background-color: #2B2D42;
+      color: #fff;
+      fill: #fff;
+      &:hover:not(:disabled) {
+        background-color: #232436;
+      }
+    }
+
+    &.button--alert {
+      background-color: #D90429;
+      color: #fff;
+      fill: #fff;
+      &:hover:not(:disabled) {
+        background-color: #b8001f;
+      }
+    }
+
+    &.button--default {
+      background-color: #EDF2F4;
+      color: #2B2D42;
+      fill: #2B2D42;
+      &:hover:not(:disabled) {
+        background-color: #c7ccce;
+      }
+    }
+  }
+
+  &--outlined {
+    background-color: #EDF2F4;
+
+    &.button--primary {
+      border-color: #2B2D42;
+      color: #2B2D42;
+      fill: #2B2D42;
+      &:hover:not(:disabled) {
+        background-color: rgba(#2B2D42, 0.1);
+      }
+    }
+
+    &.button--alert {
+      border-color: #D90429;
+      color: #D90429;
+      fill: #D90429;
+      &:hover:not(:disabled) {
+        background-color: rgba(#D90429, 0.1);
+      }
+    }
+
+    &.button--default {
+      border-color: #4f4f4f;
+      color: #4f4f4f;
+      fill: #4f4f4f;
+      &:hover:not(:disabled) {
+        background-color: rgba(#4f4f4f, 0.1);
+      }
+    }
+  }
+
+  &--text {
+    background-color: transparent;
+    border: none;
+    color: #2B2D42;
+    fill: #2B2D42;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+}

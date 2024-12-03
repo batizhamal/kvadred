@@ -1,0 +1,48 @@
+.navbar-container {
+    position: relative;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.catalog {
+    margin: 1rem;
+    /* border: 8px dashed red; */
+    overflow: hidden;
+    transition: transform 0.3s;
+} 
+
+.catalog:hover + .hover-categories {
+    display: block;
+}
+
+.categories {
+    position: absolute;
+    left: 1rem;
+    top: 3rem;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    transition: display 0.3s;
+    z-index: 1000;
+}
+
+.cart {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    padding: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    transition: display 0.3s;
+    z-index: 1000;
+}
+
+.cart-list-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    min-width: max-content;
+    margin-top: 0.5rem;
+}

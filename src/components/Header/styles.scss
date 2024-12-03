@@ -1,0 +1,36 @@
+@import "@app/scss";
+
+.header {
+  width: calc(100% - $base-offset * 8);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  padding: $base-offset * 2 $base-offset * 4;
+  @include roboto-spacing;
+  color: $base-font-color;
+  fill: $base-font-color;
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    gap: $base-offset * 3;
+  }
+
+  &__item {
+    text-decoration: none;
+    padding: 4px 0;
+    color: $base-font-color;
+    fill: $base-font-color;
+    &--current {
+      border-top: $base-border;
+      border-bottom: $base-border;
+    }
+  }
+}

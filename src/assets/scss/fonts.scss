@@ -1,0 +1,25 @@
+@import 'variables';
+
+@mixin roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+@mixin roboto-spacing {
+  font-family: 'Roboto', sans-serif;
+  font-size: $base-font-size;
+  letter-spacing: $base-font-size * 0.2;
+}
+
+@mixin montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+@mixin montserrat-spacing {
+  font-family: 'Montserrat', sans-serif;
+  font-size: $base-font-size;
+  letter-spacing: $base-font-size * 0.2;
+}
+
+@mixin pridi {
+  font-family: 'Pridi', serif;
+}
