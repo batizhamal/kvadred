@@ -1,4 +1,5 @@
-@import '../../assets/scss/fonts';
+@import '@app/scss';
+
 
 .button {
   @include montserrat;
@@ -45,7 +46,7 @@
 
   &--contained {
     &.button--primary {
-      background-color: #2B2D42;
+      background-color: $base-blue;
       color: #fff;
       fill: #fff;
       &:hover:not(:disabled) {
@@ -54,7 +55,7 @@
     }
 
     &.button--alert {
-      background-color: #D90429;
+      background-color: $base-red;
       color: #fff;
       fill: #fff;
       &:hover:not(:disabled) {
@@ -64,8 +65,8 @@
 
     &.button--default {
       background-color: #EDF2F4;
-      color: #2B2D42;
-      fill: #2B2D42;
+      color: $base-blue;
+      fill: $base-blue;
       &:hover:not(:disabled) {
         background-color: #c7ccce;
       }
@@ -76,20 +77,20 @@
     background-color: #EDF2F4;
 
     &.button--primary {
-      border-color: #2B2D42;
-      color: #2B2D42;
-      fill: #2B2D42;
+      border-color: $base-blue;
+      color: $base-blue;
+      fill: $base-blue;
       &:hover:not(:disabled) {
-        background-color: rgba(#2B2D42, 0.1);
+        background-color: rgba($base-blue, 0.1);
       }
     }
 
     &.button--alert {
-      border-color: #D90429;
-      color: #D90429;
-      fill: #D90429;
+      border-color: $base-red;
+      color: $base-red;
+      fill: $base-red;
       &:hover:not(:disabled) {
-        background-color: rgba(#D90429, 0.1);
+        background-color: rgba($base-red, 0.1);
       }
     }
 
@@ -106,8 +107,8 @@
   &--text {
     background-color: transparent;
     border: none;
-    color: #2B2D42;
-    fill: #2B2D42;
+    color: $base-blue;
+    fill: $base-blue;
 
     &:hover:not(:disabled) {
       background-color: rgba(0, 0, 0, 0.05);
