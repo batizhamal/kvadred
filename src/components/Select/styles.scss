@@ -1,0 +1,317 @@
+@import '@app/scss';
+
+.kvadred-select {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: stretch;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: visible;
+  color: $base-blue;
+  cursor: pointer;
+  @include montserrat;
+  text-transform: uppercase;
+  letter-spacing: $base-font-size * 0.2;
+  font-size: $base-font-size;
+  font-weight: 600;
+
+  &__label {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: center;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 8px 0;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #333;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: $base-offset * 0.5 $base-offset;
+    margin: 0;
+    border: $base-border;
+    border-radius: $base-radius;
+    line-height: 1;
+    transition: border-color 0.25s ease-out;
+
+    &:hover,
+    &:focus {
+      border-color: #999;
+    }
+  }
+
+  &__options {
+    width: 100%;
+    max-height: 226px;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    transition: top 0.3s ease-in, opacity 0.3s ease-in, border-color 0.25s ease-out, visibility 0.3s ease-out 0.3s;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+    text-wrap: nowrap;
+  }
+
+  &__icon {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 0 $base-offset * 0.625;
+  }
+
+  &--active {
+    .kvadred-select__options {
+      top: 2rem;
+      opacity: 1;
+      visibility: visible;
+      z-index: 10;
+      transition: top 0.3s ease-in 0.3s, opacity 0.3s ease-in 0.3s, visibility 0.3s ease-out;
+
+      &--with-label {
+        top: 3.5rem;
+      }
+    }
+  }
+
+  &--active-top {
+    .kvadred-select__options {
+      top: unset;
+      bottom: 2rem;
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+      transition: top 0.3s ease-in 0.3s, opacity 0.3s ease-in 0.3s, visibility 0.3s ease-out;
+    }
+  }
+
+  &--small {
+    width: 12.5rem;
+  }
+
+  &--full {
+    .kvadred-select__header {
+      border-radius: $base-radius $base-radius 0 0;
+    }
+
+    .kvadred-select__options {
+      border-radius: 0 0 $base-radius $base-radius;
+      position: relative;
+      top: -0.625rem;
+      left: auto;
+      box-shadow: none;
+    }
+  }
+
+  &--disabled {
+    .kvadred-select__header {
+      pointer-events: none;
+      color: #666666;
+      fill: #666666;
+    }
+  }
+
+  &__divider {
+    margin: 0 $base-offset * 0.5;
+    width: calc(100% - $base-offset);
+  }
+}
+
+.kvadred-option {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  padding: $base-offset * 0.5 0;
+  margin: 0;
+  border: $base-border;
+  border-radius: $base-radius;
+  background-color: #ffffff;
+  font-style: normal;
+  list-style: none;
+  line-height: 1;
+  color: $base-blue;
+  @include montserrat;
+  text-transform: uppercase;
+  letter-spacing: $base-font-size * 0.2;
+  font-size: $base-font-size;
+  font-weight: 600;
+  transition: border-color 0.25s ease-out;
+
+  &:hover,
+  &:focus {
+    border-color: #999;
+  }
+
+  &__block {
+    display: block;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 15rem;
+    width: 100%;
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: stretch;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-weight: normal;
+    width: 100%;
+  }
+
+  &__search {
+    min-width: 20rem;
+    box-sizing: border-box;
+    padding: $base-offset * 0.625 $base-offset;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: stretch;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: left;
+    align-items: stretch;
+    flex: 1 1 auto;
+    box-sizing: border-box;
+    border-radius: $base-radius;
+    margin: $base-offset * 0.25 $base-offset * 0.5;
+    padding: $base-offset * 0.5 $base-offset * 0.5;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1.2;
+    background-color: #ffffff;
+    fill: $base-blue;
+    @include montserrat;
+    text-transform: uppercase;
+    letter-spacing: $base-font-size * 0.2;
+    font-size: $base-font-size;
+    font-weight: 600;
+    transition: background-color 0.25s ease-out, fill 0.25s ease-out, color 0.25s ease-out;
+    width: calc(100% - 1rem);
+
+    &:focus,
+    &:hover {
+      background-color: #EDECEC;
+    }
+
+    &:active {
+      background-color: #E5E9F0;
+      fill: $base-blue;
+      color: $base-blue;
+    }
+
+    &--delete {
+      color: #ff0000;
+      fill: #ff0000;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: #666666;
+      fill: #666666;
+    }
+  }
+
+  &__icon {
+    margin-right: $base-offset * 0.75;
+    font-size: $base-font-size;
+  }
+
+  &__radio {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+
+    &:checked ~ {
+      .kvadred-option__title {
+        background-color: #E5E9F0;
+        color: $base-blue;
+        fill: $base-blue;
+      }
+    }
+
+    &:disabled ~ {
+      .kvadred-option__title {
+        background-color: rgba(102, 102, 102, 1);
+        color: #ffffff;
+        fill: #ffffff;
+      }
+    }
+  }
+
+  &__checkbox {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+
+    &:checked ~ {
+      .kvadred-option__title {
+        background-color: $base-blue;
+        color: #ffffff;
+        fill: #ffffff;
+      }
+    }
+
+    &:disabled ~ {
+      .kvadred-option__title {
+        background-color: rgba(102, 102, 102, 1);
+        color: #ffffff;
+        fill: #ffffff;
+      }
+    }
+  }
+}
+

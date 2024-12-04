@@ -18,7 +18,7 @@ function Header(props: Props) {
     <div className={'header'}>
       <img src={'/logo_black.svg'} height={64} alt={'logo'}/>
       <Button
-        label='Связаться с нами'
+        text='Связаться с нами'
         variant='contained'
         color='primary'
         onClick={

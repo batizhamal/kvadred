@@ -1,0 +1,40 @@
+.kvadred-divider {
+  height: 0.0625rem;
+  width: 100%;
+  background-color: #dddddd;
+
+  &--vertical {
+    min-height: 20px;
+    height: inherit;
+    width: 0.0625rem;
+    background-color: #dddddd;
+  }
+
+  &--margin-top-bottom {
+    margin: 8px 0;
+  }
+
+  &--margin-left-right {
+    margin: 0 8px;
+  }
+
+  &--margin-top {
+    margin: 8px 0 0 0;
+  }
+
+  &--margin-bottom {
+    margin: 0 0 8px 0;
+  }
+
+  &--margin-left {
+    margin: 0 0 0 8px;
+  }
+
+  &--margin-right {
+    margin: 0 8px 0 0;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+}

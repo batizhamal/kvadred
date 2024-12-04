@@ -1,13 +1,14 @@
 import './styles.scss';
+import {FunctionComponent, SVGProps} from "react";
 
 interface Props {
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'primary' | 'alert' | 'default';
   size?: 'default' | 'small';
   onClick?: () => void;
-  label: string;
-  preIcon?: React.ReactNode;
-  postIcon?: React.ReactNode;
+  text?: string;
+  icon?: FunctionComponent<SVGProps<SVGSVGElement>>;
+  postIcon?: FunctionComponent<SVGProps<SVGSVGElement>>;
   className?: string;
   disabled?: boolean;
 }
@@ -18,9 +19,9 @@ function Button(props: Props) {
         color = 'primary',
         size = 'default',
         onClick,
-        label,
-        preIcon,
-        postIcon,
+        text = '',
+        icon: Icon,
+        postIcon: PostIcon,
         className = '',
         disabled = false,
     } = props;
@@ -31,9 +32,13 @@ function Button(props: Props) {
             onClick={onClick}
             disabled={disabled}
         >
-            {preIcon && <span className="button__icon">{preIcon}</span>}
-            <span className="button__label">{label}</span>
-            {postIcon && <span className="button__icon">{postIcon}</span>}
+            {Icon && <span className="button__icon">
+                <Icon/>
+            </span>}
+            <span className="button__label">{text}</span>
+            {PostIcon && <span className="button__icon">
+                <PostIcon/>
+            </span>}
         </button>
     );
 }

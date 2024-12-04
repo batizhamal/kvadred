@@ -1,0 +1,43 @@
+@import '@app/scss';
+
+.kvadred-search {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: stretch;
+	align-items: stretch;
+	flex: 1 1 auto;
+	width: 100%;
+	max-width: 100%;
+	height: 2.25rem;
+	box-sizing: border-box;
+	position: relative;
+
+	.kvadred-text-field__input {
+		border-radius: $base-radius 0 0 $base-radius !important;
+		width: 100%;
+	}
+
+	&__button {
+		border-radius: 0 $base-radius $base-radius 0;
+		margin-left: -0.0625rem;
+		height: inherit;
+	}
+
+	&__select {
+		border-radius: $base-radius 0 0 $base-radius;
+		border-right: none;
+		margin-right: -0.0625rem;
+		width: 100%;
+	}
+
+	&--select {
+		.kvadred-text-field__input {
+			border-radius: 0 !important;
+		}
+	}
+
+	&--fixed-width {
+		max-width: 32rem;
+	}
+}
