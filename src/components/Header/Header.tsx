@@ -18,9 +18,14 @@ function Header(props: Props) {
     <div className={'header'}>
       <img src={'/logo_black.svg'} height={64} alt={'logo'}/>
       <Button
-        label='Хочу быть тут'
+        label='Связаться с нами'
         variant='contained'
         color='primary'
+        onClick={
+          () => {
+            // TODO
+          }
+        }
       />
       {/* <div className={'header__items'}>
         {items.map(item => (
