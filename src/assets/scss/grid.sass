@@ -1,0 +1,36 @@
+@each $value in 0, 8, 10, 12, 16, 20, 24, 32
+	.kvadred-grid-#{$value}
+		margin-left: -#{$value}px
+		margin-top: -#{$value}px
+
+		& > *
+			box-sizing: border-box
+			padding-left: #{$value}px
+			margin-top: #{$value}px
+			display: flex
+			flex-direction: column
+
+.kvadred-grid
+	display: flex
+	flex-wrap: wrap
+	flex-direction: row
+
+.kvadred-grid-middle
+	align-items: center
+
+.kvadred-grid-center
+	justify-content: center
+
+.kvadred-grid-bottom
+	align-items: center
+
+.kvadred-grid-shrink
+	flex: 0 0 auto
+
+.kvadred-grid-shrink-no
+	flex: 1 1 auto
+
+@for $i from 0 to 100
+	$gap: $i
+	.kvadred-gap-#{$gap}
+		gap: #{$gap}px
