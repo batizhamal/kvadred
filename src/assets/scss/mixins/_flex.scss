@@ -1,0 +1,24 @@
+@mixin flex(
+  $direction: row,
+  $alignItems: initial,
+  $justifyContent: initial,
+  $wrap: initial
+) {
+  display: flex;
+
+  @if ($direction != row) {
+    flex-direction: $direction;
+  }
+
+  @if ($alignItems != initial) {
+    align-items: $alignItems;
+  }
+
+  @if ($justifyContent != initial) {
+    justify-content: $justifyContent;
+  }
+
+  @if ($wrap != initial) {
+    flex-wrap: $wrap;
+  }
+}

@@ -17,3 +17,6 @@ export * from './Divider';
 
 export {default as Search} from './Search';
 export * from './Search';
+
+export {default as Typography} from './Typography';
+export * from './Typography';

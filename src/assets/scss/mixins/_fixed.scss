@@ -1,0 +1,29 @@
+@mixin fixed(
+  $top: initial,
+  $right: initial,
+  $bottom: initial,
+  $left: initial,
+  $zIndex: initial
+) {
+  position: fixed;
+
+  @if ($top != initial) {
+    top: $top;
+  }
+
+  @if ($right != initial) {
+    right: $right;
+  }
+
+  @if ($bottom != initial) {
+    bottom: $bottom;
+  }
+
+  @if ($left != initial) {
+    left: $left;
+  }
+
+  @if ($zIndex != initial) {
+    z-index: $zIndex;
+  }
+}
