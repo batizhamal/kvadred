@@ -15,6 +15,7 @@ export default defineConfig({
       '@app/pages': path.resolve(__dirname, 'src/pages/index.ts'),
       '@app/components': path.resolve(__dirname, 'src/components/index.ts'),
       '@app/hooks': path.resolve(__dirname, 'src/hooks/index.ts'),
+      '@app/helpers': path.resolve(__dirname, 'src/helpers/index.ts'),
     },
   }
 })

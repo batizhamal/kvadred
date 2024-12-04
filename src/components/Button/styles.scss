@@ -9,8 +9,8 @@
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
-  border-radius: 14px;
-  font-size: 14px;
+  border-radius: $base-radius;
+  font-size: $base-font-size;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border: 2px solid transparent;
@@ -31,7 +31,7 @@
   }
 
   &--default-size {
-    font-size: 14px;
+    font-size: $base-font-size;
     padding: 8px 16px;
     letter-spacing: calc(14px * 0.2);
   }
@@ -50,7 +50,7 @@
       color: #fff;
       fill: #fff;
       &:hover:not(:disabled) {
-        background-color: #232436;
+        background-color: $base-dark-blue;
       }
     }
 
@@ -59,7 +59,7 @@
       color: #fff;
       fill: #fff;
       &:hover:not(:disabled) {
-        background-color: #b8001f;
+        background-color: $base-dark-red;
       }
     }
 

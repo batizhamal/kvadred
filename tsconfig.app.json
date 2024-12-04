@@ -42,6 +42,9 @@
       "@app/hooks": [
         "src/hooks/index.ts"
       ],
+      "@app/helpers": [
+        "src/helpers/index.ts"
+      ]
     },
   },
   "include": ["src"]

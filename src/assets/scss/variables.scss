@@ -1,9 +1,14 @@
-$base-offset: 16px;
-$base-border-color: #333333;
-$base-border: 1px solid #333333;
 
 $base-font-color: #333333;
 $base-font-size: 14px;
 
 $base-red: #D90429;
 $base-blue: #2B2D42;
+$base-dark-blue: #232436;
+$base-dark-red: #b8001f;
+
+
+$base-offset: 16px;
+$base-border-color: $base-blue;
+$base-border: 2px solid $base-blue;
+$base-radius: 14px;
