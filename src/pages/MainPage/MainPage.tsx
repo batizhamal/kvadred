@@ -7,7 +7,7 @@ function MainPage() {
   return (
     <LayoutDefault>
       <PageTitle subtitle='Расчитать смету'/>
-      <TextField placeholder={'Блабла'}/>
+      {/*<TextField placeholder={'Блабла'}/>*/}
     </LayoutDefault>
   )
 }
