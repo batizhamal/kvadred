@@ -1,5 +1,6 @@
 import './styles.scss';
-import {Block, Button, Select, TextField, Option, Typography} from "@app/components";
+import {Block, Button, Select, TextField, Option, Typography, Search} from "@app/components";
+import {FaChevronRight} from "react-icons/fa";
 
 function ChooseResidence() {
 
@@ -9,6 +10,7 @@ function ChooseResidence() {
         <Block width={80}>
           <div className={'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'}>
             <Select
+              withSearch
               placeholder={'Жилой комплекс'}
               options={[
                 new Option('lol', 'lol', 'lol'),
@@ -33,6 +35,21 @@ function ChooseResidence() {
           text={'либо введите общую квадратуру'}
           className={'kvadred-mt-16 kvadred-mb-16'}
         />
+        <div className={'kvadred-flex kvadred-flex-column kvadred-flex-bottom'}>
+          <Search
+            onSearch={() => {}}
+            buttonText={'Расчитать'}
+            buttonColor={'alert'}
+            placeholder={'кв. м'}
+          />
+          <div className={'kvadred-flex kvadred-flex-row kvadred-mt-8 kvadred-gap-8'}>
+            <Typography
+              text={'Расширенный поиск'}
+              variant={'secondary'}
+            />
+            <FaChevronRight color={'8D8D8D'}/>
+          </div>
+        </div>
       </div>
     </div>
   );

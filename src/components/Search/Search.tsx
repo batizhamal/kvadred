@@ -8,11 +8,13 @@ export interface SearchProps {
 	text?: string;
 	placeholder?: string;
 	buttonText?: string;
+	buttonColor?: 'primary' | 'alert' | 'default';
 	className?: string;
 	onSearch: (text: string, selectOption?: string) => void;
 	searchOnChange?: boolean;
 	selectOptions?: Option[];
 	fixedWidth?: boolean;
+	width?: number;
 }
 
 function Search(props: SearchProps) {
@@ -20,11 +22,13 @@ function Search(props: SearchProps) {
 		text = '',
 		placeholder = '',
 		buttonText,
+		buttonColor = 'default',
 		className = '',
 		onSearch,
 		searchOnChange = false,
 		selectOptions = [],
 		fixedWidth = false,
+		width,
 	} = props;
 
 	const [searchText, setSearchText] = useState(text);
@@ -61,7 +65,7 @@ function Search(props: SearchProps) {
 	}, []);
 
 	return (
-		<div className={classNames(`kvadred-search ${className}`, {
+		<div className={classNames(`kvadred-search ${className} kvadred-search--width-${width}`, {
 			'kvadred-search--select': !!selectOptions.length,
 			'kvadred-search--fixed-width': fixedWidth,
 		})}>
@@ -88,7 +92,7 @@ function Search(props: SearchProps) {
 			<Button
 				className={'kvadred-search__button'}
 				variant={'contained'}
-				color={'default'}
+				color={buttonColor}
 				icon={!buttonText ? FaSearch : undefined}
 				text={buttonText}
 				onClick={() => {

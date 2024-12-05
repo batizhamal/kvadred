@@ -13,8 +13,7 @@ import { numberWithSpaces, setMask } from '@app/helpers';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
-import {FaWindowClose, FaEye} from 'react-icons/fa'
-import {FaE} from "react-icons/fa6";
+import {FaEye, FaTimes} from 'react-icons/fa'
 
 export interface Props extends FieldProps {
   startIcon?: ReactNode;
@@ -241,7 +240,7 @@ function TextField(props: Props) {
         )}
         {canClear && !multiline && !!value && !disabled && !readOnly && (
           <button className="kvadred-text-field__clear" onClick={onClearClick}>
-            <FaWindowClose/>
+            <FaTimes/>
           </button>
         )}
       </StyledColumns>
