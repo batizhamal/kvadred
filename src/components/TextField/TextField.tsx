@@ -225,6 +225,7 @@ function TextField(props: Props) {
             onKeyDown={onKeyPress}
             disabled={disabled}
             style={{ width }}
+            readOnly={readOnly}
             {...inputProps}
           />
         )}

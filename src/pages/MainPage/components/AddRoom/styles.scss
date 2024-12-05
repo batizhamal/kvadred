@@ -1,0 +1,37 @@
+@import '@app/scss';
+
+.add-room {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+
+  .kvadred-text-field__input {
+    border-radius: $base-radius 0 0 $base-radius !important;
+    width: 100%;
+  }
+
+  &__button {
+    border-radius: 0 $base-radius $base-radius 0;
+    margin-left: -0.125rem;
+    height: inherit;
+  }
+
+  &__button--outlined {
+    border-radius: 0;
+    margin-left: -0.125rem;
+    height: inherit;
+  }
+
+  @for $i from 0 to 100 {
+    &--width-#{$i} {
+      width: $i * 1%;
+    }
+  }
+}
