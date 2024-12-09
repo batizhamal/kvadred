@@ -22,7 +22,7 @@ export type TypographyTransform = 'capitalize' | 'lowercase' | 'uppercase';
 
 export interface TypographyProps {
 	text: string;
-	variant?: TypographyVariants;
+	/**/variant?: TypographyVariants;
 	transform?: TypographyTransform;
 	className?: string;
 	highLight?: string;

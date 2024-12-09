@@ -9,7 +9,7 @@
   align-items: center;
   flex-wrap: nowrap;
   overflow: hidden;
-  padding: $base-offset * 2 $base-offset * 4;
+  padding: $base-offset $base-offset * 4;
   @include roboto-spacing;
   color: $base-font-color;
   fill: $base-font-color;
