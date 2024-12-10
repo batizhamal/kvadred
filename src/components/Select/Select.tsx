@@ -2,7 +2,7 @@ import './styles.scss';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { Divider, Search } from '../index';
-import {FaChevronDown} from "react-icons/fa";
+import { FaChevronDown } from 'react-icons/fa';
 
 export class Option {
   constructor(
@@ -46,6 +46,10 @@ function Select(props: SelectProps) {
   const [filteredOptions, setFilteredOptions] = useState<Option[]>(options);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const fieldRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setFilteredOptions(options);
+  }, [options]);
 
   useEffect(() => {
     const initialSelectedOption =
@@ -108,7 +112,7 @@ function Select(props: SelectProps) {
           {selectedOption ? selectedOption.title : placeholder}
         </div>
         <div className={'kvadred-select__icon'}>
-          <FaChevronDown/>
+          <FaChevronDown />
         </div>
       </div>
 
@@ -133,8 +137,11 @@ function Select(props: SelectProps) {
             </>
           )}
           <ul className={'kvadred-option__block'}>
-            {filteredOptions.map((option) => (
-              <li key={option.id} className={'kvadred-option__layout'}>
+            {filteredOptions.map((option, index) => (
+              <li
+                key={`option-${option.id}-${index}`}
+                className={'kvadred-option__layout'}
+              >
                 <label
                   className={'kvadred-option__item'}
                   onClick={() => {
@@ -151,7 +158,9 @@ function Select(props: SelectProps) {
                     value={option.value}
                     checked={option.value === value}
                   />
-                  <span className={'kvadred-option__title'}>{option.title}</span>
+                  <span className={'kvadred-option__title'}>
+                    {option.title}
+                  </span>
                 </label>
               </li>
             ))}

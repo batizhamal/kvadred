@@ -1,12 +1,10 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import * as path from "node:path";
+import * as path from 'node:path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@app/scss': path.resolve(__dirname, 'src/assets/scss/index.scss'),
@@ -17,5 +15,15 @@ export default defineConfig({
       '@app/hooks': path.resolve(__dirname, 'src/hooks/index.ts'),
       '@app/helpers': path.resolve(__dirname, 'src/helpers/index.ts'),
     },
-  }
-})
+  },
+  server: {
+    proxy: {
+      '/v1': {
+        target: 'http://localhost:3001',
+        // target: 'https://kvadred-dev-hhcpa2c7ccbshaam.polandcentral-01.azurewebsites.net',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/v1/, ''),
+      },
+    },
+  },
+});
