@@ -18,4 +18,12 @@
       min-width: $i * 1%;
     }
   }
+
+  &__label {
+    @include montserrat;
+    font-size: $base-font-size * 1.5;
+    color: $base-blue;
+    font-weight: bold;
+    margin-bottom: $base-offset * 0.5;
+  }
 }
