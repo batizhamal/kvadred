@@ -11,7 +11,7 @@ function MainPage() {
   }, []);
 
   const fetchProjects = async () => {
-    const res = await getProjects();
+    const res = await getProjects(100);
     console.log(res);
   };
 

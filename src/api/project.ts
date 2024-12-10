@@ -26,8 +26,8 @@ export interface Material {
   __v: 0;
 }
 
-export function getProjects(): Promise<Project[]> {
+export function getProjects(area: number): Promise<Project[]> {
   return instance()
-    .get(`/api/projects`)
+    .get(`/api/projects/${area}`)
     .then((res) => res.data);
 }
