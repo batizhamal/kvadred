@@ -3,7 +3,7 @@ import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import { SimplifiedAdvancedSearch } from './components';
 import { useEffect } from 'react';
-import { getProjects } from '../../api';
+import { getProjects } from '@app/api';
 
 function MainPage() {
   useEffect(() => {

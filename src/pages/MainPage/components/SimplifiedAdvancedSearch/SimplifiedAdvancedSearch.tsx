@@ -12,7 +12,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { AddRoom, RoomArea } from '../index.ts';
 import { useForm } from '@app/hooks';
 import { useEffect, useState } from 'react';
-import { getResidentialComplexes, ResidentialComplex } from '../../../../api';
+import { Complex, getComplexById, getComplexes, Layout } from '@app/api';
 
 export interface Room {
   name: string;
@@ -22,7 +22,7 @@ export interface Room {
 
 interface SearchPayload {
   complex: string;
-  planirovka: string;
+  layout: string;
   area: number;
   rooms: Room[];
   height: number;
@@ -33,7 +33,7 @@ function SimplifiedAdvancedSearch() {
     useForm<SearchPayload>({
       values: {
         complex: '',
-        planirovka: '',
+        layout: '',
         area: 0,
         rooms: [],
         height: 0,
@@ -41,56 +41,43 @@ function SimplifiedAdvancedSearch() {
     });
 
   const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
-  const [residentialComplexes, setResidentialComplexes] = useState<
-    ResidentialComplex[]
-  >([]);
-  const [residentialComplexOptions, setResidentialComplexOptions] = useState<
-    Option[]
-  >([]);
-  const [planirovkas, setPlanirovkas] = useState<Option[]>([]);
+  const [complexes, setComplexes] = useState<Complex[]>([]);
+  const [complexOptions, setComplexOptions] = useState<Option[]>([]);
+  const [layouts, setLayouts] = useState<Layout[]>([]);
+  const [layoutOptions, setLayoutOptions] = useState<Option[]>([]);
 
   useEffect(() => {
-    fetchResidentialComplexes();
+    fetchComplexes();
   }, []);
 
-  useEffect(() => {
-    if (values.complex) {
-      fetchPlanirovkas(values.complex);
-    }
-  }, [values]);
-
-  const fetchResidentialComplexes = async () => {
-    getResidentialComplexes().then((res) => {
-      console.log(res);
-      setResidentialComplexes(res);
-      setResidentialComplexOptions(
+  const fetchComplexes = async () => {
+    getComplexes().then((res) => {
+      setComplexes(res);
+      setComplexOptions(
         res.map((item) => new Option(item.name, item._id, item._id))
       );
     });
   };
 
   useEffect(() => {
-    fetchPlanirovkas();
-  }, [residentialComplexes]);
+    if (values.complex) {
+      fetchLayouts(values.complex);
+    }
+  }, [values.complex]);
 
-  const fetchPlanirovkas = (id: string = '') => {
-    const plans: Option[] = [];
-    residentialComplexes
-      .filter((complex) => complex._id.includes(id))
-      .forEach((complex) =>
-        complex.planirovka.forEach((info) =>
-          info.items.forEach((item) => {
-            plans.push(
-              new Option(
-                item.planirovka_name,
-                item.planirovka_id,
-                item.planirovka_id
-              )
-            );
-          })
-        )
+  const fetchLayouts = (id: string = '') => {
+    getComplexById(id).then((res) => {
+      const lays: Layout[] = [];
+      res.layout.forEach((complexLt) => {
+        complexLt.items.forEach((lt) => {
+          lays.push(lt);
+        });
+      });
+      setLayouts(lays);
+      setLayoutOptions(
+        lays.map((lt) => new Option(lt.layout_name, lt._id, lt._id))
       );
-    setPlanirovkas(plans);
+    });
   };
 
   return (
@@ -109,12 +96,12 @@ function SimplifiedAdvancedSearch() {
                 }
               >
                 <Select
-                  options={residentialComplexOptions}
+                  options={complexOptions}
                   withSearch
                   placeholder={
                     values.complex
-                      ? residentialComplexOptions.find(
-                          (complex) => complex.id === values.complex
+                      ? complexOptions.find(
+                          (item) => item.id === values.complex
                         )?.title
                       : 'Жилой комплекс'
                   }
@@ -122,16 +109,16 @@ function SimplifiedAdvancedSearch() {
                   onChange={(value) => onChange(value, 'complex')}
                 />
                 <Select
-                  options={planirovkas}
+                  disabled={!values.complex}
+                  options={layoutOptions}
                   placeholder={
-                    values.planirovka
-                      ? planirovkas.find(
-                          (item) => item.id === values.planirovka
-                        )?.title
+                    values.layout
+                      ? layoutOptions.find((item) => item.id === values.layout)
+                          ?.title
                       : 'Планировка'
                   }
-                  name={'planirovka'}
-                  onChange={(value) => onChange(value, 'planirovka')}
+                  name={'layout'}
+                  onChange={(value) => onChange(value, 'layout')}
                 />
                 <Button text={'Расчитать'} />
               </div>

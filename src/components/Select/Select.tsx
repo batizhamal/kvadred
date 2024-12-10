@@ -97,6 +97,7 @@ function Select(props: SelectProps) {
       className={classNames('kvadred-select', {
         'kvadred-select--active': active && position === 'bottom' && !disabled,
         'kvadred-select--active-top': active && position === 'top' && !disabled,
+        'kvadred-select--disabled': disabled,
       })}
     >
       {label && <label className="kvadred-select__label">{label}</label>}
