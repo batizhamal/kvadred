@@ -1,0 +1,52 @@
+@import '@app/scss';
+
+.toggle {
+  @include montserrat;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: $base-font-size * 0.2;
+  font-size: $base-font-size;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding: 0.25 * $base-offset;
+  border-radius: $base-radius;
+  background-color: #edecec;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 100%;
+
+  &__option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 0.5 * $base-offset 0.75 * $base-offset;
+    z-index: 2;
+
+    &--selected {
+      font-weight: bold;
+    }
+  }
+
+  &__slider {
+    width: calc(50% - 1rem);
+    height: 2rem;
+    border-radius: $base-radius;
+    border: 1px solid rgba(223, 222, 222, 0);
+    background-color: #fff;
+    box-sizing: border-box;
+    position: absolute;
+    transition: transform 0.3s ease;
+    left: $base-offset;
+    z-index: 1;
+
+    &--left {
+      transform: translateX(0);
+    }
+
+    &--right {
+      transform: translateX(100%);
+    }
+  }
+}

@@ -6,9 +6,10 @@ import {
   Search,
   Select,
   TextField,
+  Toggle,
   Typography,
 } from '@app/components';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft } from 'react-icons/fa';
 import { AddRoom, RoomArea } from '../index.ts';
 import { useForm } from '@app/hooks';
 import { useEffect, useState } from 'react';
@@ -40,6 +41,7 @@ function SimplifiedAdvancedSearch() {
       },
     });
 
+  const [isSearchByComplex, setIsSearchByComplex] = useState(false);
   const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
   const [complexes, setComplexes] = useState<Complex[]>([]);
   const [complexOptions, setComplexOptions] = useState<Option[]>([]);
@@ -90,62 +92,69 @@ function SimplifiedAdvancedSearch() {
         {!isAdvancedSearch && (
           <>
             <Block width={80}>
-              <div
-                className={
-                  'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
+              <Toggle
+                className={'kvadred-mb-16'}
+                options={[
+                  new Option('По квадратуре', 'area', 'area'),
+                  new Option('По жилому комплексу', 'complex', 'complex'),
+                ]}
+                onToggle={(option) =>
+                  setIsSearchByComplex(option.id === 'complex')
                 }
-              >
-                <Select
-                  options={complexOptions}
-                  withSearch
-                  placeholder={
-                    values.complex
-                      ? complexOptions.find(
-                          (item) => item.id === values.complex
-                        )?.title
-                      : 'Жилой комплекс'
-                  }
-                  name={'complex'}
-                  onChange={(value) => onChange(value, 'complex')}
-                />
-                <Select
-                  disabled={!values.complex}
-                  options={layoutOptions}
-                  placeholder={
-                    values.layout
-                      ? layoutOptions.find((item) => item.id === values.layout)
-                          ?.title
-                      : 'Планировка'
-                  }
-                  name={'layout'}
-                  onChange={(value) => onChange(value, 'layout')}
-                />
-                <Button text={'Расчитать'} />
-              </div>
-            </Block>
-            <Typography
-              text={'либо введите общую квадратуру'}
-              className={'kvadred-mt-16 kvadred-mb-16'}
-            />
-            <div
-              className={'kvadred-flex kvadred-flex-column kvadred-flex-bottom'}
-            >
-              <Search
-                onSearch={(value: string) => {}}
-                buttonText={'Расчитать'}
-                buttonColor={'alert'}
-                placeholder={'кв. м'}
               />
-              <div
-                className={
-                  'text-chevron kvadred-flex kvadred-flex-row kvadred-mt-8 kvadred-gap-8'
-                }
-                onClick={() => setIsAdvancedSearch(true)}
-              >
-                <Typography text={'Расширенный поиск'} variant={'secondary'} />
-                <FaChevronRight color={'8D8D8D'} />
-              </div>
-            </div>
+
+              {!isSearchByComplex && (
+                <div
+                  className={
+                    'kvadred-flex kvadred-flex-column kvadred-flex-w-100 kvadred-flex-middle'
+                  }
+                >
+                  <Search
+                    className={'kvadred-width-1-2'}
+                    onSearch={(value: string) => {}}
+                    buttonText={'Расчитать'}
+                    buttonColor={'alert'}
+                    placeholder={'кв. м'}
+                  />
+                </div>
+              )}
+
+              {isSearchByComplex && (
+                <div
+                  className={
+                    'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
+                  }
+                >
+                  <Select
+                    options={complexOptions}
+                    withSearch
+                    placeholder={
+                      values.complex
+                        ? complexOptions.find(
+                            (item) => item.id === values.complex
+                          )?.title
+                        : 'Жилой комплекс'
+                    }
+                    name={'complex'}
+                    onChange={(value) => onChange(value, 'complex')}
+                  />
+                  <Select
+                    disabled={!values.complex}
+                    options={layoutOptions}
+                    placeholder={
+                      values.layout
+                        ? layoutOptions.find(
+                            (item) => item.id === values.layout
+                          )?.title
+                        : 'Планировка'
+                    }
+                    name={'layout'}
+                    onChange={(value) => onChange(value, 'layout')}
+                  />
+                  <Button text={'Расчитать'} />
+                </div>
+              )}
+            </Block>
           </>
         )}
 
