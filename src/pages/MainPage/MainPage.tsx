@@ -2,23 +2,25 @@ import { PageTitle } from '@app/components';
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import { SimplifiedAdvancedSearch } from './components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getProjects } from '@app/api';
 
 function MainPage() {
+  const [area, setArea] = useState<number>(100);
+
   useEffect(() => {
-    fetchProjects();
+    fetchProjects(area);
   }, []);
 
-  const fetchProjects = async () => {
-    const res = await getProjects(100);
+  const fetchProjects = async (value: number) => {
+    const res = await getProjects(value);
     console.log(res);
   };
 
   return (
     <LayoutDefault>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
-      <SimplifiedAdvancedSearch />
+      <SimplifiedAdvancedSearch onSearch={fetchProjects} />
     </LayoutDefault>
   );
 }

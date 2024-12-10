@@ -24,20 +24,20 @@ export interface Room {
 interface SearchPayload {
   complex: string;
   layout: string;
-  area: number;
-  rooms: Room[];
-  height: number;
 }
 
-function SimplifiedAdvancedSearch() {
+interface Props {
+  onSearch: (area: number) => void;
+}
+
+function SimplifiedAdvancedSearch(props: Props) {
+  const { onSearch } = props;
+
   const { values, setValues, resetForm, onChange, setPending, pending } =
     useForm<SearchPayload>({
       values: {
         complex: '',
         layout: '',
-        area: 0,
-        rooms: [],
-        height: 0,
       },
     });
 
@@ -111,10 +111,14 @@ function SimplifiedAdvancedSearch() {
                 >
                   <Search
                     className={'kvadred-width-1-2'}
-                    onSearch={(value: string) => {}}
+                    onSearch={(value: string) => {
+                      onSearch(Number(value));
+                    }}
                     buttonText={'Расчитать'}
                     buttonColor={'alert'}
                     placeholder={'кв. м'}
+                    searchOnClear={false}
+                    replacePattern={/[^0-9]/g}
                   />
                 </div>
               )}
@@ -151,7 +155,16 @@ function SimplifiedAdvancedSearch() {
                     name={'layout'}
                     onChange={(value) => onChange(value, 'layout')}
                   />
-                  <Button text={'Расчитать'} />
+                  <Button
+                    text={'Расчитать'}
+                    disabled={!values.complex || !values.layout}
+                    onClick={() => {
+                      onSearch(
+                        layouts.find((item) => item._id === values.layout)
+                          ?.area || 100
+                      );
+                    }}
+                  />
                 </div>
               )}
             </Block>
