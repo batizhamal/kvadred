@@ -1,6 +1,7 @@
 import './styles.scss';
 import { Material, Project } from '@app/api';
 import React, { useEffect, useState } from 'react';
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 
 interface Props {
   project: Project;
@@ -58,9 +59,9 @@ function SmetaTable(props: Props) {
   };
 
   return (
-    <table>
+    <table className="table">
       <tbody>
-        <tr>
+        <tr className={'table__tr table__tr--main'}>
           <td>Общая стоимость</td>
           <td></td>
           <td></td>
@@ -68,11 +69,15 @@ function SmetaTable(props: Props) {
         </tr>
         {types.map((type, index) => (
           <React.Fragment key={`type-${index}`}>
-            <tr onClick={() => onToggle(index)}>
+            <tr
+              className={'table__tr table__tr--main'}
+              onClick={() => onToggle(index)}
+            >
               <td>{type.type}</td>
               <td></td>
               <td></td>
               <td>{type.total.toFixed(2)}</td>
+              <td>{type.expanded ? <FaChevronDown /> : <FaChevronRight />}</td>
             </tr>
             {type.expanded && (
               <>
