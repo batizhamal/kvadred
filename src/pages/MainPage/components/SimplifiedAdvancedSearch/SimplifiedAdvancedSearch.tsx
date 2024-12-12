@@ -15,12 +15,6 @@ import { useForm } from '@app/hooks';
 import { useEffect, useState } from 'react';
 import { Complex, getComplexById, getComplexes, Layout } from '@app/api';
 
-export interface Room {
-  name: string;
-  id: string;
-  area: number;
-}
-
 interface SearchPayload {
   complex: string;
   layout: string;
@@ -116,7 +110,7 @@ function SimplifiedAdvancedSearch(props: Props) {
                     }}
                     buttonText={'Расчитать'}
                     buttonColor={'alert'}
-                    placeholder={'кв. м'}
+                    placeholder={'100 кв. м'}
                     searchOnClear={false}
                     replacePattern={/[^0-9]/g}
                   />

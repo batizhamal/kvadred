@@ -66,13 +66,11 @@ function SmetaTable(props: Props) {
           <td></td>
           <td></td>
           <td>{total.toFixed(2)}</td>
+          <td></td>
         </tr>
         {types.map((type, index) => (
           <React.Fragment key={`type-${index}`}>
-            <tr
-              className={'table__tr table__tr--main'}
-              onClick={() => onToggle(index)}
-            >
+            <tr className={'table__tr'} onClick={() => onToggle(index)}>
               <td>{type.type}</td>
               <td></td>
               <td></td>
@@ -81,18 +79,23 @@ function SmetaTable(props: Props) {
             </tr>
             {type.expanded && (
               <>
-                <tr>
+                <tr className={'table__tr table__tr--child'}>
                   <th>Материалы</th>
                   <th>Цена</th>
                   <th>Количество</th>
                   <th>Стоимость</th>
+                  <th></th>
                 </tr>
                 {type.materials.map((material, mIndex) => (
-                  <tr key={`type-${index}-material-${mIndex}`}>
+                  <tr
+                    key={`type-${index}-material-${mIndex}`}
+                    className={'table__tr table__tr--child'}
+                  >
                     <td>{material.name}</td>
                     <td>{material.price}</td>
                     <td>{material.quantity}</td>
                     <td>{material.total_cost}</td>
+                    <td></td>
                   </tr>
                 ))}
               </>

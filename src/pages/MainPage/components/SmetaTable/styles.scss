@@ -9,15 +9,29 @@
 
   &__tr {
     display: table-row;
-    border: 2px solid $base-blue;
-    border-radius: 8px;
+    border: 2px solid #edecec;
 
-    &--main {
-      font-weight: bold;
+    &--child {
+      td:first-child {
+        padding-left: 48px;
+      }
+
+      th:first-child {
+        padding-left: 48px;
+      }
+
+      td, th {
+        background-color: #f6f6f6;
+      }
     }
 
-    td {
+    td, th {
       padding: $base-offset * 0.5 $base-offset;
+    }
+
+    th {
+      text-align: left;
+      font-weight: normal;
     }
   }
 }

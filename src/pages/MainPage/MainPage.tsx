@@ -22,7 +22,7 @@ function MainPage() {
   };
 
   return (
-    <LayoutDefault>
+    <LayoutDefault scrollable>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
 

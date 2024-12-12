@@ -22,3 +22,5 @@ export { default as Typography } from './Typography';
 export * from './Typography';
 
 export { default as Toggle } from './Toggle';
+
+export { default as ScrollBlock } from './ScrollBlock';
