@@ -24,3 +24,9 @@ export * from './Typography';
 export { default as Toggle } from './Toggle';
 
 export { default as ScrollBlock } from './ScrollBlock';
+
+export { default as Callout } from './Callout';
+
+export { default as SkeletonLine } from './SkeletonLine';
+
+export { default as Loader } from './Loader';

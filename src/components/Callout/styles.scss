@@ -1,0 +1,57 @@
+@import "@app/scss";
+
+@mixin calloutVariant($name, $color, $background) {
+  &--#{$name} {
+    color: $color;
+    fill: $color;
+    border-color: $color;
+    background-color: $background;
+  }
+}
+
+.kvadred-callout {
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+  padding: $base-offset * 0.5 $base-offset;
+  border: $base-border;
+  background-color: rgba(38, 38, 38, 0.08);
+  border-radius: $base-radius;
+  font-weight: 700;
+  font-size: $base-font-size;
+  color: $base-font-color;
+  fill: $base-font-color;
+  text-align: center;
+  margin-bottom: 8px;
+  width: 100%;
+
+  @include calloutVariant(
+                  default,
+                  $base-font-color,
+                  rgba(38, 38, 38, 0.08),
+  );
+
+  @include calloutVariant(
+                  primary,
+                  $base-blue,
+                  #F7F9FF,
+  );
+
+  @include calloutVariant(
+                  success,
+                  #008000,
+                  #caeccb,
+  );
+
+  @include calloutVariant(
+                  alert,
+                  $base-red,
+                  #f9ebeb,
+  );
+
+  @include calloutVariant(
+                  warning,
+                  #fbc02d,
+                  #FDF6E8,
+  );
+}

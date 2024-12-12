@@ -1,0 +1,18 @@
+@import '@app/scss';
+
+.kvadred-skeleton-line {
+  display: flex;
+  flex: 1 1 auto;
+  height: 0.5rem;
+  background-color: $base-border-color;
+  border-radius: 4px;
+
+  @for $i from 0 to 1440 {
+    $px: $i;
+
+    &--width-#{$px} {
+      width: 100%;
+      max-width: #{$px}px;
+    }
+  }
+}
