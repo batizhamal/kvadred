@@ -1,4 +1,4 @@
-import { Block, Callout, Loader, PageTitle } from '@app/components';
+import { Block, Button, Callout, Loader, PageTitle } from '@app/components';
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import {
@@ -14,6 +14,7 @@ import {
   getProjects,
   Project,
 } from '@app/api';
+import { FaFileDownload } from 'react-icons/fa';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -63,13 +64,21 @@ function MainPage() {
   };
 
   return (
-    <LayoutDefault>
+    <LayoutDefault scrollable>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
       <div className={'kvadred-flex kvadred-gap-16'}>
         <Block
           label={'Смета'}
           className={'kvadred-mt-16 kvadred-mb-16'}
+          rightControls={[
+            <Button
+              text={'Скачать'}
+              icon={FaFileDownload}
+              size={'small'}
+              variant={'text'}
+            />,
+          ]}
           width={65}
           shrink
         >

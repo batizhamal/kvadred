@@ -66,7 +66,7 @@ function SmetaTable(props: Props) {
           <td>Общая стоимость</td>
           <td></td>
           <td></td>
-          <td>{formatDigitCommas(total)}</td>
+          <td>{`${formatDigitCommas(total)} ₸`}</td>
           <td></td>
         </tr>
         {types.map((type, index) => (
@@ -75,7 +75,7 @@ function SmetaTable(props: Props) {
               <td>{type.type}</td>
               <td></td>
               <td></td>
-              <td>{formatDigitCommas(type.total)}</td>
+              <td>{`${formatDigitCommas(type.total)} ₸`}</td>
               <td>{type.expanded ? <FaChevronDown /> : <FaChevronRight />}</td>
             </tr>
             {type.expanded && (
@@ -93,9 +93,9 @@ function SmetaTable(props: Props) {
                     className={'table__tr table__tr--child'}
                   >
                     <td>{material.name}</td>
-                    <td>{material.price}</td>
+                    <td>{`${formatDigitCommas(material.price)} ₸`}</td>
                     <td>{material.quantity}</td>
-                    <td>{material.total_cost}</td>
+                    <td>{`${formatDigitCommas(material.total_cost)} ₸`}</td>
                     <td></td>
                   </tr>
                 ))}

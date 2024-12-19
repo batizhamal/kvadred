@@ -1,5 +1,5 @@
 import './styles.scss';
-import { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 
 interface Props extends PropsWithChildren {
@@ -10,6 +10,7 @@ interface Props extends PropsWithChildren {
   shrink?: boolean;
   header?: boolean;
   headerText?: string;
+  rightControls?: ReactNode[];
 }
 
 function Block(props: Props) {
@@ -22,12 +23,22 @@ function Block(props: Props) {
     shrink = false,
     header = false,
     headerText = '',
+    rightControls = [],
   } = props;
 
   return (
     <div className={`kvadred-block--width-${width} ${className}`}>
       {label && (
-        <div className={`kvadred-block__label ${labelClassName}`}>{label}</div>
+        <div className={`kvadred-block__label ${labelClassName}`}>
+          {label}
+          <div className={'kvadred-flex kvadred-gap-8'}>
+            {rightControls.map((control, index) => (
+              <React.Fragment key={`right-contol-${index}`}>
+                {control}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
       )}
       {header && <div className={'kvadred-block__header'}>{headerText}</div>}
       <div
