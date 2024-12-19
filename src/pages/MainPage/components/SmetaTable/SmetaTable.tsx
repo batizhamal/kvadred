@@ -2,6 +2,7 @@ import './styles.scss';
 import { Material, Project } from '@app/api';
 import React, { useEffect, useState } from 'react';
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { formatDigitCommas } from '../../../../common/utils/formattingUtils.ts';
 
 interface Props {
   project: Project;
@@ -65,7 +66,7 @@ function SmetaTable(props: Props) {
           <td>Общая стоимость</td>
           <td></td>
           <td></td>
-          <td>{total.toFixed(2)}</td>
+          <td>{formatDigitCommas(total)}</td>
           <td></td>
         </tr>
         {types.map((type, index) => (
@@ -74,7 +75,7 @@ function SmetaTable(props: Props) {
               <td>{type.type}</td>
               <td></td>
               <td></td>
-              <td>{type.total.toFixed(2)}</td>
+              <td>{formatDigitCommas(type.total)}</td>
               <td>{type.expanded ? <FaChevronDown /> : <FaChevronRight />}</td>
             </tr>
             {type.expanded && (
