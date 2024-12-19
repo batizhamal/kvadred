@@ -1,9 +1,19 @@
 import { Block, Callout, Loader, PageTitle } from '@app/components';
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
-import { SimplifiedAdvancedSearch, SmetaTable } from './components';
+import {
+  Company as CompanyCard,
+  SimplifiedAdvancedSearch,
+  SmetaTable,
+} from './components';
 import { useEffect, useState } from 'react';
-import { getProjects, Project } from '@app/api';
+import {
+  Company,
+  getBestCompanies,
+  getCompanies,
+  getProjects,
+  Project,
+} from '@app/api';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -13,8 +23,14 @@ function MainPage() {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [bestCompanies, setBestCompanies] = useState<Company[]>([]);
+  const [companies, setCompanies] = useState<Company[]>([]);
+
   useEffect(() => {
     fetchProjects(area);
+
+    fetchBestCompanies();
+    fetchCompanies();
   }, []);
 
   const fetchProjects = async (value: number) => {
@@ -32,12 +48,31 @@ function MainPage() {
     }
   };
 
+  const fetchBestCompanies = async () => {
+    try {
+      const res = await getBestCompanies();
+      setBestCompanies(res);
+    } catch (error: any) {}
+  };
+
+  const fetchCompanies = async () => {
+    try {
+      const res = await getCompanies();
+      setCompanies(res);
+    } catch (error: any) {}
+  };
+
   return (
-    <LayoutDefault scrollable>
+    <LayoutDefault>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
-      <>
-        <Block label={'Смета'} labelClassName={'kvadred-mt-16'}>
+      <div className={'kvadred-flex kvadred-gap-16'}>
+        <Block
+          label={'Смета'}
+          className={'kvadred-mt-16 kvadred-mb-16'}
+          width={65}
+          shrink
+        >
           {loading && <Loader center color={'#2B2D42'} size={48} />}
           {errorMessage && !loading && (
             <Callout variant={'alert'}>{errorMessage}</Callout>
@@ -46,7 +81,47 @@ function MainPage() {
             <SmetaTable project={project} />
           )}
         </Block>
-      </>
+        <div
+          className={
+            'kvadred-flex kvadred-flex-w-100 kvadred-flex-column kvadred-gap-16 kvadred-mt-16 kvadred-mb-16'
+          }
+        >
+          <Block
+            label={'Компании под ключ'}
+            header
+            headerText={'Лучшие предложения'}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                rowGap: '16px',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              {bestCompanies.map((bestComp, index) => (
+                <CompanyCard key={`best-${index}`} company={bestComp} />
+              ))}
+            </div>
+          </Block>
+          <Block shrink>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                rowGap: '16px',
+                justifyContent: 'space-between',
+                width: '100%',
+              }}
+            >
+              {companies.map((bestComp, index) => (
+                <CompanyCard key={`best-${index}`} company={bestComp} />
+              ))}
+            </div>
+          </Block>
+        </div>
+      </div>
     </LayoutDefault>
   );
 }

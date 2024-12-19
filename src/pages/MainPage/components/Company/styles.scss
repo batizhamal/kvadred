@@ -1,0 +1,34 @@
+@import '@app/scss';
+
+.company-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    @include roboto;
+    font-size: 10px;
+    color: #4598FF;
+    fill: #4598FF;
+    text-decoration: none;
+  }
+
+  &__best-in {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    @include roboto;
+    font-size: 14px;
+    color: $base-red;
+    fill: $base-red;
+    text-decoration: none;
+    justify-content: center;
+  }
+}
+

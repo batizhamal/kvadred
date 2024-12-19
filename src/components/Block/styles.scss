@@ -13,6 +13,12 @@
   padding: $base-offset;
   border-radius: $base-radius;
 
+  &--shrink {
+    height: fit-content;
+    max-height: 100%;
+    overflow: scroll;
+  }
+
   @for $i from 0 to 100 {
     &--width-#{$i} {
       min-width: $i * 1%;
@@ -25,5 +31,19 @@
     color: $base-blue;
     font-weight: bold;
     margin-bottom: $base-offset * 0.5;
+  }
+
+  &__header {
+    background: linear-gradient(to right, #C9CCD2, #ffffff, #D26E7E);
+    padding: $base-offset $base-offset $base-offset * 2 $base-offset;
+    margin-bottom: -$base-offset;
+    max-width: 100%;
+    @include montserrat;
+    font-size: $base-font-size;
+    color: $base-blue;
+    font-weight: bold;
+    border-top-left-radius: $base-radius;
+    border-top-right-radius: $base-radius;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   }
 }
