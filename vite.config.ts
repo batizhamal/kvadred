@@ -21,7 +21,6 @@ export default defineConfig({
     proxy: {
       '/v1': {
         target: 'https://kvadred.onrender.com',
-        // target: 'https://kvadred-dev-hhcpa2c7ccbshaam.polandcentral-01.azurewebsites.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/v1/, ''),
       },
