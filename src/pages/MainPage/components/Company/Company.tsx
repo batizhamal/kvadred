@@ -2,8 +2,7 @@ import './styles.scss';
 import { Company as CompanyData } from '@app/api';
 import { Typography } from '@app/components';
 import { formatDigitsGrouping } from '../../../../common/utils/formattingUtils.ts';
-import { FaChartLine, FaLink, FaPercent } from 'react-icons/fa';
-import { FaClockRotateLeft } from 'react-icons/fa6';
+import { FaLink } from 'react-icons/fa';
 
 interface Props {
   company: CompanyData;
@@ -20,26 +19,27 @@ function Company(props: Props) {
 
   return (
     <div className={'company-card'}>
-      <img src={company.logo} height={48} alt={'logo'} />
+      <img src={'/empty.png'} height={48} alt={'logo'} />
+      {/*TODO: logo*/}
       <Typography
         className={'kvadred-mt-8'}
         text={`${formatDigitsGrouping(company.price).toString()} ₸`}
       />
-      <a className={'company-card__link'} href={company.link}>
+      <a className={'company-card__link'} href={company.IGlink}>
         <FaLink color={'#4598FF'} />
         Подробнее
       </a>
 
-      {!!company.bestIn && (
-        <div className={'company-card__best-in kvadred-mt-8'}>
-          {company.bestIn === 'rating' && <FaChartLine color={'#D90429'} />}
-          {company.bestIn === 'deadlines' && (
-            <FaClockRotateLeft color={'#D90429'} />
-          )}
-          {company.bestIn === 'price' && <FaPercent color={'#D90429'} />}
-          {bestIn[company.bestIn]}
-        </div>
-      )}
+      {/*{!!company.bestIn && (*/}
+      {/*  <div className={'company-card__best-in kvadred-mt-8'}>*/}
+      {/*    {company.bestIn === 'rating' && <FaChartLine color={'#D90429'} />}*/}
+      {/*    {company.bestIn === 'deadlines' && (*/}
+      {/*      <FaClockRotateLeft color={'#D90429'} />*/}
+      {/*    )}*/}
+      {/*    {company.bestIn === 'price' && <FaPercent color={'#D90429'} />}*/}
+      {/*    {bestIn[company.bestIn]}*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 }

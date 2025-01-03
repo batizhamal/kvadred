@@ -17,6 +17,7 @@ import {
 } from '@app/api';
 import { FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
+import styled from 'styled-components';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -75,6 +76,15 @@ function MainPage() {
     }
   };
 
+  const StyledBlockHeader = styled.div`
+    margin-bottom: 1rem;
+    max-width: 100%;
+    @include montserrat;
+    font-size: 14px;
+    color: #2b2d42;
+    font-weight: bold;
+  `;
+
   return (
     <LayoutDefault scrollable>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
@@ -108,26 +118,32 @@ function MainPage() {
             'kvadred-flex kvadred-flex-w-100 kvadred-flex-column kvadred-gap-16 kvadred-mt-16 kvadred-mb-16'
           }
         >
-          <Block
-            label={'Компании под ключ'}
-            header
-            headerText={'Лучшие предложения'}
-          >
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                rowGap: '16px',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
+          {!!bestCompanies.length && (
+            <Block
+              label={'Компании под ключ'}
+              header
+              headerText={'Лучшие предложения'}
             >
-              {bestCompanies.map((bestComp, index) => (
-                <CompanyCard key={`best-${index}`} company={bestComp} />
-              ))}
-            </div>
-          </Block>
-          <Block shrink>
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  rowGap: '16px',
+                  justifyContent: 'space-between',
+                  width: '100%',
+                }}
+              >
+                {bestCompanies.map((bestComp, index) => (
+                  <CompanyCard key={`best-${index}`} company={bestComp} />
+                ))}
+              </div>
+            </Block>
+          )}
+          <Block
+            shrink
+            label={!bestCompanies.length ? 'Компании под ключ' : ''}
+          >
+            <StyledBlockHeader>Другие предложения</StyledBlockHeader>
             <div
               style={{
                 display: 'grid',
