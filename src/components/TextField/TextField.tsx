@@ -13,7 +13,7 @@ import { numberWithSpaces, setMask } from '@app/helpers';
 import classNames from 'classnames';
 import styled from 'styled-components';
 
-import {FaEye, FaTimes} from 'react-icons/fa'
+import { FaEye, FaTimes } from 'react-icons/fa';
 
 export interface Props extends FieldProps {
   startIcon?: ReactNode;
@@ -211,11 +211,14 @@ function TextField(props: Props) {
         ) : (
           <input
             ref={ref}
-            className={classNames(`kvadred-text-field__input ${inputClassName}`, {
-              'kvadred-text-field__input--disabled': disabled,
-              'kvadred-text-field__input--icon': startIcon,
-              'kvadred-text-field__input--icon-end': endIcon,
-            })}
+            className={classNames(
+              `kvadred-text-field__input ${inputClassName}`,
+              {
+                'kvadred-text-field__input--disabled': disabled,
+                'kvadred-text-field__input--icon': startIcon,
+                'kvadred-text-field__input--icon-end': endIcon,
+              }
+            )}
             type={secureTextEntry && hidePassword ? 'password' : 'text'}
             value={priceFormat ? numberWithSpaces(value) : value}
             onChange={onChangeText}
@@ -226,6 +229,7 @@ function TextField(props: Props) {
             disabled={disabled}
             style={{ width }}
             readOnly={readOnly}
+            maxLength={maxLength}
             {...inputProps}
           />
         )}
@@ -241,7 +245,7 @@ function TextField(props: Props) {
         )}
         {canClear && !multiline && !!value && !disabled && !readOnly && (
           <button className="kvadred-text-field__clear" onClick={onClearClick}>
-            <FaTimes/>
+            <FaTimes />
           </button>
         )}
       </StyledColumns>
