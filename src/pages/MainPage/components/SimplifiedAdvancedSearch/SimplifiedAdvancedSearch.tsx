@@ -114,7 +114,7 @@ function SimplifiedAdvancedSearch(props: Props) {
                 />
                 <div
                   className={
-                    'kvadred-flex kvadred-flex-row kvadred-mt-8 kvadred-gap-8'
+                    'text-chevron kvadred-flex kvadred-flex-row kvadred-mt-8 kvadred-gap-8'
                   }
                   onClick={() => {
                     setIsAdvancedSearch(true);
