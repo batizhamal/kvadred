@@ -1,10 +1,10 @@
 import './styles.scss';
 import { useCallback, useEffect, useState } from 'react';
-import { Button, Option, Select, TextField } from '../index';
+import { Button, Option, Select, TextField, TextFieldProps } from '../index';
 import classNames from 'classnames';
 import { FaSearch } from 'react-icons/fa';
 
-export interface SearchProps {
+export interface SearchProps extends TextFieldProps {
   text?: string;
   placeholder?: string;
   buttonText?: string;
@@ -14,8 +14,6 @@ export interface SearchProps {
   searchOnChange?: boolean;
   searchOnClear?: boolean;
   selectOptions?: Option[];
-  fixedWidth?: boolean;
-  width?: number;
   replacePattern?: RegExp;
 }
 
@@ -30,9 +28,8 @@ function Search(props: SearchProps) {
     searchOnChange = false,
     searchOnClear = true,
     selectOptions = [],
-    fixedWidth = false,
-    width,
     replacePattern,
+    ...textFieldProps
   } = props;
 
   const [searchText, setSearchText] = useState(text);
@@ -74,13 +71,9 @@ function Search(props: SearchProps) {
 
   return (
     <div
-      className={classNames(
-        `kvadred-search ${className} kvadred-search--width-${width}`,
-        {
-          'kvadred-search--select': !!selectOptions.length,
-          'kvadred-search--fixed-width': fixedWidth,
-        }
-      )}
+      className={classNames(`kvadred-search ${className}`, {
+        'kvadred-search--select': !!selectOptions.length,
+      })}
     >
       {!!selectOptions.length && (
         <Select
@@ -95,6 +88,7 @@ function Search(props: SearchProps) {
         />
       )}
       <TextField
+        {...textFieldProps}
         value={searchText}
         placeholder={placeholder}
         onChange={onChangeSearchText}

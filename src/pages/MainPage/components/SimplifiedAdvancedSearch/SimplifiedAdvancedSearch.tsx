@@ -9,10 +9,10 @@ import {
   Toggle,
   Typography,
 } from '@app/components';
-import { FaChevronLeft } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { AddRoom, RoomArea } from '../index.ts';
 import { useForm } from '@app/hooks';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Complex, getComplexById, getComplexes, Layout } from '@app/api';
 
 interface SearchPayload {
@@ -83,127 +83,138 @@ function SimplifiedAdvancedSearch(props: Props) {
           'kvadred-flex kvadred-flex-column kvadred-flex-w-100 kvadred-flex-middle'
         }
       >
-        {!isAdvancedSearch && (
-          <>
-            <Block width={80}>
-              <Toggle
-                className={'kvadred-mb-16'}
-                options={[
-                  new Option('По квадратуре', 'area', 'area'),
-                  new Option('По жилому комплексу', 'complex', 'complex'),
-                ]}
-                onToggle={(option) =>
-                  setIsSearchByComplex(option.id === 'complex')
-                }
-              />
+        <Block width={80}>
+          <Toggle
+            className={'kvadred-mb-16'}
+            options={[
+              new Option('По квадратуре', 'area', 'area'),
+              new Option('По жилому комплексу', 'complex', 'complex'),
+            ]}
+            onToggle={(option) => setIsSearchByComplex(option.id === 'complex')}
+          />
 
-              {!isSearchByComplex && (
+          {!isSearchByComplex &&
+            (!isAdvancedSearch ? (
+              <div
+                className={
+                  'kvadred-flex kvadred-flex-column kvadred-flex-w-100 kvadred-flex-middle'
+                }
+              >
+                <Search
+                  maxLength={3}
+                  className={'kvadred-width-1-2'}
+                  onSearch={(value: string) => {
+                    onSearch(Number(value));
+                  }}
+                  buttonText={'Расчитать'}
+                  buttonColor={'alert'}
+                  placeholder={'100 кв. м'}
+                  searchOnClear={false}
+                  replacePattern={/[^0-9]/g}
+                />
                 <div
                   className={
-                    'kvadred-flex kvadred-flex-column kvadred-flex-w-100 kvadred-flex-middle'
+                    'kvadred-flex kvadred-flex-row kvadred-mt-8 kvadred-gap-8'
                   }
+                  onClick={() => {
+                    setIsAdvancedSearch(true);
+                  }}
                 >
-                  <Search
-                    className={'kvadred-width-1-2'}
-                    onSearch={(value: string) => {
-                      onSearch(Number(value));
-                    }}
-                    buttonText={'Расчитать'}
-                    buttonColor={'alert'}
-                    placeholder={'100 кв. м'}
-                    searchOnClear={false}
-                    replacePattern={/[^0-9]/g}
+                  <Typography
+                    text={'Расширенный расчет'}
+                    variant={'secondary'}
+                  />
+                  <FaChevronRight color={'8D8D8D'} />
+                </div>
+              </div>
+            ) : (
+              <div
+                className={
+                  'kvadred-flex kvadred-flex-column kvadred-gap-16 kvadred-flex-w-100'
+                }
+              >
+                <div
+                  className={
+                    'text-chevron kvadred-flex kvadred-flex-row kvadred-flex-left kvadred-mb-8 kvadred-gap-8'
+                  }
+                  onClick={() => setIsAdvancedSearch(false)}
+                >
+                  <FaChevronLeft color={'8D8D8D'} />
+                  <Typography
+                    text={'Упрощенный расчет'}
+                    variant={'secondary'}
                   />
                 </div>
-              )}
-
-              {isSearchByComplex && (
+                <AddRoom onAddRoom={() => {}} rooms={[]} />
+                <div
+                  className={
+                    'kvadred-flex kvadred-flex-column kvadred-gap-8 kvadred-flex-w-100'
+                  }
+                >
+                  <RoomArea roomName={'Спальня'} />
+                  <RoomArea roomName={'Санузел'} />
+                </div>
                 <div
                   className={
                     'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
                   }
                 >
-                  <Select
-                    options={complexOptions}
-                    withSearch
-                    placeholder={
-                      values.complex
-                        ? complexOptions.find(
-                            (item) => item.id === values.complex
-                          )?.title
-                        : 'Жилой комплекс'
-                    }
-                    name={'complex'}
-                    onChange={(value) => onChange(value, 'complex')}
-                  />
-                  <Select
-                    disabled={!values.complex}
-                    options={layoutOptions}
-                    placeholder={
-                      values.layout
-                        ? layoutOptions.find(
-                            (item) => item.id === values.layout
-                          )?.title
-                        : 'Планировка'
-                    }
-                    name={'layout'}
-                    onChange={(value) => onChange(value, 'layout')}
-                  />
-                  <Button
-                    text={'Расчитать'}
-                    disabled={!values.complex || !values.layout}
-                    onClick={() => {
-                      onSearch(
-                        layouts.find((item) => item._id === values.layout)
-                          ?.area || 100
-                      );
-                    }}
-                  />
+                  <TextField placeholder={'Высота потолков'} />
+                  <TextField placeholder={'Общая квадратура'} />
                 </div>
-              )}
-            </Block>
-          </>
-        )}
+                <div
+                  className={
+                    'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-flex-center'
+                  }
+                >
+                  <Button text={'Расчитать'} />
+                </div>
+              </div>
+            ))}
 
-        {isAdvancedSearch && (
-          <>
+          {isSearchByComplex && (
             <div
               className={
-                'text-chevron kvadred-flex kvadred-flex-row kvadred-flex-left kvadred-mb-8 kvadred-gap-8'
+                'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
               }
-              onClick={() => setIsAdvancedSearch(false)}
             >
-              <FaChevronLeft color={'8D8D8D'} />
-              <Typography text={'Упрощенный поиск'} variant={'secondary'} />
+              <Select
+                options={complexOptions}
+                withSearch
+                placeholder={
+                  values.complex
+                    ? complexOptions.find((item) => item.id === values.complex)
+                        ?.title
+                    : 'Жилой комплекс'
+                }
+                name={'complex'}
+                onChange={(value) => onChange(value, 'complex')}
+              />
+              <Select
+                disabled={!values.complex}
+                options={layoutOptions}
+                placeholder={
+                  values.layout
+                    ? layoutOptions.find((item) => item.id === values.layout)
+                        ?.title
+                    : 'Планировка'
+                }
+                name={'layout'}
+                onChange={(value) => onChange(value, 'layout')}
+              />
+              <Button
+                text={'Расчитать'}
+                disabled={!values.complex || !values.layout}
+                onClick={() => {
+                  onSearch(
+                    layouts.find((item) => item._id === values.layout)?.area ||
+                      100
+                  );
+                }}
+              />
             </div>
-            <Block width={80} className={'kvadred-gap-16'}>
-              <AddRoom onAddRoom={() => {}} rooms={[]} />
-              <div
-                className={
-                  'kvadred-flex kvadred-flex-column kvadred-gap-8 kvadred-flex-w-100'
-                }
-              >
-                <RoomArea roomName={'Спальня'} />
-                <RoomArea roomName={'Санузел'} />
-              </div>
-              <div
-                className={
-                  'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
-                }
-              >
-                <TextField placeholder={'Высота потолков'} />
-                <TextField placeholder={'Общая квадратура'} />
-              </div>
-              <div
-                className={
-                  'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-flex-center'
-                }
-              >
-                <Button text={'Расчитать'} />
-              </div>
-            </Block>
-          </>
-        )}
+          )}
+        </Block>
       </div>
     </div>
   );
