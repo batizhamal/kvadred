@@ -9,12 +9,14 @@ import {
 import { useEffect, useState } from 'react';
 import {
   Company,
+  exportProjects,
   getBestCompanies,
   getCompanies,
   getProjects,
   Project,
 } from '@app/api';
 import { FaFileDownload } from 'react-icons/fa';
+import { downloadExcel } from '@app/helpers';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -63,6 +65,16 @@ function MainPage() {
     } catch (error: any) {}
   };
 
+  const download = async () => {
+    try {
+      const res = await exportProjects(area);
+
+      downloadExcel(res);
+    } catch (error) {
+      console.error('Error downloading', error);
+    }
+  };
+
   return (
     <LayoutDefault scrollable>
       <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
@@ -77,6 +89,7 @@ function MainPage() {
               icon={FaFileDownload}
               size={'small'}
               variant={'text'}
+              onClick={download}
             />,
           ]}
           width={65}

@@ -31,3 +31,17 @@ export function getProjects(area: number): Promise<Project[]> {
     .get(`/api/projects/${area}`)
     .then((res) => res.data);
 }
+
+export function exportProjects(area: number) {
+  return instance()
+    .post(
+      `/api/projects/export`,
+      {
+        area,
+      },
+      {
+        responseType: 'blob',
+      }
+    )
+    .then((res) => res);
+}
