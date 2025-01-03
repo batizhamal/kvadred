@@ -1,7 +1,6 @@
 import './styles.scss';
-import {HeaderItem} from "@app/hooks";
-import classNames from "classnames";
-import {Link, useLocation} from "react-router-dom";
+import { HeaderItem } from '@app/hooks';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../Button';
 
 interface Props {
@@ -9,23 +8,29 @@ interface Props {
 }
 
 function Header(props: Props) {
-  const {
-    items,
-  } = props;
+  const { items } = props;
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const goToLanding = () => {
+    navigate('/landing');
+  };
 
   return (
     <div className={'header'}>
-      <img src={'/logo_black.svg'} height={64} alt={'logo'}/>
+      <img
+        src={'/logo_black.svg'}
+        height={64}
+        alt={'logo'}
+        onClick={goToLanding}
+      />
       <Button
-        text='Связаться с нами'
-        variant='contained'
-        color='primary'
-        onClick={
-          () => {
-            // TODO
-          }
-        }
+        text="Связаться с нами"
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          // TODO
+        }}
       />
       {/* <div className={'header__items'}>
         {items.map(item => (
