@@ -79,16 +79,21 @@ function Landing() {
           </div>
         </div>
 
-        <section className="stats">
-          <div>
-            <h2>100+</h2>
-            <p>Планировок квартир доступно</p>
+        <div className="landing-stats">
+          <div className={'landing-stats__header'}>
+            <div className={'landing-stats__subtitle'}>
+              Особенности платформы KVADRED
+            </div>
+            <div className={'landing-stats__title'}>
+              Данные 1000+ проектов и лучшие практики
+            </div>
           </div>
-          <div>
-            <h2>200+</h2>
-            <p>Проектов</p>
+          <div className={'landing-stats__block-container'}>
+            <div className={'landing-stats__block'}></div>
+            <div className={'landing-stats__block'}></div>
+            <div className={'landing-stats__block'}></div>
           </div>
-        </section>
+        </div>
 
         <section className="features">
           <h2>ТУТ СПОГАН ПРО ТО КАК КВАДРЕД РЕШАЕТ ГЕМОР ПО РЕМОНТУ</h2>
