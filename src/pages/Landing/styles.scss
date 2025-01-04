@@ -10,9 +10,12 @@
 .landing-body {
   margin: 0;
   color: #ffffff;
-  background-color: #002432;
   position: relative;
   @include bicubik;
+}
+
+.landing-main-wrapper {
+  background-color: #002432;
 }
 
 .landing-header {
@@ -195,38 +198,77 @@
   }
 }
 
-.stats div {
-  text-align: center;
-}
+.landing-features {
+  display: flex;
+  padding: $base-offset $base-offset * 2;
+  margin-top: $base-offset * 2;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  color: #000000;
 
-.stats div h2 {
-  font-size: 28px;
-}
+  &__header {
+    display: flex;
+    flex-direction: row;
+    gap: $base-offset;
+    margin-bottom: $base-offset * 2;
+  }
 
-.stats div p {
-  font-size: 16px;
-}
+  &__subtitle {
+    font-size: 16px;
+    margin-top: 4px;
+  }
 
-.features {
-  padding: 50px;
-  background-color: #f8f9fa;
-  color: #001f2d;
-}
+  &__title {
+    font-size: 40px;
+  }
 
-.features h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
+  &__feature {
+    display: flex;
+    width: calc(100% - $base-offset * 4);
+    align-items: center;
+    padding: $base-offset $base-offset * 2;
+    border-radius: $base-radius;
+    margin-bottom: $base-offset;
 
-.feature {
-  margin-bottom: 30px;
-  background-color: #e3f2fd;
-  padding: 20px;
-  border-radius: 5px;
-}
+    &--blue {
+      background-color: #D3E4E9;
+    }
 
-.feature h3 {
-  margin-bottom: 10px;
+    &--yellow {
+      background-color: #FCF6E6;
+    }
+
+    &--left {
+      display: flex;
+      flex-direction: column;
+      width: calc(50% - $base-offset);
+      text-wrap: wrap;
+    }
+
+    &--right {
+      display: flex;
+      width: calc(50% - $base-offset);
+      height: 100%;
+    }
+
+    & .title {
+      font-size: 24px;
+      margin-bottom: $base-offset * 0.5;
+    }
+
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      margin: $base-offset;
+      border-radius: $base-radius;
+    }
+
+    &:last-child {
+      margin-bottom: $base-offset * 2;
+    }
+  }
 }
 
 .footer {
