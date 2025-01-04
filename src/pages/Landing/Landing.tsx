@@ -20,8 +20,8 @@ function Landing() {
             objectFit: 'contain',
             position: 'absolute',
             top: 0,
-            width: '100vw',
-            height: '100vh',
+            width: '100%',
+            height: '150vh',
             zIndex: 1,
           }}
         />
