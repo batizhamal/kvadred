@@ -113,8 +113,35 @@
     top: 20%;
     right: 10%;
     width: 120px;
-    height: 160px;
+    height: 180px;
     background-color: #FFF48B;
+
+    &__circle {
+      top: 10%;
+      right: calc(10% + 47px);
+      padding: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+
+      & img {
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        border-radius: 50%;
+        object-fit: scale-down;
+      }
+    }
+
+    &__circle--small {
+      top: calc(20% + 197px);
+      right: calc(10% + 77px);
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+    }
   }
 
   .block-4 {

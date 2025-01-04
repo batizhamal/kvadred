@@ -1,6 +1,7 @@
 import './styles.scss';
 import { Button } from '@app/components';
 import { useNavigate } from 'react-router-dom';
+import { FaPhoneAlt } from 'react-icons/fa';
 
 function Landing() {
   const navigate = useNavigate();
@@ -31,7 +32,11 @@ function Landing() {
               ТУТ БУДЕТ КАЙНДА МИССИЯ СТАРТАПА ИЛИ ЦЕННОСТЬ. ХЗ
             </div>
             <div className={'kvadred-flex'}>
-              <Button text={'Смета'} className={'landing-button'} />
+              <Button
+                text={'Смета'}
+                className={'landing-button'}
+                onClick={goToMain}
+              />
             </div>
           </div>
           <div className={'landing-hero__right'}>
@@ -42,15 +47,23 @@ function Landing() {
             <div className={'landing-hero__floating-block block-1__circle'}>
               <img src={'/keys.png'} alt={'logo'} />
             </div>
-            <div className={'landing-hero__floating-block block-2'}>it's</div>
+            <div className={'landing-hero__floating-block block-2'}></div>
             <div className={'landing-hero__floating-block block-3'}>
-              <div style={{ fontSize: '20px' }}>ABEROY</div>
+              <div style={{ fontSize: '20px', marginTop: '20px' }}>ABEROY</div>
               строительная компания
               <div className={'title'} style={{ marginTop: '8px' }}>
                 200+ проектов
               </div>
             </div>
-            <div className={'landing-hero__floating-block block-4'}>lol</div>
+            <div className={'landing-hero__floating-block block-3__circle'}>
+              <img src={'/aberoy.svg'} alt={'logo'} />
+            </div>
+            <div
+              className={'landing-hero__floating-block block-3__circle--small'}
+            >
+              <FaPhoneAlt fill={'#233454'} />
+            </div>
+            <div className={'landing-hero__floating-block block-4'}></div>
           </div>
         </div>
 
