@@ -1,19 +1,58 @@
 import './styles.scss';
+import { Button } from '@app/components';
+import { useNavigate } from 'react-router-dom';
 
 function Landing() {
+  const navigate = useNavigate();
+
+  const goToMain = () => {
+    navigate('/');
+  };
+
   return (
     <>
       <div className="landing-body">
         <div className="landing-header">
-          <div className="header-logo">ЛОГО</div>
-          <button className="header-button">Связаться с нами</button>
+          <img
+            src={'/logo_white.png'}
+            height={64}
+            alt={'logo'}
+            onClick={goToMain}
+          />
+          <Button text={'Связаться с нами'} className={'landing-button'} />
         </div>
 
-        <section className="hero">
-          <p>ТУТ БУДЕТ КРАТКОЕ ОПИСАНИЕ СТАРТАПА</p>
-          <h1>ТУТ БУДЕТ КАЙНДА МИССИЯ СТАРТАПА ИЛИ ЦЕННОСТЬ. ХЗ</h1>
-          <button className="cta-button">CTA BUTTON</button>
-        </section>
+        <div className="landing-hero">
+          <div className={'landing-hero__left'}>
+            <div className={'landing-hero__subtitle'}>
+              Тут будет краткое описание стартапа
+            </div>
+            <div className={'landing-hero__title'}>
+              ТУТ БУДЕТ КАЙНДА МИССИЯ СТАРТАПА ИЛИ ЦЕННОСТЬ. ХЗ
+            </div>
+            <div className={'kvadred-flex'}>
+              <Button text={'Смета'} className={'landing-button'} />
+            </div>
+          </div>
+          <div className={'landing-hero__right'}>
+            <div className={'landing-hero__floating-block block-1'}>
+              <div className={'title'}>100+</div>
+              планировок квартир астаны
+            </div>
+            <div className={'landing-hero__floating-block block-1__circle'}>
+              <img src={'/keys.png'} alt={'logo'} />
+            </div>
+            <div className={'landing-hero__floating-block block-2'}>it's</div>
+            <div className={'landing-hero__floating-block block-3'}>
+              <div style={{ fontSize: '20px' }}>ABEROY</div>
+              строительная компания
+              <div className={'title'} style={{ marginTop: '8px' }}>
+                200+ проектов
+              </div>
+            </div>
+            <div className={'landing-hero__floating-block block-4'}>lol</div>
+          </div>
+        </div>
 
         <section className="stats">
           <div>

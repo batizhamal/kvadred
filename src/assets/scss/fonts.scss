@@ -1,6 +1,11 @@
 @import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Pridi');
 
+@font-face {
+  font-family: 'Bicubik';
+  src: url('/bicubik.otf') format('opentype');
+}
+
 @mixin roboto {
   font-family: 'Roboto', sans-serif;
 }
@@ -23,4 +28,8 @@
 
 @mixin pridi {
   font-family: 'Pridi', serif;
+}
+
+@mixin bicubik {
+  font-family: 'Bicubik', sans-serif;
 }
