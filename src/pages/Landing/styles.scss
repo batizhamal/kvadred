@@ -271,9 +271,46 @@
   }
 }
 
-.footer {
-  background-color: #001f2d;
-  color: #ffffff;
-  padding: 20px;
-  text-align: center;
+.landing-companies {
+  display: flex;
+  padding: $base-offset $base-offset * 2;
+  margin-top: $base-offset * 2;
+  position: relative;
+  z-index: 2;
+  flex-direction: column;
+  background-color: #002432;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    gap: $base-offset;
+    margin: $base-offset * 2 0;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    margin-top: 4px;
+  }
+
+  &__title {
+    font-size: 40px;
+  }
+
+  &__block-container {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    gap: 20px;
+    width: 60%;
+    margin-bottom: $base-offset * 2;
+  }
+
+  &__block {
+    font-size: 40px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #00e0ff, #0078ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+  }
 }

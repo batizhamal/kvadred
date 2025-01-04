@@ -150,10 +150,21 @@ function Landing() {
           </div>
         </div>
 
-        <footer className="footer">
-          <p>30+ строительных компаний</p>
-          <p>Которые готовы вам помочь с ремонтом</p>
-        </footer>
+        <div className="landing-companies">
+          <div className={'landing-companies__header'}>
+            <div className={'landing-companies__title'}>
+              30+ строительных компаний
+            </div>
+            <div className={'landing-companies__subtitle'}>
+              Которые готовы вам помочь с ремонтом
+            </div>
+          </div>
+          <div className={'landing-companies__block-container'}>
+            <div className={'landing-companies__block'}>2М+</div>
+            <div className={'landing-companies__block'}>30%</div>
+            <div className={'landing-companies__block'}>5М ₸</div>
+          </div>
+        </div>
       </div>
     </>
   );
