@@ -13,6 +13,18 @@ function Landing() {
   return (
     <>
       <div className="landing-body">
+        <img
+          src={'/back_lines.png'}
+          alt={'background'}
+          style={{
+            objectFit: 'contain',
+            position: 'absolute',
+            top: 0,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 1,
+          }}
+        />
         <div className="landing-header">
           <img
             src={'/logo_white.png'}
