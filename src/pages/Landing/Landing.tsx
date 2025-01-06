@@ -27,12 +27,7 @@ function Landing() {
         />
         <div className={'landing-main-wrapper'}>
           <div className="landing-header">
-            <img
-              src={'/logo_white.png'}
-              height={64}
-              alt={'logo'}
-              onClick={goToMain}
-            />
+            <img src={'/logo.svg'} height={64} alt={'logo'} />
             <Button text={'Связаться с нами'} className={'landing-button'} />
           </div>
 
