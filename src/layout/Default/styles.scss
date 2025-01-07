@@ -10,6 +10,7 @@
   background-color: #fff;
 
   &__content {
+    @include roboto;
     width: calc(100% - $base-offset * 4);
     height: 100%;
     display: flex;
@@ -17,7 +18,7 @@
     flex-wrap: nowrap;
     flex: 1 1 auto;
     overflow: hidden;
-    padding: 0 $base-offset * 2;
+    padding: $base-offset $base-offset;
 
     &--scrollable {
       overflow: auto;

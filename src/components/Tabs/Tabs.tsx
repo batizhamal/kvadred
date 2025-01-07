@@ -85,14 +85,14 @@ function Tabs(props: Props) {
     <div
       className={
         children &&
-        classNames(`kdss-tabs ${className}`.trim(), {
-          'kdss-tabs--transparent': transparent,
-          'kdss-tabs--bordered': bordered,
-          'kdss-tabs--full': fullWidth,
+        classNames(`tabs ${className}`.trim(), {
+          'tabs--transparent': transparent,
+          'tabs--bordered': bordered,
+          'tabs--full': fullWidth,
         })
       }
     >
-      <div className="kdss-tabs__labels">
+      <div className="tabs__labels">
         {prefix && (
           <>
             {prefix}
@@ -104,15 +104,15 @@ function Tabs(props: Props) {
             key={labelIndex.toString()}
             onClick={onClickTab(labelIndex)}
             ref={(el) => (tabRefs.current[labelIndex] = el)}
-            className={classNames('kdss-tabs__label', {
-              'kdss-tabs__label--active': tabIndex === labelIndex,
-              'kdss-tabs__label--full': fullWidth,
+            className={classNames('tabs__label', {
+              'tabs__label--active': tabIndex === labelIndex,
+              'tabs__label--full': fullWidth,
             })}
           >
             {labelObj.icon && (
               <span
-                className={classNames('kdss-tabs__icon', {
-                  'kdss-tabs__icon--active': tabIndex === labelIndex,
+                className={classNames('tabs__icon', {
+                  'tabs__icon--active': tabIndex === labelIndex,
                 })}
               >
                 {React.cloneElement(labelObj.icon as React.ReactElement, {
@@ -120,15 +120,15 @@ function Tabs(props: Props) {
                 })}
               </span>
             )}
-            <span className="kdss-tabs__text">{labelObj.label}</span>
+            <span className="tabs__text">{labelObj.label}</span>
             {!!badges[labelIndex] && (
-              <span className="kdss-tabs__badge">
+              <span className="tabs__badge">
                 {badges[labelIndex]?.toString()}
               </span>
             )}
           </button>
         ))}
-        <div className="kdss-tabs__active-marker" style={markerStyle} />
+        <div className="tabs__active-marker" style={markerStyle} />
         {!!controls &&
           controls.map((control, controlIndex) => (
             <Fragment key={controlIndex.toString()}>{control}</Fragment>
@@ -141,10 +141,7 @@ function Tabs(props: Props) {
           }
 
           return (
-            <div
-              key={tabContentIndex.toString()}
-              className="kdss-tabs__content"
-            >
+            <div key={tabContentIndex.toString()} className="tabs__content">
               {tabContent}
             </div>
           );
