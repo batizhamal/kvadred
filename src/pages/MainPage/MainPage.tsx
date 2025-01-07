@@ -91,7 +91,10 @@ function MainPage() {
         <Block
           label={'Смета'}
           className={'kvadred-mt-16 kvadred-mb-16'}
+          transparent
+          padding={false}
           rightControls={[
+            // <Chip text={'Комфорт'} color={'success'} variant={'outlined'} />,
             <Button
               text={'Скачать'}
               icon={FaFileDownload}

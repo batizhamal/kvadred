@@ -2,8 +2,8 @@
 
 .kvadred-block {
   position: relative;
-  background-color: #E6E8EA;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background-color: #F6F8F7;
+  //box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -24,6 +24,15 @@
     overflow: scroll;
   }
 
+  &--transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &--no-padding {
+    padding: 0;
+  }
+
   @for $i from 0 to 100 {
     &--width-#{$i} {
       min-width: $i * 1%;
@@ -31,8 +40,8 @@
   }
 
   &__label {
-    font-size: $base-font-size * 1.5;
-    color: #ffffff;
+    font-size: $base-font-size;
+    color: #173C47;
     font-weight: bold;
     margin-bottom: $base-offset * 0.5;
     display: flex;

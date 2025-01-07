@@ -1,7 +1,7 @@
 import './styles.scss';
-import { Material, Project } from '@app/api';
 import React, { useEffect, useState } from 'react';
 import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { Material, Project } from '@app/api';
 import { formatDigitCommas } from '../../../../common/utils/formattingUtils.ts';
 
 interface Props {
@@ -15,97 +15,96 @@ export interface TypeWithMaterials {
   expanded: boolean;
 }
 
-function SmetaTable(props: Props) {
-  const { project } = props;
-
+const SmetaTable: React.FC<Props> = ({ project }) => {
   const [types, setTypes] = useState<TypeWithMaterials[]>([]);
-  const [materials, setMaterials] = useState<Material[]>([]);
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
-    if (project.rooms) {
-      // TODO: temporarily, by default only 1 room
-      const mats = project.rooms[0]?.materials;
-      setMaterials(mats);
-      setTotal(mats.reduce((sum, val) => sum + val.total_cost, 0));
+    if (project.rooms?.length) {
+      const materials = project.rooms[0]?.materials ?? [];
+      const totalCost = materials.reduce((sum, mat) => sum + mat.total_cost, 0);
+      setTotal(totalCost);
 
-      const typesMap = new Map<string, TypeWithMaterials>();
-
-      mats?.forEach((item) => {
-        const type = typesMap.get(item.type);
-        if (type) {
-          type.materials.push(item);
-          type.total += item.total_cost;
+      const groupedTypes = materials.reduce((acc, material) => {
+        const existingType = acc.get(material.type);
+        if (existingType) {
+          existingType.materials.push(material);
+          existingType.total += material.total_cost;
         } else {
-          typesMap.set(item.type, {
-            type: item.type,
-            materials: [item],
-            total: item.total_cost,
+          acc.set(material.type, {
+            type: material.type,
+            materials: [material],
+            total: material.total_cost,
             expanded: false,
           });
         }
-      });
+        return acc;
+      }, new Map<string, TypeWithMaterials>());
 
-      setTypes(Array.from(typesMap.values()));
-      console.log(Array.from(typesMap.values()));
+      setTypes(Array.from(groupedTypes.values()));
     }
   }, [project]);
 
-  const onToggle = (index: number) => {
-    setTypes((prev) =>
-      prev.map((item, i) =>
-        i === index ? { ...item, expanded: !item.expanded } : item
+  const toggleTypeExpansion = (index: number) => {
+    setTypes((prevTypes) =>
+      prevTypes.map((type, i) =>
+        i === index ? { ...type, expanded: !type.expanded } : type
       )
     );
   };
 
   return (
-    <table className="table">
-      <tbody>
-        <tr className={'table__tr table__tr--main'}>
-          <td>Общая стоимость</td>
-          <td></td>
-          <td></td>
-          <td>{`${formatDigitCommas(total)} ₸`}</td>
-          <td></td>
-        </tr>
-        {types.map((type, index) => (
-          <React.Fragment key={`type-${index}`}>
-            <tr className={'table__tr'} onClick={() => onToggle(index)}>
-              <td>{type.type}</td>
-              <td></td>
-              <td></td>
-              <td>{`${formatDigitCommas(type.total)} ₸`}</td>
-              <td>{type.expanded ? <FaChevronDown /> : <FaChevronRight />}</td>
-            </tr>
-            {type.expanded && (
-              <>
-                <tr className={'table__tr table__tr--child'}>
-                  <th>Материалы</th>
-                  <th>Цена</th>
-                  <th>Количество</th>
-                  <th>Стоимость</th>
-                  <th></th>
-                </tr>
-                {type.materials.map((material, mIndex) => (
-                  <tr
-                    key={`type-${index}-material-${mIndex}`}
-                    className={'table__tr table__tr--child'}
-                  >
-                    <td>{material.name}</td>
-                    <td>{`${formatDigitCommas(material.price)} ₸`}</td>
-                    <td>{material.quantity}</td>
-                    <td>{`${formatDigitCommas(material.total_cost)} ₸`}</td>
-                    <td></td>
-                  </tr>
-                ))}
-              </>
-            )}
-          </React.Fragment>
-        ))}
-      </tbody>
-    </table>
+    <div className="grid-table">
+      <div className="grid-row">
+        <div className="grid-cell grid-cell--bold">Общая стоимость</div>
+        <div className="grid-cell"></div>
+        <div className="grid-cell"></div>
+        <div className="grid-cell">{`${formatDigitCommas(total)} ₸`}</div>
+        <div className="grid-cell"></div>
+      </div>
+
+      {types.map((type, index) => (
+        <React.Fragment key={type.type}>
+          <div
+            className="grid-row grid-row--parent"
+            onClick={() => toggleTypeExpansion(index)}
+          >
+            <div className="grid-cell grid-cell--bold">{type.type}</div>
+            <div className="grid-cell"></div>
+            <div className="grid-cell"></div>
+            <div className="grid-cell">{`${formatDigitCommas(type.total)} ₸`}</div>
+            <div className="grid-cell grid-cell--toggle">
+              {type.expanded ? <FaChevronDown /> : <FaChevronRight />}
+            </div>
+          </div>
+
+          {type.expanded && (
+            <>
+              <div className="grid-row grid-row--child">
+                <div className="grid-cell grid-cell--bold">Материалы</div>
+                <div className="grid-cell grid-cell--bold">Цена</div>
+                <div className="grid-cell grid-cell--bold">Количество</div>
+                <div className="grid-cell grid-cell--bold">Стоимость</div>
+                <div className="grid-cell grid-cell--bold"></div>
+              </div>
+
+              {type.materials.map((material) => (
+                <div key={material.name} className="grid-row grid-row--child">
+                  <div className="grid-cell">{material.name}</div>
+                  <div className="grid-cell">{`${formatDigitCommas(material.price)} ₸`}</div>
+                  <div className="grid-cell">{material.quantity}</div>
+                  <div className="grid-cell">{`${formatDigitCommas(
+                    material.total_cost
+                  )} ₸`}</div>
+                  <div className="grid-cell"></div>
+                </div>
+              ))}
+            </>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
   );
-}
+};
 
 export default SmetaTable;

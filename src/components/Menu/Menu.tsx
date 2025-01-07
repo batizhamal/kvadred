@@ -25,20 +25,22 @@ function Menu(props: Props) {
       <div className={'menu__wrapper'}>
         <img src={'/logo.svg'} alt={'logo'} height={'64px'} />
         <div className={'menu__items'}>
-          {items.map((item, index) => (
-            <Link
-              to={item.path}
-              key={`item-${index}`}
-              className={classNames('menu__item', {
-                'menu__item--selected':
-                  location.pathname.substring(1).split('/')[0] ===
-                  item.path.substring(1).split('/')[0].toLocaleLowerCase(),
-              })}
-            >
-              {icons[item.path]}
-              {item.label}
-            </Link>
-          ))}
+          {items
+            .filter((item) => item.path !== '/contacts')
+            .map((item, index) => (
+              <Link
+                to={item.path}
+                key={`item-${index}`}
+                className={classNames('menu__item', {
+                  'menu__item--selected':
+                    location.pathname.substring(1).split('/')[0] ===
+                    item.path.substring(1).split('/')[0].toLocaleLowerCase(),
+                })}
+              >
+                {icons[item.path]}
+                {item.label}
+              </Link>
+            ))}
         </div>
       </div>
       <div className={'menu__footer'}>

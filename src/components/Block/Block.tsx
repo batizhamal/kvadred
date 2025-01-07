@@ -12,6 +12,8 @@ interface Props extends PropsWithChildren {
   headerText?: string;
   rightControls?: ReactNode[];
   variant?: 'contained' | 'outlined';
+  transparent?: boolean;
+  padding?: boolean;
 }
 
 function Block(props: Props) {
@@ -26,6 +28,8 @@ function Block(props: Props) {
     headerText = '',
     rightControls = [],
     variant = 'contained',
+    transparent = false,
+    padding = true,
   } = props;
 
   return (
@@ -47,6 +51,8 @@ function Block(props: Props) {
         className={classNames(`kvadred-block`, {
           'kvadred-block--shrink': shrink,
           'kvadred-block--outlined': variant === 'outlined',
+          'kvadred-block--transparent': transparent,
+          'kvadred-block--no-padding': !padding,
         })}
       >
         {children}
