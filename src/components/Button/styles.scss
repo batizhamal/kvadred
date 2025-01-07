@@ -82,12 +82,12 @@
     }
 
     &.button--default {
-      background-color: #EDF2F4;
+      background-color: #E6E8EA;
       color: $base-blue;
       fill: $base-blue;
 
       &:hover:not(:disabled) {
-        background-color: #c7ccce;
+        background-color: #d3d5d6;
       }
     }
   }
