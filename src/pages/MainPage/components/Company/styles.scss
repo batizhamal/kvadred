@@ -32,3 +32,34 @@
   }
 }
 
+.company {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #173C47;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & .main {
+      font-weight: bold;
+      color: #2C4F57;
+    }
+  }
+}

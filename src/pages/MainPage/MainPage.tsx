@@ -17,7 +17,6 @@ import {
 } from '@app/api';
 import { FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
-import styled from 'styled-components';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -76,18 +75,10 @@ function MainPage() {
     }
   };
 
-  const StyledBlockHeader = styled.div`
-    margin-bottom: 1rem;
-    max-width: 100%;
-    font-size: 14px;
-    color: #2b2d42;
-    font-weight: bold;
-  `;
-
   return (
     <LayoutDefault scrollable>
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
-      <div className={'kvadred-flex kvadred-gap-16'}>
+      <div className={'kvadred-flex kvadred-gap-24'}>
         <Block
           label={'Смета'}
           className={'kvadred-mt-16 kvadred-mb-16'}
@@ -114,45 +105,53 @@ function MainPage() {
             <SmetaTable project={project} />
           )}
         </Block>
-        <div
-          className={
-            'kvadred-flex kvadred-flex-w-100 kvadred-flex-column kvadred-gap-16 kvadred-mt-16 kvadred-mb-16'
-          }
-        >
-          {!!bestCompanies.length && (
-            <Block
-              label={'Компании под ключ'}
-              header
-              headerText={'Лучшие предложения'}
-            >
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  rowGap: '16px',
-                  justifyContent: 'space-between',
-                  width: '100%',
-                }}
-              >
-                {bestCompanies.map((bestComp, index) => (
-                  <CompanyCard key={`best-${index}`} company={bestComp} />
-                ))}
-              </div>
-            </Block>
-          )}
+        <div className={'kvadred-flex kvadred-flex-w-100 kvadred-flex-column'}>
+          {/*{!!bestCompanies.length && (*/}
+          {/*  <Block*/}
+          {/*    label={'Компании под ключ'}*/}
+          {/*    header*/}
+          {/*  >*/}
+          {/*    <div*/}
+          {/*      style={{*/}
+          {/*        display: 'grid',*/}
+          {/*        gridTemplateColumns: 'repeat(3, 1fr)',*/}
+          {/*        rowGap: '16px',*/}
+          {/*        justifyContent: 'space-between',*/}
+          {/*        width: '100%',*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      {bestCompanies.map((bestComp, index) => (*/}
+          {/*        <CompanyCard key={`best-${index}`} company={bestComp} />*/}
+          {/*      ))}*/}
+          {/*    </div>*/}
+          {/*  </Block>*/}
+          {/*)}*/}
+          {/*<Block shrink label={'Компании под ключ'}>*/}
+          {/*  <div*/}
+          {/*    style={{*/}
+          {/*      display: 'grid',*/}
+          {/*      gridTemplateColumns: 'repeat(3, 1fr)',*/}
+          {/*      rowGap: '16px',*/}
+          {/*      justifyContent: 'space-between',*/}
+          {/*      width: '100%',*/}
+          {/*    }}*/}
+          {/*  >*/}
+          {/*    {companies.map((bestComp, index) => (*/}
+          {/*      <CompanyCard key={`best-${index}`} company={bestComp} />*/}
+          {/*    ))}*/}
+          {/*  </div>*/}
+          {/*</Block>*/}
+
           <Block
-            shrink
-            label={!bestCompanies.length ? 'Компании под ключ' : ''}
+            className={'kvadred-mt-16 kvadred-mb-16'}
+            label={'Компании под ключ'}
+            transparent
+            padding={false}
           >
-            <StyledBlockHeader>Другие предложения</StyledBlockHeader>
             <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                rowGap: '16px',
-                justifyContent: 'space-between',
-                width: '100%',
-              }}
+              className={
+                'kvadred-flex kvadred-flex-column kvadred-gap-16 kvadred-flex-w-100 kvadred-mt-8'
+              }
             >
               {companies.map((bestComp, index) => (
                 <CompanyCard key={`best-${index}`} company={bestComp} />
