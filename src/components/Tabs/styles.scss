@@ -6,8 +6,6 @@
   flex-wrap: nowrap;
   height: 100%;
   width: 100%;
-  overflow: auto;
-  overflow-y: hidden;
 
   &__icon {
     margin-right: 8px;
@@ -82,7 +80,6 @@
     height: 100%;
     width: 100%;
     margin-top: 18px;
-    overflow: hidden;
   }
 
   &__active-marker {

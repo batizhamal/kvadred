@@ -3,7 +3,7 @@ import { FunctionComponent, SVGProps } from 'react';
 
 interface Props {
   variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'alert' | 'default' | 'secondary';
+  color?: 'primary' | 'alert' | 'default' | 'secondary' | 'green';
   size?: 'default' | 'small';
   onClick?: () => void;
   text?: string;

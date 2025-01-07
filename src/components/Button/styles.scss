@@ -2,9 +2,6 @@
 
 
 .button {
-  @include bicubik;
-  font-weight: bold;
-  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +47,17 @@
       fill: #001f2d;
 
       &:hover:not(:disabled) {
-        background-color: $base-dark-blue;
+        background-color: #fff368;
+      }
+    }
+
+    &.button--green {
+      background-color: #173C47;
+      color: #fff;
+      fill: #fff;
+
+      &:hover:not(:disabled) {
+        background-color: #001f2d;
       }
     }
 

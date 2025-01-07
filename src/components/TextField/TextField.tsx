@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import Field, { FieldProps } from '../Field';
+import { FieldProps } from '../Field';
 import './styles.scss';
 import { numberWithSpaces, setMask } from '@app/helpers';
 import classNames from 'classnames';
@@ -41,6 +41,7 @@ export interface Props extends FieldProps {
   onAppendClick?: () => void;
   hidePassword?: boolean;
   onFocus?: () => void;
+  replacePattern?: RegExp;
 }
 
 const StyledColumns = styled.div`
@@ -84,6 +85,8 @@ function TextField(props: Props) {
     onAppendClick,
     onFocus,
     hidePassword = true,
+    label = '',
+    replacePattern,
     ...fieldProps
   } = props;
   const [cursor, setCursor] = useState<number | null>(null);
@@ -147,7 +150,11 @@ function TextField(props: Props) {
           return;
         }
         onChange(
-          priceFormat ? eventValue.replace(/[^0-9,0-9]/g, '') : eventValue,
+          priceFormat
+            ? eventValue.replace(/[^0-9,0-9]/g, '')
+            : replacePattern
+              ? eventValue.replace(replacePattern, '')
+              : eventValue,
           name
         );
       }
@@ -179,14 +186,15 @@ function TextField(props: Props) {
   );
 
   return (
-    <Field
-      {...fieldProps}
-      disabled={disabled}
-      className={classNames(`kvadred-text-field ${className}`.trim(), {
-        'kvadred-text-field--icon': startIcon,
-        'kvadred-text-field--icon-end': endIcon,
-      })}
-    >
+    // <Field
+    //   {...fieldProps}
+    //   disabled={disabled}
+    //   className={classNames(`kvadred-text-field ${className}`.trim(), {
+    //     'kvadred-text-field--icon': startIcon,
+    //     'kvadred-text-field--icon-end': endIcon,
+    //   })}
+    // >
+    <>
       <StyledColumns>
         {startIcon && (
           <div
@@ -209,29 +217,31 @@ function TextField(props: Props) {
             style={style}
           />
         ) : (
-          <input
-            ref={ref}
-            className={classNames(
-              `kvadred-text-field__input ${inputClassName}`,
-              {
-                'kvadred-text-field__input--disabled': disabled,
-                'kvadred-text-field__input--icon': startIcon,
-                'kvadred-text-field__input--icon-end': endIcon,
-              }
-            )}
-            type={secureTextEntry && hidePassword ? 'password' : 'text'}
-            value={priceFormat ? numberWithSpaces(value) : value}
-            onChange={onChangeText}
-            onBlur={onBlur}
-            onFocus={props.onFocus}
-            placeholder={placeholder}
-            onKeyDown={onKeyPress}
-            disabled={disabled}
-            style={{ width }}
-            readOnly={readOnly}
-            maxLength={maxLength}
-            {...inputProps}
-          />
+          <>
+            <input
+              ref={ref}
+              className={classNames(
+                `kvadred-text-field__input ${inputClassName}`,
+                {
+                  'kvadred-text-field__input--disabled': disabled,
+                  'kvadred-text-field__input--icon': startIcon,
+                  'kvadred-text-field__input--icon-end': endIcon,
+                }
+              )}
+              type={secureTextEntry && hidePassword ? 'password' : 'text'}
+              value={priceFormat ? numberWithSpaces(value) : value}
+              onChange={onChangeText}
+              onBlur={onBlur}
+              onFocus={props.onFocus}
+              placeholder={label}
+              onKeyDown={onKeyPress}
+              disabled={disabled}
+              style={{ width }}
+              readOnly={readOnly}
+              maxLength={maxLength}
+              {...inputProps}
+            />
+          </>
         )}
         {type === 'password' && (
           <div
@@ -257,7 +267,8 @@ function TextField(props: Props) {
           / {maxLength}
         </div>
       )}
-    </Field>
+    </>
+    // </Field>
   );
 }
 

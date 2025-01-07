@@ -79,7 +79,6 @@ function MainPage() {
   const StyledBlockHeader = styled.div`
     margin-bottom: 1rem;
     max-width: 100%;
-    @include montserrat;
     font-size: 14px;
     color: #2b2d42;
     font-weight: bold;

@@ -31,7 +31,6 @@
   }
 
   &__label {
-    @include bicubik;
     font-size: $base-font-size * 1.5;
     color: #ffffff;
     font-weight: bold;
@@ -47,7 +46,6 @@
     padding: $base-offset $base-offset $base-offset * 2 $base-offset;
     margin-bottom: -$base-offset;
     max-width: 100%;
-    @include montserrat;
     font-size: $base-font-size;
     color: $base-blue;
     font-weight: bold;

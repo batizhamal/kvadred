@@ -14,10 +14,7 @@
   overflow: visible;
   color: $base-blue;
   cursor: pointer;
-  @include montserrat;
-  text-transform: uppercase;
   font-size: $base-font-size;
-  font-weight: 600;
 
   &__label {
     display: flex;
@@ -137,9 +134,9 @@
 
     .kvadred-select__header {
       pointer-events: none;
-      border-color: #939393;
-      color: #939393;
-      fill: #939393;
+      border-color: #F1F0F0;
+      fill: #F1F0F0;
+      color: #F1F0F0;
     }
   }
 
@@ -164,10 +161,7 @@
   list-style: none;
   line-height: 1;
   color: $base-blue;
-  @include montserrat;
-  text-transform: uppercase;
   font-size: $base-font-size;
-  font-weight: 600;
   transition: border-color 0.25s ease-out;
 
   &:hover,
@@ -235,10 +229,7 @@
     line-height: 1.2;
     background-color: #ffffff;
     fill: $base-blue;
-    @include montserrat;
-    text-transform: uppercase;
     font-size: $base-font-size;
-    font-weight: 600;
     transition: background-color 0.25s ease-out, fill 0.25s ease-out, color 0.25s ease-out;
     width: calc(100% - 1rem);
 

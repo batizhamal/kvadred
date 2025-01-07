@@ -1,7 +1,6 @@
 @import '@app/scss';
 
 .toggle {
-  @include bicubik;
   font-weight: 600;
   text-transform: uppercase;
   font-size: $base-font-size;

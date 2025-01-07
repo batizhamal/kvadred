@@ -1,10 +1,18 @@
 import './styles.scss';
-import { Block, Button, Option, Search, Select, Tabs } from '@app/components';
+import {
+  Block,
+  Button,
+  Option,
+  Select,
+  Tabs,
+  TextField,
+} from '@app/components';
 import { useForm } from '@app/hooks';
 import React, { useEffect, useState } from 'react';
 import { Complex, getComplexById, getComplexes, Layout } from '@app/api';
 
 interface SearchPayload {
+  area: string;
   complex: string;
   layout: string;
 }
@@ -19,6 +27,7 @@ function SimplifiedAdvancedSearch(props: Props) {
   const { values, setValues, resetForm, onChange, setPending, pending } =
     useForm<SearchPayload>({
       values: {
+        area: '',
         complex: '',
         layout: '',
       },
@@ -77,18 +86,28 @@ function SimplifiedAdvancedSearch(props: Props) {
           },
         ]}
       >
-        <Search
-          maxLength={3}
-          className={'kvadred-width-1-2'}
-          onSearch={(value: string) => {
-            onSearch(Number(value));
-          }}
-          buttonText={'Расчитать'}
-          buttonColor={'primary'}
-          placeholder={'100 кв. м'}
-          searchOnClear={false}
-          replacePattern={/[^0-9]/g}
-        />
+        <div className={'kvadred-flex kvadred-gap-8'}>
+          <TextField
+            label={'100 кв. м'}
+            value={values.area}
+            onChange={onChange}
+            name={'area'}
+            replacePattern={/[^0-9]/g}
+            maxLength={3}
+            onKeyPress={(key) => {
+              if (key.code.toLowerCase() === 'enter') {
+                onSearch(Number(values.area));
+              }
+            }}
+          />
+          <Button
+            text={'Расчитать'}
+            color={'green'}
+            onClick={() => {
+              onSearch(Number(values.area));
+            }}
+          />
+        </div>
         <div
           className={
             'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
@@ -119,6 +138,7 @@ function SimplifiedAdvancedSearch(props: Props) {
           />
           <Button
             text={'Расчитать'}
+            color={'green'}
             disabled={!values.complex || !values.layout}
             onClick={() => {
               onSearch(
