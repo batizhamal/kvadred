@@ -1,17 +1,17 @@
 @import '@app/scss';
 
 .toggle {
-  @include montserrat;
+  @include bicubik;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: $base-font-size * 0.2;
   font-size: $base-font-size;
   display: flex;
   flex-direction: row;
   position: relative;
   padding: 0.25 * $base-offset;
   border-radius: $base-radius;
-  background-color: #edecec;
+  background-color: #006575;
+  color: #ffffff;
   box-sizing: border-box;
   cursor: pointer;
   width: 100%;
@@ -26,6 +26,7 @@
 
     &--selected {
       font-weight: bold;
+      color: #000;
     }
   }
 
@@ -34,7 +35,7 @@
     height: 2rem;
     border-radius: $base-radius;
     border: 1px solid rgba(223, 222, 222, 0);
-    background-color: #fff;
+    background-color: #D3E4E9;
     box-sizing: border-box;
     position: absolute;
     transition: transform 0.3s ease;

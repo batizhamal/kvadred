@@ -1,7 +1,9 @@
 @import "@app/scss";
 
 .header {
-  width: calc(100% - $base-offset * 8);
+  @include bicubik;
+  font-size: 32px;
+  width: calc(100% - $base-offset * 4);
   height: auto;
   display: flex;
   flex-direction: row;
@@ -9,10 +11,10 @@
   align-items: center;
   flex-wrap: nowrap;
   overflow: hidden;
-  padding: $base-offset $base-offset * 4;
-  @include roboto-spacing;
-  color: $base-font-color;
-  fill: $base-font-color;
+  padding: $base-offset $base-offset * 2;
+  background-color: #002432;
+  color: #FFFFFF;
+  fill: #ffffff;
 
   &__items {
     display: flex;
@@ -24,13 +26,15 @@
   }
 
   &__item {
+    font-size: $base-font-size;
     text-decoration: none;
     padding: 4px 0;
-    color: $base-font-color;
-    fill: $base-font-color;
+    color: #ffffff;
+    fill: #ffffff;
+
     &--current {
-      border-top: $base-border;
-      border-bottom: $base-border;
+      color: #fff;
+      border-bottom: 1px solid #FFF48B;
     }
   }
 }

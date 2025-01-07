@@ -36,13 +36,13 @@
     //height: 2.25rem;
     box-sizing: border-box;
     padding: $base-offset * 0.5 $base-offset;
-    border: $base-border;
+    //border: $base-border;
+    border: none;
     border-radius: $base-radius;
     outline: none;
-    @include montserrat;
+    @include bicubik;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: $base-font-size * 0.2;
     font-size: $base-font-size;
     line-height: 1;
     color: $base-blue;
@@ -114,7 +114,6 @@
     @include montserrat;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: $base-font-size * 0.2;
     color: $base-blue;
     resize: vertical;
     transition: border-color 0.25s ease-out;

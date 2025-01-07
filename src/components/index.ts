@@ -30,3 +30,6 @@ export { default as Callout } from './Callout';
 export { default as SkeletonLine } from './SkeletonLine';
 
 export { default as Loader } from './Loader';
+
+export { default as Tabs } from './Tabs';
+export { default as Menu } from './Menu';

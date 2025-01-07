@@ -16,7 +16,6 @@
   cursor: pointer;
   @include montserrat;
   text-transform: uppercase;
-  letter-spacing: $base-font-size * 0.2;
   font-size: $base-font-size;
   font-weight: 600;
 
@@ -167,7 +166,6 @@
   color: $base-blue;
   @include montserrat;
   text-transform: uppercase;
-  letter-spacing: $base-font-size * 0.2;
   font-size: $base-font-size;
   font-weight: 600;
   transition: border-color 0.25s ease-out;
@@ -239,7 +237,6 @@
     fill: $base-blue;
     @include montserrat;
     text-transform: uppercase;
-    letter-spacing: $base-font-size * 0.2;
     font-size: $base-font-size;
     font-weight: 600;
     transition: background-color 0.25s ease-out, fill 0.25s ease-out, color 0.25s ease-out;

@@ -1,0 +1,48 @@
+@import '@app/scss';
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  flex: 1 1 auto;
+  height: calc(100% - $base-offset * 2);
+  width: 240px;
+  background-color: #002432;
+  padding: $base-offset;
+  color: #fff;
+  @include roboto;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex: 1 1 auto;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: $base-offset;
+    margin-top: $base-offset * 2;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $base-offset * 0.5;
+    gap: $base-offset * 1.5;
+    color: #67838F;
+    cursor: pointer;
+    text-decoration: none;
+
+    &--selected {
+      color: #BDD2DA;
+    }
+  }
+
+  &__footer {
+  }
+}

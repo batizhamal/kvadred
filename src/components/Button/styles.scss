@@ -2,7 +2,7 @@
 
 
 .button {
-  @include montserrat;
+  @include bicubik;
   font-weight: bold;
   text-transform: uppercase;
   display: inline-flex;
@@ -13,7 +13,7 @@
   font-size: $base-font-size;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border: 2px solid transparent;
+  border: none;
 
   &:disabled {
     opacity: 0.5;
@@ -33,7 +33,6 @@
   &--default-size {
     font-size: $base-font-size;
     padding: 8px 16px;
-    letter-spacing: $base-font-size * 0.2;
   }
 
   &--small-size {
@@ -46,11 +45,22 @@
 
   &--contained {
     &.button--primary {
-      background-color: $base-blue;
-      color: #fff;
-      fill: #fff;
+      background-color: #FFF48B;
+      color: #001f2d;
+      fill: #001f2d;
+
       &:hover:not(:disabled) {
         background-color: $base-dark-blue;
+      }
+    }
+
+    &.button--secondary {
+      background-color: #E6E8EA;
+      color: #001f2d;
+      fill: #001f2d;
+
+      &:hover:not(:disabled) {
+        background-color: #d7d8da;
       }
     }
 
@@ -58,6 +68,7 @@
       background-color: $base-red;
       color: #fff;
       fill: #fff;
+
       &:hover:not(:disabled) {
         background-color: $base-dark-red;
       }
@@ -67,6 +78,7 @@
       background-color: #EDF2F4;
       color: $base-blue;
       fill: $base-blue;
+
       &:hover:not(:disabled) {
         background-color: #c7ccce;
       }
@@ -80,6 +92,7 @@
       border-color: $base-blue;
       color: $base-blue;
       fill: $base-blue;
+
       &:hover:not(:disabled) {
         background-color: rgba($base-blue, 0.1);
       }
@@ -89,6 +102,7 @@
       border-color: $base-red;
       color: $base-red;
       fill: $base-red;
+
       &:hover:not(:disabled) {
         background-color: rgba($base-red, 0.1);
       }
@@ -98,6 +112,7 @@
       border-color: #4f4f4f;
       color: #4f4f4f;
       fill: #4f4f4f;
+
       &:hover:not(:disabled) {
         background-color: rgba(#4f4f4f, 0.1);
       }

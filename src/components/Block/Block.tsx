@@ -11,6 +11,7 @@ interface Props extends PropsWithChildren {
   header?: boolean;
   headerText?: string;
   rightControls?: ReactNode[];
+  variant?: 'contained' | 'outlined';
 }
 
 function Block(props: Props) {
@@ -24,6 +25,7 @@ function Block(props: Props) {
     header = false,
     headerText = '',
     rightControls = [],
+    variant = 'contained',
   } = props;
 
   return (
@@ -44,6 +46,7 @@ function Block(props: Props) {
       <div
         className={classNames(`kvadred-block`, {
           'kvadred-block--shrink': shrink,
+          'kvadred-block--outlined': variant === 'outlined',
         })}
       >
         {children}

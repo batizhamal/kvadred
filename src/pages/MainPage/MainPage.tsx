@@ -1,4 +1,4 @@
-import { Block, Button, Callout, Loader, PageTitle } from '@app/components';
+import { Block, Button, Callout, Loader } from '@app/components';
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import {
@@ -87,7 +87,6 @@ function MainPage() {
 
   return (
     <LayoutDefault scrollable>
-      <PageTitle subtitle="Расчитать смету" className={'kvadred-mb-32'} />
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
       <div className={'kvadred-flex kvadred-gap-16'}>
         <Block

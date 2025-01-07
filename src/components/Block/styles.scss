@@ -2,8 +2,8 @@
 
 .kvadred-block {
   position: relative;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  background-color: #E6E8EA;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -12,6 +12,11 @@
   height: fit-content;
   padding: $base-offset;
   border-radius: $base-radius;
+
+  &--outlined {
+    background-color: transparent;
+    border: $base-border;
+  }
 
   &--shrink {
     height: fit-content;
@@ -26,9 +31,9 @@
   }
 
   &__label {
-    @include montserrat;
+    @include bicubik;
     font-size: $base-font-size * 1.5;
-    color: $base-blue;
+    color: #ffffff;
     font-weight: bold;
     margin-bottom: $base-offset * 0.5;
     display: flex;

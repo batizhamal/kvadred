@@ -5,19 +5,18 @@
   flex-direction: column;
   //overflow: hidden;
   width: 100%;
+  padding: $base-offset 0;
+  @include bicubik;
 
   &__title {
-    @include pridi;
-    font-size: 48px;
-    margin-bottom: -16px;
+    font-size: 40px;
     text-transform: uppercase;
-    color: $base-red;
+    color: #ffffff;
   }
 
   &__subtitle {
-    @include montserrat;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: bold;
-    color: $base-blue;
+    color: #FFF48B;
   }
 }

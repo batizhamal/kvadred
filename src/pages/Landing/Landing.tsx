@@ -1,13 +1,15 @@
 import './styles.scss';
-import { Button } from '@app/components';
+import { Button, Header } from '@app/components';
 import { useNavigate } from 'react-router-dom';
 import { FaPhoneAlt } from 'react-icons/fa';
+import { useHeader } from '@app/hooks';
 
 function Landing() {
   const navigate = useNavigate();
+  const { routes } = useHeader();
 
-  const goToMain = () => {
-    navigate('/');
+  const goToSmeta = () => {
+    navigate('/smeta');
   };
 
   return (
@@ -26,10 +28,7 @@ function Landing() {
           }}
         />
         <div className={'landing-main-wrapper'}>
-          <div className="landing-header">
-            <img src={'/logo.svg'} height={64} alt={'logo'} />
-            <Button text={'Связаться с нами'} className={'landing-button'} />
-          </div>
+          <Header items={routes} className={'landing-header'} />
 
           <div className="landing-hero">
             <div className={'landing-hero__left'}>
@@ -43,7 +42,7 @@ function Landing() {
                 <Button
                   text={'Смета'}
                   className={'landing-button'}
-                  onClick={goToMain}
+                  onClick={goToSmeta}
                 />
               </div>
             </div>

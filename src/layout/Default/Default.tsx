@@ -1,6 +1,6 @@
 import './styles.scss';
 import { useHeader } from '@app/hooks';
-import { Header } from '@app/components';
+import { Menu } from '@app/components';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
@@ -14,7 +14,7 @@ function LayoutDefault(props: Props) {
 
   return (
     <div className={'default'}>
-      <Header items={routes} />
+      <Menu items={routes} />
       <div
         className={classNames('default__content', {
           'default__content--scrollable': scrollable,

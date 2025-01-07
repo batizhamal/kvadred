@@ -1,9 +1,9 @@
 import './styles.scss';
-import {FunctionComponent, SVGProps} from "react";
+import { FunctionComponent, SVGProps } from 'react';
 
 interface Props {
   variant?: 'contained' | 'outlined' | 'text';
-  color?: 'primary' | 'alert' | 'default';
+  color?: 'primary' | 'alert' | 'default' | 'secondary';
   size?: 'default' | 'small';
   onClick?: () => void;
   text?: string;
@@ -14,33 +14,37 @@ interface Props {
 }
 
 function Button(props: Props) {
-    const {
-        variant = 'contained',
-        color = 'primary',
-        size = 'default',
-        onClick,
-        text = '',
-        icon: Icon,
-        postIcon: PostIcon,
-        className = '',
-        disabled = false,
-    } = props;
+  const {
+    variant = 'contained',
+    color = 'primary',
+    size = 'default',
+    onClick,
+    text = '',
+    icon: Icon,
+    postIcon: PostIcon,
+    className = '',
+    disabled = false,
+  } = props;
 
-    return (
-        <button
-            className={`button button--${variant} button--${color} button--${size}-size ${className}`}
-            onClick={onClick}
-            disabled={disabled}
-        >
-            {Icon && <span className="button__icon">
-                <Icon/>
-            </span>}
-            <span className="button__label">{text}</span>
-            {PostIcon && <span className="button__icon">
-                <PostIcon/>
-            </span>}
-        </button>
-    );
+  return (
+    <button
+      className={`button button--${variant} button--${color} button--${size}-size ${className}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {Icon && (
+        <span className="button__icon">
+          <Icon />
+        </span>
+      )}
+      <span className="button__label">{text}</span>
+      {PostIcon && (
+        <span className="button__icon">
+          <PostIcon />
+        </span>
+      )}
+    </button>
+  );
 }
 
 export default Button;
