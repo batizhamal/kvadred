@@ -92,26 +92,26 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
         default: theme('color.gray'),
         primary: theme('color.blue'),
         info: theme('color.blueGreen'),
-        success: '#2C4F57',
-        danger: theme('color.red'),
-        warning: theme('color.yellow'),
+        success: '#21525E',
+        danger: '#CC423C',
+        warning: '#E0915F',
       })};
       fill: ${switchProp('$color', {
         default: theme('color.gray'),
         primary: theme('color.blue'),
         info: theme('color.blueGreen'),
-        success: '#2C4F57',
-        danger: theme('color.red'),
-        warning: theme('color.yellow'),
+        success: '#21525E',
+        danger: '#CC423C',
+        warning: '#E0915F',
       })};
       border: 1px solid
         ${switchProp('$color', {
           default: theme('color.gray'),
           primary: theme('color.blue'),
           info: theme('color.blueGreen'),
-          success: '#2C4F57',
-          danger: theme('color.red'),
-          warning: theme('color.yellow'),
+          success: '#21525E',
+          danger: '#CC423C',
+          warning: '#E0915F',
         })};
 
       &::before {
@@ -119,8 +119,8 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
           default: theme('color.grayLight'),
           primary: theme('color.blueLight'),
           info: theme('color.blueGreen'),
-          success: '#F1F3F3',
-          danger: theme('color.redLight'),
+          success: '#FEFFFF',
+          danger: '#FDFFFF',
           warning: theme('color.yellowLight'),
         })};
       }

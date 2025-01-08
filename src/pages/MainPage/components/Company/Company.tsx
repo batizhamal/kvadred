@@ -3,15 +3,17 @@ import { Company as CompanyData } from '@app/api';
 import { Typography } from '@app/components';
 import { formatDigitsGrouping } from '../../../../common/utils/formattingUtils.ts';
 import { FaInstagram } from 'react-icons/fa';
+import Chip from '../../../../components/Chip';
 
 interface Props {
   company: CompanyData;
+  bestIn?: 'rating' | 'deadlines' | 'price';
 }
 
 function Company(props: Props) {
-  const { company } = props;
+  const { company, bestIn } = props;
 
-  const bestIn = {
+  const bestInText = {
     rating: 'Рейтинг',
     deadlines: 'Сроки',
     price: 'Цена',
@@ -54,10 +56,27 @@ function Company(props: Props) {
           <Typography variant={'secondary'} text={'100 000 ₸ / кв.м'} />
         </div>
       </div>
-      <a className={'company-card__link'} href={company.IGlink}>
-        <FaInstagram color={'#4598FF'} />
-        Instagram
-      </a>
+      <div className={'company__right-content'}>
+        <a className={'company-card__link'} href={company.IGlink}>
+          <FaInstagram color={'#4598FF'} />
+          Instagram
+        </a>
+        {!!bestIn && (
+          <Chip
+            text={bestInText[bestIn]}
+            color={
+              bestIn === 'price'
+                ? 'danger'
+                : bestIn === 'rating'
+                  ? 'success'
+                  : bestIn === 'deadlines'
+                    ? 'warning'
+                    : 'default'
+            }
+            variant={'outlined'}
+          />
+        )}
+      </div>
       {/*{!!company.bestIn && (*/}
       {/*  <div className={'company-card__best-in kvadred-mt-8'}>*/}
       {/*    {company.bestIn === 'rating' && <FaChartLine color={'#D90429'} />}*/}

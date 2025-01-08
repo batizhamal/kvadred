@@ -154,7 +154,19 @@ function MainPage() {
               }
             >
               {companies.map((bestComp, index) => (
-                <CompanyCard key={`best-${index}`} company={bestComp} />
+                <CompanyCard
+                  key={`best-${index}`}
+                  company={bestComp}
+                  bestIn={
+                    index === 0
+                      ? 'price'
+                      : index === 1
+                        ? 'rating'
+                        : index === 2
+                          ? 'deadlines'
+                          : undefined
+                  }
+                />
               ))}
             </div>
           </Block>
