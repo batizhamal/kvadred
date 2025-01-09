@@ -12,12 +12,14 @@
   padding: $base-offset;
   color: #fff;
   @include roboto;
+  position: relative;
 
   &__wrapper {
     display: flex;
     flex-direction: column;
     align-items: start;
     flex: 1 1 auto;
+    z-index: 2;
   }
 
   &__items {
@@ -44,5 +46,6 @@
   }
 
   &__footer {
+    z-index: 2;
   }
 }

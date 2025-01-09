@@ -15,19 +15,19 @@ function Landing() {
   return (
     <>
       <div className="landing-body">
-        <img
-          src={'/back_lines.png'}
-          alt={'background'}
-          style={{
-            objectFit: 'contain',
-            position: 'absolute',
-            top: 0,
-            width: '100%',
-            height: '150vh',
-            zIndex: 1,
-          }}
-        />
         <div className={'landing-main-wrapper'}>
+          <img
+            src={'/bg_waves.jpg'}
+            alt={'background'}
+            style={{
+              objectFit: 'cover',
+              position: 'absolute',
+              top: 0,
+              width: '100%',
+              height: '100%',
+              zIndex: 1,
+            }}
+          />
           <Header items={routes} className={'landing-header'} />
 
           <div className="landing-hero">

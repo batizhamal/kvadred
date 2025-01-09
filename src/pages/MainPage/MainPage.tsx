@@ -77,6 +77,16 @@ function MainPage() {
 
   return (
     <LayoutDefault scrollable>
+      {/*<img*/}
+      {/*  src={'/smeta_hero.jpg'}*/}
+      {/*  alt={'smeta hero'}*/}
+      {/*  style={{*/}
+      {/*    width: '100%',*/}
+      {/*    height: '150px',*/}
+      {/*    objectFit: 'cover',*/}
+      {/*    marginBottom: '8px',*/}
+      {/*  }}*/}
+      {/*/>*/}
       <SimplifiedAdvancedSearch onSearch={fetchProjects} />
       <div className={'kvadred-flex kvadred-gap-24'}>
         <Block

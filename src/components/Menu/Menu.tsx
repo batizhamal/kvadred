@@ -22,6 +22,20 @@ function Menu(props: Props) {
 
   return (
     <div className={'menu'}>
+      <img
+        src={'/bg_waves.jpg'}
+        alt={'background'}
+        style={{
+          objectFit: 'cover',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 1,
+          opacity: 0.1,
+        }}
+      />
       <div className={'menu__wrapper'}>
         <img src={'/logo.svg'} alt={'logo'} height={'64px'} />
         <div className={'menu__items'}>
