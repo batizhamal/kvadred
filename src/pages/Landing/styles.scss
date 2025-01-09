@@ -150,6 +150,10 @@
   }
 }
 
+.landing-button {
+  @include bicubik;
+}
+
 .landing-stats {
   display: flex;
   padding: $base-offset $base-offset * 2;

@@ -39,8 +39,9 @@ function Header(props: Props) {
         </div>
         <Button
           text="Связаться с нами"
+          className={'header__button'}
           onClick={() => {
-            // TODO
+            window.open('https://wa.me/+77000780088', '_blank');
           }}
         />
       </div>

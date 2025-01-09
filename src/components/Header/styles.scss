@@ -37,4 +37,8 @@
       border-bottom: 1px solid #FFF48B;
     }
   }
+
+  &__button {
+    @include bicubik;
+  }
 }
