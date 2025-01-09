@@ -58,10 +58,10 @@ function Menu(props: Props) {
         </div>
       </div>
       <div className={'menu__footer'}>
-        <div className={'menu__item'}>
+        <Link className={'menu__item'} to={'/contacts'}>
           <FaPhoneAlt />
           Контакты
-        </div>
+        </Link>
       </div>
     </div>
   );

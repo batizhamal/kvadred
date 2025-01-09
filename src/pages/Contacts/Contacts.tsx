@@ -1,10 +1,8 @@
 import './styles.scss';
-import {LayoutDefault} from "@app/layout";
+import { LayoutDefault } from '@app/layout';
 
 function Contacts() {
-  return (
-    <LayoutDefault></LayoutDefault>
-  );
+  return <LayoutDefault>contacts</LayoutDefault>;
 }
 
 export default Contacts;
