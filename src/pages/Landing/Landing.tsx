@@ -1,8 +1,9 @@
 import './styles.scss';
 import { Button, Header } from '@app/components';
 import { useNavigate } from 'react-router-dom';
-import { FaPhoneAlt } from 'react-icons/fa';
+import { FaInstagram, FaPhoneAlt } from 'react-icons/fa';
 import { useHeader } from '@app/hooks';
+import { FaTelegram, FaWhatsapp } from 'react-icons/fa6';
 
 function Landing() {
   const navigate = useNavigate();
@@ -157,6 +158,35 @@ function Landing() {
             <div className={'landing-companies__block'}>2М+</div>
             <div className={'landing-companies__block'}>30%</div>
             <div className={'landing-companies__block'}>5М ₸</div>
+          </div>
+        </div>
+
+        <div className={'landing-footer'}>
+          <div className={'landing-divider kvadred-mb-48'}></div>
+          <div className={'landing-footer__layout'}>
+            <span>Kvadred 2025</span>
+            <span className={'landing-footer__terms'}>Условия и положения</span>
+            <div className={'landing-footer__social-wrapper'}>
+              <div
+                className={'landing-footer__social-item'}
+                onClick={() => {
+                  window.open('https://wa.me/+77000780088', '_blank');
+                }}
+              >
+                <FaWhatsapp />
+              </div>
+              <div
+                className={'landing-footer__social-item'}
+                onClick={() => {
+                  window.open('https://www.instagram.com/kvadred.kz', '_blank');
+                }}
+              >
+                <FaInstagram />
+              </div>
+              <div className={'landing-footer__social-item'}>
+                <FaTelegram />
+              </div>
+            </div>
           </div>
         </div>
       </div>
