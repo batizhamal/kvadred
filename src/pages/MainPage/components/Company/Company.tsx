@@ -4,6 +4,7 @@ import { Typography } from '@app/components';
 import { formatDigitsGrouping } from '../../../../common/utils/formattingUtils.ts';
 import { FaInstagram } from 'react-icons/fa';
 import Chip from '../../../../components/Chip';
+import { FaWhatsapp } from 'react-icons/fa6';
 
 interface Props {
   company: CompanyData;
@@ -76,6 +77,7 @@ function Company(props: Props) {
             variant={'outlined'}
           />
         )}
+        <FaWhatsapp style={{ cursor: 'pointer' }} />
       </div>
       {/*{!!company.bestIn && (*/}
       {/*  <div className={'company-card__best-in kvadred-mt-8'}>*/}

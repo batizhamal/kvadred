@@ -155,6 +155,13 @@ function MainPage() {
           <Block
             className={'kvadred-mt-16 kvadred-mb-16'}
             label={'Компании под ключ'}
+            rightControls={[
+              <Button
+                text={'Написать всем'}
+                size={'small'}
+                color={'default'}
+              />,
+            ]}
             transparent
             padding={false}
           >
@@ -163,21 +170,23 @@ function MainPage() {
                 'kvadred-flex kvadred-flex-column kvadred-gap-16 kvadred-flex-w-100 kvadred-mt-8'
               }
             >
-              {companies.map((bestComp, index) => (
-                <CompanyCard
-                  key={`best-${index}`}
-                  company={bestComp}
-                  bestIn={
-                    index === 0
-                      ? 'price'
-                      : index === 1
-                        ? 'rating'
-                        : index === 2
-                          ? 'deadlines'
-                          : undefined
-                  }
-                />
-              ))}
+              {companies
+                .sort((a, b) => a.price - b.price)
+                .map((bestComp, index) => (
+                  <CompanyCard
+                    key={`best-${index}`}
+                    company={bestComp}
+                    bestIn={
+                      index === 0
+                        ? 'price'
+                        : index === 1
+                          ? 'price'
+                          : index === 2
+                            ? 'price'
+                            : undefined
+                    }
+                  />
+                ))}
             </div>
           </Block>
         </div>
