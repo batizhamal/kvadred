@@ -30,9 +30,9 @@ function MainPage() {
   const [companies, setCompanies] = useState<Company[]>([]);
 
   const chartTasks = [
-    { name: 'Branding', duration: 30, width: '30%' },
-    { name: 'Web design', duration: 40, width: '40%' },
-    { name: 'Platform', duration: 30, width: '30%' },
+    { name: 'Черновые', duration: 30, width: '30%' },
+    { name: 'Чистовые', duration: 40, width: '40%' },
+    { name: 'Отделочные', duration: 30, width: '35%' },
   ];
 
   useEffect(() => {
@@ -203,10 +203,9 @@ function MainPage() {
       </div>
       <div className={'kvadred-flex kvadred-gap-24'}>
         <Block
-          label={'Примерные сроки'}
+          label={'Приблизительные сроки'}
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={65}
-          shrink
         >
           <div className="chart-container">
             {chartTasks.map((task, index) => (
@@ -216,34 +215,22 @@ function MainPage() {
                 style={{
                   width: `calc(${task.width} - 30px)`,
                   top: `${index * 60}px`, // Stacks vertically
-                  left: index === 0 ? '0' : index === 1 ? `30%` : '70%',
+                  left: index === 0 ? '0' : index === 1 ? `25%` : '65%',
                 }}
               >
                 <span className="task-label">{task.name}</span>
-                <span className="task-duration">{`${(task.duration * area) / 100} дней`}</span>
+                <span className="task-duration">{`${(task.duration * area) / 100} д`}</span>
               </div>
             ))}
             <span className="total-duration">{`${area} дней`}</span>
-            {/*<svg className="grid-svg" width="100%" height="100%">*/}
-            {/*  <defs>*/}
-            {/*    <pattern*/}
-            {/*      id="grid"*/}
-            {/*      width="50"*/}
-            {/*      height="50"*/}
-            {/*      patternUnits="userSpaceOnUse"*/}
-            {/*    >*/}
-            {/*      <path*/}
-            {/*        d="M 100 0 L 0 0 0 100"*/}
-            {/*        fill="none"*/}
-            {/*        stroke="#164850"*/}
-            {/*        strokeWidth="1"*/}
-            {/*      />*/}
-            {/*    </pattern>*/}
-            {/*  </defs>*/}
-            {/*  <rect width="100%" height="100%" fill="url(#grid)" />*/}
-            {/*</svg>*/}
+            <img src={'/1.png'} alt={'grid'} style={{ width: '100%' }} />
           </div>
         </Block>
+        <Block
+          label={'Приблизительная стоимость'}
+          className={'kvadred-mt-16 kvadred-mb-16'}
+          width={35}
+        ></Block>
       </div>
     </LayoutDefault>
   );
