@@ -13,6 +13,13 @@
   padding: $base-offset;
   border-radius: $base-radius;
 
+  &--scrollable {
+    height: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
   &--outlined {
     background-color: transparent;
     border: $base-border;

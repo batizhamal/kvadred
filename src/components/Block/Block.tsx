@@ -14,6 +14,7 @@ interface Props extends PropsWithChildren {
   variant?: 'contained' | 'outlined';
   transparent?: boolean;
   padding?: boolean;
+  scrollable?: boolean;
 }
 
 function Block(props: Props) {
@@ -30,6 +31,7 @@ function Block(props: Props) {
     variant = 'contained',
     transparent = false,
     padding = true,
+    scrollable = false,
   } = props;
 
   return (
@@ -49,10 +51,11 @@ function Block(props: Props) {
       {header && <div className={'kvadred-block__header'}>{headerText}</div>}
       <div
         className={classNames(`kvadred-block`, {
-          'kvadred-block--shrink': shrink,
+          // 'kvadred-block--shrink': shrink,
           'kvadred-block--outlined': variant === 'outlined',
           'kvadred-block--transparent': transparent,
           'kvadred-block--no-padding': !padding,
+          'kvadred-block--scrollable': scrollable,
         })}
       >
         {children}
