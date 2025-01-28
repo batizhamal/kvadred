@@ -4,7 +4,7 @@
   width: 100%;
   position: relative;
   overflow-x: auto;
-  height: 200px;
+  height: 220px;
 }
 
 .task {
@@ -50,3 +50,75 @@
   height: 100%;
 }
 
+.bubble {
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  & .title {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  & .subtitle {
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &-b1 {
+    height: 150px;
+    width: 150px;
+    background-color: #164850;
+    top: 25%;
+    left: 0;
+
+    & .price {
+      color: #164850;
+      position: absolute;
+      top: 150px;
+      font-size: 12px;
+    }
+  }
+
+  &-b2 {
+    height: 110px;
+    width: 110px;
+    background-color: #164850;
+    top: 15%;
+    left: 35%;
+
+    & .price {
+      color: #164850;
+      position: absolute;
+      top: 0;
+      left: 110px;
+      font-size: 12px;
+      text-wrap: nowrap;
+    }
+  }
+
+  &-b3 {
+    height: 90px;
+    width: 90px;
+    background-color: #164850;
+    top: 45%;
+    left: 60%;
+
+    & .price {
+      color: #164850;
+      position: absolute;
+      top: 90px;
+      left: 0;
+      font-size: 12px;
+    }
+  }
+}
+
+.bubble-total {
+  font-size: 14px;
+  font-weight: 600;
+}

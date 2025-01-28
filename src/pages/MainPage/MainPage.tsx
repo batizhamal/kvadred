@@ -17,6 +17,7 @@ import {
 } from '@app/api';
 import { FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
+import { formatDigitCommas } from '../../common/utils/formattingUtils.ts';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -30,8 +31,8 @@ function MainPage() {
   const [companies, setCompanies] = useState<Company[]>([]);
 
   const chartTasks = [
-    { name: 'Черновые', duration: 30, width: '30%' },
-    { name: 'Чистовые', duration: 40, width: '40%' },
+    { name: 'Черновые', duration: 30, width: '35%' },
+    { name: 'Чистовые', duration: 40, width: '45%' },
     { name: 'Отделочные', duration: 30, width: '35%' },
   ];
 
@@ -50,6 +51,10 @@ function MainPage() {
       console.log(res);
       // TODO: temporarily, by default 1st project is smeta
       setProject(res?.[0]);
+
+      const materials = res?.[0]?.rooms[0]?.materials ?? [];
+      const totalCost = materials.reduce((sum, mat) => sum + mat.total_cost, 0);
+      setTotal(totalCost);
     } catch (error: any) {
       setErrorMessage(error?.message || 'Внутренняя ошибка сервера');
     } finally {
@@ -80,6 +85,8 @@ function MainPage() {
       console.error('Error downloading', error);
     }
   };
+
+  const [total, setTotal] = useState<number>(0);
 
   return (
     <LayoutDefault scrollable>
@@ -201,11 +208,11 @@ function MainPage() {
         </Block>
         {/*</div>*/}
       </div>
-      <div className={'kvadred-flex kvadred-gap-24'}>
+      <div className={'kvadred-flex kvadred-gap-16'}>
         <Block
           label={'Приблизительные сроки'}
           className={'kvadred-mt-16 kvadred-mb-16'}
-          width={65}
+          width={60}
         >
           <div className="chart-container">
             {chartTasks.map((task, index) => (
@@ -215,7 +222,7 @@ function MainPage() {
                 style={{
                   width: `calc(${task.width} - 30px)`,
                   top: `${index * 60}px`, // Stacks vertically
-                  left: index === 0 ? '0' : index === 1 ? `25%` : '65%',
+                  left: index === 0 ? '0' : index === 1 ? `25%` : '60%',
                 }}
               >
                 <span className="task-label">{task.name}</span>
@@ -230,7 +237,32 @@ function MainPage() {
           label={'Приблизительная стоимость'}
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={35}
-        ></Block>
+        >
+          <div className={'chart-container'}>
+            <span className="bubble-total">{`Общая стоимость: ${formatDigitCommas(total)} ₸`}</span>
+            <div className={'bubble bubble-b1'}>
+              <div className={'title'}>30%</div>
+              <div className={'subtitle'}>Черновые</div>
+              <div
+                className={'price'}
+              >{`${formatDigitCommas(total * 0.3)} ₸`}</div>
+            </div>
+            <div className={'bubble bubble-b2'}>
+              <div className={'title'}>40%</div>
+              <div className={'subtitle'}>Чистовые</div>
+              <div
+                className={'price'}
+              >{`${formatDigitCommas(total * 0.4)} ₸`}</div>
+            </div>
+            <div className={'bubble bubble-b3'}>
+              <div className={'title'}>30%</div>
+              <div className={'subtitle'}>Отделочные</div>
+              <div
+                className={'price'}
+              >{`${formatDigitCommas(total * 0.3)} ₸`}</div>
+            </div>
+          </div>
+        </Block>
       </div>
     </LayoutDefault>
   );
