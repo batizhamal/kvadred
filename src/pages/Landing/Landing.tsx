@@ -75,7 +75,7 @@ function Landing() {
                   'landing-hero__floating-block block-3__circle--small'
                 }
                 onClick={() => {
-                  window.open('https://wa.me/+77073798888', '_blank');
+                  window.open('https://wa.me/+77079883399', '_blank');
                 }}
               >
                 <FaWhatsapp fill={'#233454'} width={30} height={30} />

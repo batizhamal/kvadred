@@ -108,7 +108,7 @@ function Team() {
             </div>
           </div>
         </div>
-        <div className={'phone-number'}>Номер телефона: +77073798888</div>
+        <div className={'phone-number'}>Номер телефона: +7 700 078 0088</div>
       </div>
     </LayoutDefault>
   );
