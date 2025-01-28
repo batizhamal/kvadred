@@ -30,9 +30,9 @@ function MainPage() {
   const [companies, setCompanies] = useState<Company[]>([]);
 
   const chartTasks = [
-    { name: 'Branding', duration: '25 days', width: '30%' },
-    { name: 'Web design', duration: '29 days', width: '40%' },
-    { name: 'Platform', duration: '46 days', width: '30%' },
+    { name: 'Branding', duration: 30, width: '30%' },
+    { name: 'Web design', duration: 40, width: '40%' },
+    { name: 'Platform', duration: 30, width: '30%' },
   ];
 
   useEffect(() => {
@@ -93,7 +93,12 @@ function MainPage() {
       {/*    marginBottom: '8px',*/}
       {/*  }}*/}
       {/*/>*/}
-      <SimplifiedAdvancedSearch onSearch={fetchProjects} />
+      <SimplifiedAdvancedSearch
+        onSearch={(ar) => {
+          setArea(ar);
+          fetchProjects(ar);
+        }}
+      />
       <div
         className={'kvadred-flex kvadred-gap-24'}
         style={{
@@ -215,50 +220,28 @@ function MainPage() {
                 }}
               >
                 <span className="task-label">{task.name}</span>
-                <span className="task-duration">{task.duration}</span>
+                <span className="task-duration">{`${(task.duration * area) / 100} дней`}</span>
               </div>
             ))}
-            <span className="total-duration">3.5 months</span>
-            <svg className="grid-svg" width="100%" height="100%">
-              <defs>
-                <pattern
-                  id="grid"
-                  width="50"
-                  height="50"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 50 0 L 0 0 0 50"
-                    fill="none"
-                    stroke="url(#fadingStroke)"
-                    strokeWidth="1"
-                  />
-                </pattern>
-                <linearGradient
-                  id="fadingStroke"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="100%"
-                >
-                  <stop
-                    offset="0%"
-                    style={{
-                      stopColor: 'rgba(255, 255, 255, 0.1)',
-                      stopOpacity: 1,
-                    }}
-                  />
-                  <stop
-                    offset="100%"
-                    style={{
-                      stopColor: 'rgba(255, 255, 255, 0)',
-                      stopOpacity: 0,
-                    }}
-                  />
-                </linearGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
+            <span className="total-duration">{`${area} дней`}</span>
+            {/*<svg className="grid-svg" width="100%" height="100%">*/}
+            {/*  <defs>*/}
+            {/*    <pattern*/}
+            {/*      id="grid"*/}
+            {/*      width="50"*/}
+            {/*      height="50"*/}
+            {/*      patternUnits="userSpaceOnUse"*/}
+            {/*    >*/}
+            {/*      <path*/}
+            {/*        d="M 100 0 L 0 0 0 100"*/}
+            {/*        fill="none"*/}
+            {/*        stroke="#164850"*/}
+            {/*        strokeWidth="1"*/}
+            {/*      />*/}
+            {/*    </pattern>*/}
+            {/*  </defs>*/}
+            {/*  <rect width="100%" height="100%" fill="url(#grid)" />*/}
+            {/*</svg>*/}
           </div>
         </Block>
       </div>
