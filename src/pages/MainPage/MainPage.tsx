@@ -174,17 +174,10 @@ function MainPage() {
                 .sort((a, b) => a.price - b.price)
                 .map((bestComp, index) => (
                   <CompanyCard
+                    area={area}
                     key={`best-${index}`}
                     company={bestComp}
-                    bestIn={
-                      index === 0
-                        ? 'price'
-                        : index === 1
-                          ? 'price'
-                          : index === 2
-                            ? 'price'
-                            : undefined
-                    }
+                    bestIn={index === 0 ? 'price' : undefined}
                   />
                 ))}
             </div>

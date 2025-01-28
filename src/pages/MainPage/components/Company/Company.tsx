@@ -9,10 +9,11 @@ import { FaWhatsapp } from 'react-icons/fa6';
 interface Props {
   company: CompanyData;
   bestIn?: 'rating' | 'deadlines' | 'price';
+  area: number;
 }
 
 function Company(props: Props) {
-  const { company, bestIn } = props;
+  const { company, bestIn, area } = props;
 
   const bestInText = {
     rating: 'Рейтинг',
@@ -52,9 +53,12 @@ function Company(props: Props) {
         <div className={'company__title'}>
           <div className={'main'}>{company.name}</div>
           <Typography
-            text={`${formatDigitsGrouping(company.price).toString()} ₸`}
+            text={`${formatDigitsGrouping(company.price * area).toString()} ₸`}
           />
-          <Typography variant={'secondary'} text={'100 000 ₸ / кв.м'} />
+          <Typography
+            variant={'secondary'}
+            text={`${formatDigitsGrouping(company.price).toString()} ₸ / кв.м`}
+          />
         </div>
       </div>
       <div className={'company__right-content'}>

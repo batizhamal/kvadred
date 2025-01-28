@@ -23,19 +23,21 @@ function Header(props: Props) {
       <img src={'/logo.svg'} height={64} alt={'logo'} onClick={goToMain} />
       <div className={'kvadred-flex kvadred-flex-middle kvadred-gap-32'}>
         <div className={'header__items'}>
-          {items.map((item) => (
-            <Link
-              to={item.path}
-              key={item.path}
-              className={classNames('header__item', {
-                'header__item--current':
-                  location.pathname.substring(1).split('/')[0] ===
-                  item.path.substring(1).split('/')[0].toLocaleLowerCase(),
-              })}
-            >
-              {item.label.toUpperCase()}
-            </Link>
-          ))}
+          {items
+            .filter((item) => item.path !== '/contacts')
+            .map((item) => (
+              <Link
+                to={item.path}
+                key={item.path}
+                className={classNames('header__item', {
+                  'header__item--current':
+                    location.pathname.substring(1).split('/')[0] ===
+                    item.path.substring(1).split('/')[0].toLocaleLowerCase(),
+                })}
+              >
+                {item.label.toUpperCase()}
+              </Link>
+            ))}
         </div>
         <Button
           text="Связаться с нами"

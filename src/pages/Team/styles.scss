@@ -42,11 +42,58 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 
     & .frame {
-      width: 100px;
-      height: 100px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
+      background-color: #fff;
+      border: 5px solid #003042;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    & img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    & .title {
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    & .subtitle {
+      color: #003042;
+      //font-weight: 600;
+    }
+
+    & .contacts {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    & .contact {
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(0, 48, 66, 0.23);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .phone-number {
+    @include bicubik;
   }
 }

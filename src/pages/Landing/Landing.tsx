@@ -1,9 +1,9 @@
 import './styles.scss';
 import { Button, Header } from '@app/components';
 import { useNavigate } from 'react-router-dom';
-import { FaInstagram, FaPhoneAlt } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 import { useHeader } from '@app/hooks';
-import { FaTelegram, FaWhatsapp } from 'react-icons/fa6';
+import { FaArrowRight, FaTelegram, FaWhatsapp } from 'react-icons/fa6';
 
 function Landing() {
   const navigate = useNavigate();
@@ -34,16 +34,18 @@ function Landing() {
           <div className="landing-hero">
             <div className={'landing-hero__left'}>
               <div className={'landing-hero__subtitle'}>
-                Тут будет краткое описание стартапа
+                Генерация сметы для ремонта, поиск и сравнение строительных
+                компаний
               </div>
               <div className={'landing-hero__title'}>
-                ТУТ БУДЕТ КАЙНДА МИССИЯ СТАРТАПА ИЛИ ЦЕННОСТЬ. ХЗ
+                KVADRED — быстрый и удобный старт ремонта
               </div>
               <div className={'kvadred-flex'}>
                 <Button
-                  text={'Смета'}
+                  text={'Начать'}
                   className={'landing-button'}
                   onClick={goToSmeta}
+                  postIcon={FaArrowRight}
                 />
               </div>
             </div>
@@ -72,8 +74,11 @@ function Landing() {
                 className={
                   'landing-hero__floating-block block-3__circle--small'
                 }
+                onClick={() => {
+                  window.open('https://wa.me/+77073798888', '_blank');
+                }}
               >
-                <FaPhoneAlt fill={'#233454'} />
+                <FaWhatsapp fill={'#233454'} width={30} height={30} />
               </div>
               <div className={'landing-hero__floating-block block-4'}></div>
             </div>
@@ -85,23 +90,50 @@ function Landing() {
                 Особенности платформы KVADRED
               </div>
               <div className={'landing-stats__title'}>
-                Данные 1000+ проектов и лучшие практики
+                3 причины, почему 85% пользователей выбирают Kvadred
               </div>
             </div>
             <div className={'landing-stats__block-container'}>
-              <div className={'landing-stats__block'}></div>
-              <div className={'landing-stats__block'}></div>
-              <div className={'landing-stats__block'}></div>
+              <div className={'landing-stats__block'}>
+                <div className={'title'}>Точная смета за 2 клика</div>
+                <div className={'subtitle'}>
+                  получите подробный расчет стоимости материалов и сроков
+                  ремонта без регистрации
+                </div>
+                <div className={'img-wrapper'}>
+                  <img src={'/stats1.png'} alt={'stats1'} width={120} />
+                </div>
+              </div>
+              <div className={'landing-stats__block'}>
+                <div className={'title'}>10+ предложений от компаний</div>
+                <div className={'subtitle'}>
+                  сравните цены, сроки и условия ремонта от проверенных
+                  специалистов в вашем регионе
+                </div>
+                <div className={'img-wrapper'}>
+                  <img src={'/stats2.png'} alt={'stats1'} width={120} />
+                </div>
+              </div>
+              <div className={'landing-stats__block'}>
+                <div className={'title'}>1 заявка вместо 10 звонков</div>
+                <div className={'subtitle'}>
+                  отправьте запрос всем компаниям или выберите конкретную всего
+                  одним нажатием
+                </div>
+                <div className={'img-wrapper'}>
+                  <img src={'/stats3.png'} alt={'stats1'} width={140} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className="landing-features">
           <div className={'landing-features__header'}>
             <div className={'landing-features__subtitle'}>
-              Смари как это круто работает
+              Как это работает?
             </div>
             <div className={'landing-features__title'}>
-              Тут слоган про то как квадред решает гемор по ремонту
+              Мы упрощаем процесс ремонта. Всё необходимое — в одном месте.
             </div>
           </div>
           <div
@@ -110,11 +142,12 @@ function Landing() {
             }
           >
             <div className={'landing-features__feature--left'}>
-              <div className={'title'}>1. Заголовок первой крутости</div>
-              описание круто как тут
+              <div className={'title'}>1. Подробная смета за секунды</div>
+              Получите детальный расчет стоимости ремонта с разбивкой по
+              материалам, работам и срокам выполнения
             </div>
             <div className={'landing-features__feature--right'}>
-              <img src={'/screen1.jpg'} alt={'screen1'} />
+              <img src={'/screen1.png'} alt={'screen1'} />
             </div>
           </div>
           <div
@@ -123,11 +156,12 @@ function Landing() {
             }
           >
             <div className={'landing-features__feature--left'}>
-              <div className={'title'}>2. Заголовок второй крутости</div>
-              описание круто как тут
+              <div className={'title'}>2. Сравнение компаний по цене</div>
+              Выбирайте проверенных подрядчиков с лучшим соотношением цены и
+              качества — сортировка по стоимости за квадратный метр
             </div>
             <div className={'landing-features__feature--right'}>
-              <img src={'/screen1.jpg'} alt={'screen1'} />
+              <img src={'/screen2.png'} alt={'screen1'} />
             </div>
           </div>
           <div
@@ -136,30 +170,31 @@ function Landing() {
             }
           >
             <div className={'landing-features__feature--left'}>
-              <div className={'title'}>3. Заголовок третьей крутости</div>
-              описание круто как тут
+              <div className={'title'}>3. Сроки и структура затрат</div>
+              Понимайте, сколько времени займет ремонт на каждом этапе и какой
+              процент бюджета уходит на разные виды работ
             </div>
             <div className={'landing-features__feature--right'}>
-              <img src={'/screen1.jpg'} alt={'screen1'} />
+              <img src={'/screen1.jpg'} alt={'screen3'} />
             </div>
           </div>
         </div>
 
-        <div className="landing-companies">
-          <div className={'landing-companies__header'}>
-            <div className={'landing-companies__title'}>
-              30+ строительных компаний
-            </div>
-            <div className={'landing-companies__subtitle'}>
-              Которые готовы вам помочь с ремонтом
-            </div>
-          </div>
-          <div className={'landing-companies__block-container'}>
-            <div className={'landing-companies__block'}>2М+</div>
-            <div className={'landing-companies__block'}>30%</div>
-            <div className={'landing-companies__block'}>5М ₸</div>
-          </div>
-        </div>
+        {/*<div className="landing-companies">*/}
+        {/*  <div className={'landing-companies__header'}>*/}
+        {/*    <div className={'landing-companies__title'}>*/}
+        {/*      30+ строительных компаний*/}
+        {/*    </div>*/}
+        {/*    <div className={'landing-companies__subtitle'}>*/}
+        {/*      Которые готовы вам помочь с ремонтом*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*  <div className={'landing-companies__block-container'}>*/}
+        {/*    <div className={'landing-companies__block'}>2М+</div>*/}
+        {/*    <div className={'landing-companies__block'}>30%</div>*/}
+        {/*    <div className={'landing-companies__block'}>5М ₸</div>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         <div className={'landing-footer'}>
           <div className={'landing-divider kvadred-mb-48'}></div>
