@@ -4,6 +4,7 @@
   margin: 0;
   color: #ffffff;
   position: relative;
+  overflow-x: hidden;
   @include bicubik;
 }
 
@@ -241,6 +242,7 @@
   &__block {
     background-color: #003042;
     width: 100%;
+    min-width: 200px;
     height: 300px;
     border-radius: 10px;
     padding: 32px;
@@ -264,6 +266,65 @@
     & .img-wrapper {
       display: flex;
       align-items: center;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__header {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: $base-offset;
+      margin-bottom: $base-offset * 2;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__block-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      width: calc(100% + 48px);
+      height: auto;
+      margin-bottom: $base-offset * 2;
+      overflow: hidden;
+      overflow-x: scroll;
+      margin-left: -32px;
+      margin-right: -32px;
+      padding: 8px;
+    }
+
+    &__block {
+      & img {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 24px;
+    }
+
+    &__subtitle {
+      font-size: 12px;
     }
   }
 }
@@ -338,6 +399,93 @@
 
     &:last-child {
       margin-bottom: $base-offset * 2;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__header {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: $base-offset;
+      margin-bottom: $base-offset * 2;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__feature {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - $base-offset * 4);
+      padding: $base-offset $base-offset * 2;
+      border-radius: $base-radius;
+      margin-bottom: $base-offset;
+
+      &--blue {
+        background-color: #D3E4E9;
+      }
+
+      &--yellow {
+        background-color: #FCF6E6;
+      }
+
+      &--left {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% - $base-offset);
+        text-wrap: wrap;
+      }
+
+      &--right {
+        display: flex;
+        width: calc(100% - $base-offset);
+        height: 100%;
+        align-items: flex-end;
+      }
+
+      & .title {
+        font-size: 24px;
+        margin-bottom: $base-offset * 0.5;
+      }
+
+      & img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        margin: 0;
+        border-radius: $base-radius;
+      }
+
+      &:last-child {
+        margin-bottom: $base-offset * 2;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__title {
+      font-size: 24px;
+    }
+
+    &__subtitle {
+      font-size: 12px;
     }
   }
 }
