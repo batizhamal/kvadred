@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  overflow: hidden;
+  //overflow: hidden;
   padding: $base-offset $base-offset * 2;
   //background-color: #002432;
   color: #FFFFFF;
@@ -51,18 +51,49 @@
     flex: 0 0 auto;
   }
 
+  &__items-small {
+    display: none;
+    visibility: hidden;
+  }
+
   @media (max-width: 1024px) {
 
     &__items {
       overflow-x: scroll;
       max-width: 100px;
+      display: none;
+    }
+
+    &__items-small {
+      display: flex;
+      visibility: visible;
+      font-size: 14px;
+      gap: 4px;
+      cursor: pointer;
+      position: relative;
+      align-items: center;
+    }
+
+    &__items-small-dropdown {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      width: 100%;
+      height: auto;
+      background-color: #002432;
+      color: #fff;
+      @include bicubik;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      align-items: center;
+      z-index: 10;
+    }
+
+    &__button {
+      @include bicubik;
+      width: 116px;
     }
   }
 
-  @media (max-width: 768px) {
-  }
-
-  @media (max-width: 480px) {
-
-  }
 }

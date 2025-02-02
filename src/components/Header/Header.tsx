@@ -3,6 +3,8 @@ import { HeaderItem } from '@app/hooks';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../Button';
 import classNames from 'classnames';
+import { FaChevronDown } from 'react-icons/fa';
+import { useState } from 'react';
 
 interface Props {
   items: HeaderItem[];
@@ -13,6 +15,8 @@ function Header(props: Props) {
   const { items, className = '' } = props;
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [showSmallNavigation, setShowSmallNavigation] = useState(false);
 
   const goToMain = () => {
     navigate('/');
@@ -38,6 +42,38 @@ function Header(props: Props) {
                 {item.label.toUpperCase()}
               </Link>
             ))}
+        </div>
+        <div
+          className={'header__items-small'}
+          onClick={() => {
+            setShowSmallNavigation(!showSmallNavigation);
+          }}
+        >
+          <div className={'header__item'}>Главная</div>
+          <FaChevronDown fill={'#FFF48B'} />
+
+          {showSmallNavigation && (
+            <div className={'header__items-small-dropdown'}>
+              {items
+                .filter((item) => item.path !== '/contacts')
+                .map((item) => (
+                  <Link
+                    to={item.path}
+                    key={item.path}
+                    className={classNames('header__item', {
+                      'header__item--current':
+                        location.pathname.substring(1).split('/')[0] ===
+                        item.path
+                          .substring(1)
+                          .split('/')[0]
+                          .toLocaleLowerCase(),
+                    })}
+                  >
+                    {item.label.toUpperCase()}
+                  </Link>
+                ))}
+            </div>
+          )}
         </div>
         <Button
           text="Связаться с нами"

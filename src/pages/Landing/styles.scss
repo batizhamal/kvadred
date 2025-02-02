@@ -15,7 +15,7 @@
 
 .landing-header {
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .landing-hero {
@@ -564,6 +564,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+
+    &__layout {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 }
 
