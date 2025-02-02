@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaInstagram } from 'react-icons/fa';
 import { useHeader } from '@app/hooks';
 import { FaArrowRight, FaTelegram, FaWhatsapp } from 'react-icons/fa6';
+import { Block1, Block3 } from './partials';
 
 function Landing() {
   const navigate = useNavigate();
@@ -50,37 +51,12 @@ function Landing() {
               </div>
             </div>
             <div className={'landing-hero__right'}>
-              <div className={'landing-hero__floating-block block-1'}>
-                <div className={'title'}>100+</div>
-                планировок квартир астаны
+              <div className={'landing-hero__floating-blocks-wrapper'}>
+                <Block1 className={'block-1-pos'} />
+                <div className={'landing-hero__floating-block block-2'}></div>
+                <Block3 className={'block-3-pos'} />
+                <div className={'landing-hero__floating-block block-4'}></div>
               </div>
-              <div className={'landing-hero__floating-block block-1__circle'}>
-                <img src={'/keys.png'} alt={'logo'} />
-              </div>
-              <div className={'landing-hero__floating-block block-2'}></div>
-              <div className={'landing-hero__floating-block block-3'}>
-                <div style={{ fontSize: '20px', marginTop: '20px' }}>
-                  ABEROY
-                </div>
-                строительная компания
-                <div className={'title'} style={{ marginTop: '8px' }}>
-                  200+ проектов
-                </div>
-              </div>
-              <div className={'landing-hero__floating-block block-3__circle'}>
-                <img src={'/aberoy.svg'} alt={'logo'} />
-              </div>
-              <div
-                className={
-                  'landing-hero__floating-block block-3__circle--small'
-                }
-                onClick={() => {
-                  window.open('https://wa.me/+77079883399', '_blank');
-                }}
-              >
-                <FaWhatsapp fill={'#233454'} width={30} height={30} />
-              </div>
-              <div className={'landing-hero__floating-block block-4'}></div>
             </div>
           </div>
 

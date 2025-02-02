@@ -1,0 +1,41 @@
+@import '@app/scss';
+
+.block-1 {
+  position: relative;
+  border-radius: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: $base-offset * 2 $base-offset * 2 $base-offset $base-offset * 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 120px;
+  height: 160px;
+  background-color: #006575;
+  color: #ffffff;
+
+  &__circle {
+    position: absolute;
+    top: -45px;
+    left: calc(50% - 45px);
+    padding: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #FFF48B;
+
+    & img {
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  & .title {
+    font-size: 24px;
+    margin-bottom: $base-offset * 0.5;
+  }
+}
