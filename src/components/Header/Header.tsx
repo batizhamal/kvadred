@@ -21,7 +21,7 @@ function Header(props: Props) {
   return (
     <div className={`header ${className}`}>
       <img src={'/logo.svg'} height={64} alt={'logo'} onClick={goToMain} />
-      <div className={'kvadred-flex kvadred-flex-middle kvadred-gap-32'}>
+      <div className={'header__wrapper'}>
         <div className={'header__items'}>
           {items
             .filter((item) => item.path !== '/contacts')

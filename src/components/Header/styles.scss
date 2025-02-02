@@ -16,6 +16,14 @@
   color: #FFFFFF;
   fill: #ffffff;
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+  }
+
   &__items {
     display: flex;
     flex-direction: row;
@@ -40,5 +48,21 @@
 
   &__button {
     @include bicubik;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 1024px) {
+
+    &__items {
+      overflow-x: scroll;
+      max-width: 100px;
+    }
+  }
+
+  @media (max-width: 768px) {
+  }
+
+  @media (max-width: 480px) {
+
   }
 }
