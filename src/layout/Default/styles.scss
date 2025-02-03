@@ -19,9 +19,22 @@
     flex: 1 1 auto;
     overflow: hidden;
     padding: $base-offset $base-offset;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 1 1 auto;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 
     &--scrollable {
+      height: fit-content;
       overflow: auto;
+      overflow-y: scroll;
+      flex: unset;
     }
   }
 }

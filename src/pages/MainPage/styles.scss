@@ -5,12 +5,16 @@
   position: relative;
   overflow-x: auto;
   height: 220px;
+
+  &--fixed-width {
+    width: 320px;
+  }
 }
 
 .task {
   z-index: 2;
-  background: #164850;
-  color: white;
+  background: #F6F8F7;
+  color: #164850;
   padding: 10px 15px;
   border-radius: 50px;
   display: flex;
@@ -27,8 +31,8 @@
 
 .task-duration {
   z-index: 3;
-  background: white;
-  color: #164850;
+  background: #164850;
+  color: white;
   padding: 5px 10px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -57,7 +61,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #164850;
 
   & .title {
     font-size: 16px;
@@ -72,7 +76,7 @@
   &-b1 {
     height: 150px;
     width: 150px;
-    background-color: #164850;
+    background-color: #F6F8F7;
     top: 25%;
     left: 0;
 
@@ -87,7 +91,7 @@
   &-b2 {
     height: 110px;
     width: 110px;
-    background-color: #164850;
+    background-color: #F6F8F7;
     top: 15%;
     left: 35%;
 
@@ -104,7 +108,7 @@
   &-b3 {
     height: 90px;
     width: 90px;
-    background-color: #164850;
+    background-color: #F6F8F7;
     top: 45%;
     left: 60%;
 

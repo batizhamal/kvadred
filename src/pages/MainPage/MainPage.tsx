@@ -111,7 +111,7 @@ function MainPage() {
         style={{
           display: 'flex',
           flex: '1 1 auto',
-          height: 'calc(100vh - 140px)',
+          minHeight: 'calc(100vh - 140px)',
           overflow: 'hidden',
         }}
       >
@@ -210,9 +210,11 @@ function MainPage() {
       </div>
       <div className={'kvadred-flex kvadred-gap-16'}>
         <Block
+          transparent
+          padding={false}
           label={'Приблизительные сроки'}
           className={'kvadred-mt-16 kvadred-mb-16'}
-          width={60}
+          width={65}
         >
           <div className="chart-container">
             {chartTasks.map((task, index) => (
@@ -234,11 +236,13 @@ function MainPage() {
           </div>
         </Block>
         <Block
+          transparent
+          padding={false}
           label={'Приблизительная стоимость'}
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={35}
         >
-          <div className={'chart-container'}>
+          <div className={'chart-container chart-container--fixed-width'}>
             <span className="bubble-total">{`Общая стоимость: ${formatDigitCommas(total)} ₸`}</span>
             <div className={'bubble bubble-b1'}>
               <div className={'title'}>30%</div>

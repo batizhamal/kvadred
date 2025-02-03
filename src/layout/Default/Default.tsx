@@ -15,12 +15,14 @@ function LayoutDefault(props: Props) {
   return (
     <div className={'default'}>
       <Menu items={routes} />
-      <div
-        className={classNames('default__content', {
-          'default__content--scrollable': scrollable,
-        })}
-      >
-        {children}
+      <div className={'default__content'}>
+        <div
+          className={classNames('default__wrapper', {
+            'default__wrapper--scrollable': scrollable,
+          })}
+        >
+          {children}
+        </div>
       </div>
     </div>
   );
