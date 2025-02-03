@@ -3,7 +3,7 @@ import { Button, Header } from '@app/components';
 import { useNavigate } from 'react-router-dom';
 import { FaInstagram } from 'react-icons/fa';
 import { useHeader } from '@app/hooks';
-import { FaArrowRight, FaTelegram, FaWhatsapp } from 'react-icons/fa6';
+import { FaArrowRight, FaWhatsapp } from 'react-icons/fa6';
 import { Block1, Block3 } from './partials';
 
 function Landing() {
@@ -71,7 +71,7 @@ function Landing() {
             </div>
             <div className={'landing-stats__block-container'}>
               <div className={'landing-stats__block'}>
-                <div className={'title'}>Точная смета за 2 клика</div>
+                <div className={'title'}>Смета за 2 клика</div>
                 <div className={'subtitle'}>
                   получите подробный расчет стоимости материалов и сроков
                   ремонта без регистрации
@@ -176,7 +176,26 @@ function Landing() {
           <div className={'landing-divider kvadred-mb-48'}></div>
           <div className={'landing-footer__layout'}>
             <span>Kvadred 2025</span>
-            <span className={'landing-footer__terms'}>Условия и положения</span>
+            <div className={'landing-footer__terms'}>
+              <span
+                className={'landing-footer__term'}
+                onClick={() => {
+                  const pdfPath = '/docs/terms.pdf';
+                  window.open(pdfPath, '_blank');
+                }}
+              >
+                Пользовательское соглашение
+              </span>
+              <span
+                className={'landing-footer__term'}
+                onClick={() => {
+                  const pdfPath = '/docs/confidentiality.pdf';
+                  window.open(pdfPath, '_blank');
+                }}
+              >
+                Политика конфиденциальности
+              </span>
+            </div>
             <div className={'landing-footer__social-wrapper'}>
               <div
                 className={'landing-footer__social-item'}
@@ -194,9 +213,9 @@ function Landing() {
               >
                 <FaInstagram />
               </div>
-              <div className={'landing-footer__social-item'}>
-                <FaTelegram />
-              </div>
+              {/*<div className={'landing-footer__social-item'}>*/}
+              {/*  <FaTelegram />*/}
+              {/*</div>*/}
             </div>
           </div>
         </div>
