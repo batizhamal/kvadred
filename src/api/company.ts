@@ -15,6 +15,9 @@ export interface Company {
   price: number;
   created_at: string;
   updated_at: string;
+  __v: number;
+  top: boolean;
+  phone: string;
 }
 
 export function getBestCompanies(): Promise<Company[]> {
@@ -46,7 +49,7 @@ export function getBestCompanies(): Promise<Company[]> {
   //       name: 'UDH',
   //       price: 890500,
   //       link: 'https://www.instagram.com/uidomhome/?hl=en',
-  //       logo: '/uidomhome.png',
+  //       logo: '/6773a1a3d57b38aaa3a89166.png',
   //       bestIn: 'price',
   //     },
   //   ]);
@@ -76,7 +79,7 @@ export function getCompanies(): Promise<Company[]> {
   //       name: 'UDH',
   //       price: 890500,
   //       link: 'https://www.instagram.com/uidomhome/?hl=en',
-  //       logo: '/uidomhome.png',
+  //       logo: '/6773a1a3d57b38aaa3a89166.png',
   //     },
   //     {
   //       name: 'Aberoy',
@@ -94,7 +97,7 @@ export function getCompanies(): Promise<Company[]> {
   //       name: 'UDH',
   //       price: 890500,
   //       link: 'https://www.instagram.com/uidomhome/?hl=en',
-  //       logo: '/uidomhome.png',
+  //       logo: '/6773a1a3d57b38aaa3a89166.png',
   //     },
   //   ]);
   // });

@@ -183,9 +183,9 @@ function MainPage() {
           label={'Компании под ключ'}
           width={32}
           scrollable
-          rightControls={[
-            <Button text={'Написать всем'} size={'small'} color={'default'} />,
-          ]}
+          // rightControls={[
+          //   <Button text={'Написать всем'} size={'small'} color={'default'} />,
+          // ]}
           transparent
           padding={false}
         >

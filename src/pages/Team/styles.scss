@@ -96,4 +96,33 @@
   .phone-number {
     @include bicubik;
   }
+
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: $base-offset * 0.5;
+
+    &__item {
+      width: 2rem;
+      height: 2rem;
+      background-color: rgba(0, 48, 66, 0.23);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .mission {
+    @include bicubik;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title {
+      font-size: 24px;
+    }
+  }
 }
+

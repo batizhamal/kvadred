@@ -1,7 +1,7 @@
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import { FaInstagram } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa6';
+import { FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 
 function Team() {
   return (
@@ -34,7 +34,7 @@ function Team() {
                 className={'contact'}
                 onClick={() => {
                   window.open(
-                    'https://www.linkedin.com/in/iskandertemirlan/https://www.instagram.com/batizhamal/https://www.linkedin.com/in/batizhamal-rauiya-7368061b1/',
+                    'https://www.linkedin.com/in/iskandertemirlan/',
                     '_blank'
                   );
                 }}
@@ -55,7 +55,7 @@ function Team() {
                 className={'contact'}
                 onClick={() => {
                   window.open(
-                    'https://wa.me/+77000780088https://www.instagram.com/serikovskii?igsh=MTBubTNtbDdsczU5ZA==',
+                    'https://www.instagram.com/serikovskii?igsh=MTBubTNtbDdsczU5ZA==',
                     '_blank'
                   );
                 }}
@@ -66,7 +66,7 @@ function Team() {
                 className={'contact'}
                 onClick={() => {
                   window.open(
-                    'https://www.instagram.com/batizhamal/https://www.linkedin.com/in/batizhamal-rauiya-7368061b1/https://www.linkedin.com/in/azat-mukushev-522675244/',
+                    'https://www.linkedin.com/in/azat-mukushev-522675244/',
                     '_blank'
                   );
                 }}
@@ -98,7 +98,7 @@ function Team() {
                 className={'contact'}
                 onClick={() => {
                   window.open(
-                    'https://www.instagram.com/batizhamal/https://www.linkedin.com/in/batizhamal-rauiya-7368061b1/',
+                    'https://www.linkedin.com/in/batizhamal-rauiya-7368061b1/',
                     '_blank'
                   );
                 }}
@@ -108,7 +108,43 @@ function Team() {
             </div>
           </div>
         </div>
-        <div className={'phone-number'}>Номер телефона: +7 700 078 0088</div>
+        <div className={'mission'}>
+          <div className={'mission__title'}>Миссия стартапа</div>
+          <span>
+            Мы создаем цифровую экосистему для ремонтных компаний, где они могут
+            управлять проектами, рассчитывать сметы и находить клиентов без
+            хаоса в чатах и таблицах.
+          </span>
+          <span>
+            Наша цель — сделать рынок ремонта прозрачным и удобным как для
+            подрядчиков, так и для заказчиков.
+          </span>
+        </div>
+        <div className={'mission'}>
+          <div className={'mission__title'}>Контакты</div>
+          <div className={'phone-number'}>Номер телефона: +7 700 078 0088</div>
+          <div className={'socials'}>
+            <div
+              className={'socials__item'}
+              onClick={() => {
+                window.open('https://wa.me/+77000780088', '_blank');
+              }}
+            >
+              <FaWhatsapp />
+            </div>
+            <div
+              className={'socials__item'}
+              onClick={() => {
+                window.open('https://www.instagram.com/kvadred.kz', '_blank');
+              }}
+            >
+              <FaInstagram />
+            </div>
+            {/*<div className={'landing-footer__social-item'}>*/}
+            {/*  <FaTelegram />*/}
+            {/*</div>*/}
+          </div>
+        </div>
       </div>
     </LayoutDefault>
   );

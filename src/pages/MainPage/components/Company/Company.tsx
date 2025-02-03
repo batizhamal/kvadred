@@ -48,8 +48,9 @@ function Company(props: Props) {
 
     <div className={'company'}>
       <div className={'company__content'}>
-        <div className={'company__logo'}></div>
-        {/*TODO: logo*/}
+        <div className={'company__logo'}>
+          <img alt={'logo'} src={`/companies/${company._id}.png`} />
+        </div>
         <div className={'company__title'}>
           <div className={'main'}>{company.name}</div>
           <Typography
@@ -81,7 +82,12 @@ function Company(props: Props) {
             variant={'outlined'}
           />
         )}
-        <FaWhatsapp style={{ cursor: 'pointer' }} />
+        <FaWhatsapp
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            window.open(`https://wa.me/${company.phone}`, '_blank');
+          }}
+        />
       </div>
       {/*{!!company.bestIn && (*/}
       {/*  <div className={'company-card__best-in kvadred-mt-8'}>*/}
