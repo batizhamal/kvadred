@@ -18,7 +18,7 @@ function Team() {
               <img src={'/isco.jpg'} alt={'isco'} />
             </div>
             <div className={'title'}>Искандер Темирлан</div>
-            <div className={'subtitle'}>Founder, CEO</div>
+            <div className={'subtitle'}>Co-Founder, CEO</div>
             <div className={'contacts'}>
               <div
                 className={'contact'}
