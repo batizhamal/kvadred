@@ -1,23 +1,17 @@
-.chart {
-  color: #164850;
-  border-radius: 10px;
-  width: 100%;
-  position: relative;
-  overflow-x: auto;
-  height: 220px;
-  display: flex;
-  flex-direction: column;
-
-  &--fixed-width {
-    width: 320px;
-  }
-
-  &__row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-}
+//.chart {
+//  color: #164850;
+//  border-radius: 10px;
+//  width: 100%;
+//  position: relative;
+//  overflow-x: auto;
+//  height: 220px;
+//  display: flex;
+//  flex-direction: column;
+//
+//  &--fixed-width {
+//    width: 320px;
+//  }
+//}
 
 .task {
   z-index: 2;
@@ -191,4 +185,14 @@
   border-radius: 5px;
   font-weight: bold;
   color: #1b3a47;
+}
+
+.bubble-container {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  overflow: scroll;
 }

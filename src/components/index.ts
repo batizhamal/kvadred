@@ -33,3 +33,5 @@ export { default as Loader } from './Loader';
 
 export { default as Tabs } from './Tabs';
 export { default as Menu } from './Menu';
+
+export { default as CircleChart } from './CircleChart';

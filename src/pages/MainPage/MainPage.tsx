@@ -1,4 +1,4 @@
-import { Block, Button, Callout, Loader } from '@app/components';
+import { Block, Button, Callout, CircleChart, Loader } from '@app/components';
 import './styles.scss';
 import { LayoutDefault } from '@app/layout';
 import {
@@ -55,6 +55,12 @@ function MainPage() {
         'покраска стен, установка дверей и плинтуса, чистовые розетки, установка натяжного потолка и освещения',
       progressColor: 'linear-gradient(to right, #074C4E, #F6E27F)',
     },
+  ];
+
+  const bubbleTasks = [
+    { value: 30, label: 'Черновые', color: 'url(#fuelGradient)' },
+    { value: 40, label: 'Чистовые', color: 'url(#coolantGradient)' },
+    { value: 30, label: 'Отделочные', color: 'url(#brakeGradient)' },
   ];
 
   useEffect(() => {
@@ -284,29 +290,58 @@ function MainPage() {
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={35}
         >
-          <div className={'chart chart--fixed-width'}>
-            <span className="bubble-total">{`Общая стоимость: ${formatDigitCommas(total)} ₸`}</span>
-            <div className={'bubble bubble-b1'}>
-              <div className={'title'}>30%</div>
-              <div className={'subtitle'}>Черновые</div>
-              <div
-                className={'price'}
-              >{`${formatDigitCommas(total * 0.3)} ₸`}</div>
-            </div>
-            <div className={'bubble bubble-b2'}>
-              <div className={'title'}>40%</div>
-              <div className={'subtitle'}>Чистовые</div>
-              <div
-                className={'price'}
-              >{`${formatDigitCommas(total * 0.4)} ₸`}</div>
-            </div>
-            <div className={'bubble bubble-b3'}>
-              <div className={'title'}>30%</div>
-              <div className={'subtitle'}>Отделочные</div>
-              <div
-                className={'price'}
-              >{`${formatDigitCommas(total * 0.3)} ₸`}</div>
-            </div>
+          <svg width="0" height="0">
+            <defs>
+              <linearGradient
+                id="fuelGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#074C4E" />
+                <stop offset="100%" stopColor="#C1C1C1" />
+              </linearGradient>
+              <linearGradient
+                id="coolantGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#4DA9C2" />
+                <stop offset="100%" stopColor="#C1C1C1" />
+              </linearGradient>
+              <linearGradient
+                id="brakeGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#F6E27F" />
+                <stop offset="100%" stopColor="#C1C1C1" />
+              </linearGradient>
+              <linearGradient
+                id="oilGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="0%"
+              >
+                <stop offset="0%" stopColor="#E86B39" />
+                <stop offset="100%" stopColor="#C1C1C1" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div className="bubble-container">
+            {bubbleTasks.map((item, index) => (
+              <CircleChart
+                key={index}
+                {...item}
+                labelPostfix={`${formatDigitCommas((total * item.value) / 100)} ₸`}
+              />
+            ))}
           </div>
         </Block>
       </div>
