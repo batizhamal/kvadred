@@ -31,9 +31,30 @@ function MainPage() {
   const [companies, setCompanies] = useState<Company[]>([]);
 
   const chartTasks = [
-    { name: 'Черновые', duration: 30, width: '35%' },
-    { name: 'Чистовые', duration: 40, width: '45%' },
-    { name: 'Отделочные', duration: 30, width: '35%' },
+    {
+      name: 'Черновые',
+      duration: 30,
+      width: '30%',
+      description:
+        'подготовительные работы: выравнивание стен и пола, прокладка электрики и сантехники',
+      progressColor: 'linear-gradient(to right, #F6E27F, #C1C1C1)',
+    },
+    {
+      name: 'Чистовые',
+      duration: 40,
+      width: '40%',
+      description:
+        'раскладка плитки, ламината, установка подоконников, подготовка стен к покраске/обоям',
+      progressColor: 'linear-gradient(to right, #4DA9C2, #C1C1C1)',
+    },
+    {
+      name: 'Отделочные',
+      duration: 30,
+      width: '30%',
+      description:
+        'покраска стен, установка дверей и плинтуса, чистовые розетки, установка натяжного потолка и освещения',
+      progressColor: 'linear-gradient(to right, #074C4E, #F6E27F)',
+    },
   ];
 
   useEffect(() => {
@@ -216,23 +237,44 @@ function MainPage() {
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={65}
         >
-          <div className="chart-container">
+          {/*<div className="chart">*/}
+          {/*  {chartTasks.map((task, index) => (*/}
+          {/*    <div*/}
+          {/*      key={index}*/}
+          {/*      className="task"*/}
+          {/*      style={{*/}
+          {/*        width: `calc(${task.width} - 30px)`,*/}
+          {/*        top: `${index * 60}px`, // Stacks vertically*/}
+          {/*        left: index === 0 ? '0' : index === 1 ? `25%` : '60%',*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      <span className="task-label">{task.name}</span>*/}
+          {/*      <span className="task-duration">{`${(task.duration * area) / 100} д`}</span>*/}
+          {/*    </div>*/}
+          {/*  ))}*/}
+          {/*  <span className="total-duration">{`${area} дней`}</span>*/}
+          {/*  <img src={'/1.png'} alt={'grid'} style={{ width: '100%' }} />*/}
+          {/*</div>*/}
+          <div className="progress-chart">
             {chartTasks.map((task, index) => (
-              <div
-                key={index}
-                className="task"
-                style={{
-                  width: `calc(${task.width} - 30px)`,
-                  top: `${index * 60}px`, // Stacks vertically
-                  left: index === 0 ? '0' : index === 1 ? `25%` : '60%',
-                }}
-              >
-                <span className="task-label">{task.name}</span>
-                <span className="task-duration">{`${(task.duration * area) / 100} д`}</span>
+              <div key={index} className="progress-item">
+                <div className="progress-title">{task.name}</div>
+                <div className={'progress-bar-wrapper'}>
+                  <div className="progress-description">{task.description}</div>
+                  <div className="progress-bar-container">
+                    <div
+                      className="progress-bar"
+                      style={{
+                        width: `calc(${task.width})`,
+                        background: task.progressColor,
+                        left: index === 0 ? '0' : index === 1 ? `30%` : '70%',
+                      }}
+                    ></div>
+                  </div>
+                </div>
+                <div className="progress-duration">{`${(task.duration * area) / 100} д`}</div>
               </div>
             ))}
-            <span className="total-duration">{`${area} дней`}</span>
-            <img src={'/1.png'} alt={'grid'} style={{ width: '100%' }} />
           </div>
         </Block>
         <Block
@@ -242,7 +284,7 @@ function MainPage() {
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={35}
         >
-          <div className={'chart-container chart-container--fixed-width'}>
+          <div className={'chart chart--fixed-width'}>
             <span className="bubble-total">{`Общая стоимость: ${formatDigitCommas(total)} ₸`}</span>
             <div className={'bubble bubble-b1'}>
               <div className={'title'}>30%</div>

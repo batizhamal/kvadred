@@ -32,7 +32,7 @@
 
     &--scrollable {
       height: fit-content;
-      overflow: auto;
+      overflow: hidden;
       overflow-y: scroll;
       flex: unset;
     }

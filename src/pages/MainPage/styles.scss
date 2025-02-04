@@ -1,13 +1,21 @@
-.chart-container {
+.chart {
   color: #164850;
   border-radius: 10px;
   width: 100%;
   position: relative;
   overflow-x: auto;
   height: 220px;
+  display: flex;
+  flex-direction: column;
 
   &--fixed-width {
     width: 320px;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -125,4 +133,62 @@
 .bubble-total {
   font-size: 14px;
   font-weight: 600;
+}
+
+.progress-chart {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.progress-title {
+  font-weight: bold;
+  color: #1b3a47;
+  min-width: 150px;
+}
+
+.progress-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: fit-content;
+  flex: 1;
+  gap: 4px;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  position: absolute;
+}
+
+.progress-description {
+  font-size: 12px;
+  color: #2c6e79;
+  flex: 2;
+  text-align: center;
+}
+
+.progress-duration {
+  background: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #1b3a47;
 }

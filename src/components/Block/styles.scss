@@ -14,7 +14,7 @@
   border-radius: $base-radius;
 
   &--scrollable {
-    height: 100%;
+    height: calc(100% - 16px);
     flex: 1 1 auto;
     overflow: hidden;
     overflow-y: auto;
