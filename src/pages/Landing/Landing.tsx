@@ -151,7 +151,7 @@ function Landing() {
               процент бюджета уходит на разные виды работ
             </div>
             <div className={'landing-features__feature--right'}>
-              <img src={'/screen1.jpg'} alt={'screen3'} />
+              <img src={'/screen3.png'} alt={'screen3'} />
             </div>
           </div>
         </div>
