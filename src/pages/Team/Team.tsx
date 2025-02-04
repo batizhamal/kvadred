@@ -5,11 +5,12 @@ import { FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 
 function Team() {
   return (
-    <LayoutDefault>
+    <LayoutDefault scrollable>
       <div className="team">
         <div className={'team__header'}>
-          <div className={'team__subtitle'}>Машины KVADRED</div>
-          <div className={'team__title'}>Команда профессионалов</div>
+          {/*<div className={'team__subtitle'}>Машины KVADRED</div>*/}
+          {/*<div className={'team__title'}>Команда профессионалов</div>*/}
+          <div className={'team__title'}>Машины KVADRED</div>
         </div>
         <div className={'team__block-container'}>
           <div className={'team__block'}>
@@ -120,8 +121,8 @@ function Team() {
             подрядчиков, так и для заказчиков.
           </span>
         </div>
-        <div className={'mission'}>
-          <div className={'mission__title'}>Контакты</div>
+        <div className={'contacts'}>
+          <div className={'contacts__title'}>Контакты</div>
           <div className={'phone-number'}>Номер телефона: +7 700 078 0088</div>
           <div className={'socials'}>
             <div
