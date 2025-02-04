@@ -121,8 +121,8 @@ function Team() {
             подрядчиков, так и для заказчиков.
           </span>
         </div>
-        <div className={'contacts'}>
-          <div className={'contacts__title'}>Контакты</div>
+        <div className={'contacts-block'}>
+          <div className={'contacts-block__title'}>Контакты</div>
           <div className={'phone-number'}>Номер телефона: +7 700 078 0088</div>
           <div className={'socials'}>
             <div
