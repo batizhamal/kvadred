@@ -1,22 +1,15 @@
 export const formatDigitsGrouping = (number: number | string): string => {
-  const fullNumberString: string = number + '';
+  const parsedNumber =
+    typeof number === 'string' ? parseFloat(number.replace(',', '.')) : number;
+  if (isNaN(parsedNumber)) return 'Invalid number';
 
-  let decimalIndex = fullNumberString.indexOf(',');
-  if (decimalIndex === -1) {
-    decimalIndex = fullNumberString.indexOf('.');
-  }
-  if (decimalIndex === -1) {
-    decimalIndex = fullNumberString.length;
-  }
+  const roundedNumber = Math.round(parsedNumber);
 
-  const decimalPart = fullNumberString.substring(
-    decimalIndex,
-    fullNumberString.length
-  );
-  const wholePart = fullNumberString.substring(0, decimalIndex);
+  const formattedNumber = roundedNumber
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
-  const groupedWholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  return groupedWholePart + decimalPart;
+  return `${formattedNumber} ₸`;
 };
 
 export const formatMaxFloat = (number: number | string): string => {

@@ -214,7 +214,7 @@ function MainPage() {
                         ></div>
                       </div>
                     </div>
-                    <div className="progress-duration">{`${(task.duration * area) / 100} д`}</div>
+                    <div className="progress-duration">{`${Math.round((task.duration * area) / 100)} д`}</div>
                   </div>
                 ))}
               </div>
