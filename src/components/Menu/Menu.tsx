@@ -2,8 +2,7 @@ import './styles.scss';
 import { HeaderItem } from '@app/hooks';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
-import { FaCalculator, FaHome, FaPhoneAlt } from 'react-icons/fa';
-import { FaBars, FaChevronLeft, FaPeopleGroup } from 'react-icons/fa6';
+import { FaBars, FaChevronLeft } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 
 interface Props {
@@ -11,10 +10,11 @@ interface Props {
 }
 
 const icons: { [key: string]: any } = {
-  '/': <FaHome />,
-  '/smeta': <FaCalculator />,
-  '/team': <FaPeopleGroup />,
-  '/contacts': <FaPhoneAlt />,
+  '/': <img src="/icons/home.svg" alt="Home" className="menu__icon" />,
+  '/smeta': (
+    <img src="/icons/bar-chart.svg" alt="Smeta" className="menu__icon" />
+  ),
+  '/team': <img src="/icons/users.svg" alt="Team" className="menu__icon" />,
 };
 
 function Menu(props: Props) {

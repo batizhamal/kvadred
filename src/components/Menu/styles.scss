@@ -84,12 +84,18 @@
     align-items: center;
     padding: $base-offset * 0.5;
     gap: $base-offset * 1.5;
-    color: #67838F;
+    color: #ffffff;
     cursor: pointer;
     text-decoration: none;
 
     &--selected {
-      color: #BDD2DA;
+      border-bottom: 1px solid #FFF48B;
     }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
   }
 }

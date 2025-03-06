@@ -142,5 +142,15 @@
       font-size: 24px;
     }
   }
+
+  @media (max-width: 768px) {
+    &__block-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: $base-offset * 2;
+    }
+  }
 }
 
