@@ -117,31 +117,13 @@ function MainPage() {
 
   return (
     <LayoutDefault scrollable>
-      {/*<img*/}
-      {/*  src={'/smeta_hero.jpg'}*/}
-      {/*  alt={'smeta hero'}*/}
-      {/*  style={{*/}
-      {/*    width: '100%',*/}
-      {/*    height: '150px',*/}
-      {/*    objectFit: 'cover',*/}
-      {/*    marginBottom: '8px',*/}
-      {/*  }}*/}
-      {/*/>*/}
       <SimplifiedAdvancedSearch
         onSearch={(ar) => {
           setArea(ar);
           fetchProjects(ar);
         }}
       />
-      <div
-        className={'kvadred-flex kvadred-gap-24'}
-        style={{
-          display: 'flex',
-          flex: '1 1 auto',
-          minHeight: 'calc(100vh - 140px)',
-          overflow: 'hidden',
-        }}
-      >
+      <div className={'row-wrapper'}>
         <Block
           label={'Смета'}
           className={'kvadred-mt-16 kvadred-mb-16'}
@@ -149,7 +131,6 @@ function MainPage() {
           padding={false}
           scrollable
           rightControls={[
-            // <Chip text={'Комфорт'} color={'success'} variant={'outlined'} />,
             <Button
               text={'Скачать'}
               icon={FaFileDownload}
@@ -168,42 +149,6 @@ function MainPage() {
             <SmetaTable project={project} />
           )}
         </Block>
-        {/*<div className={'kvadred-flex kvadred-flex-w-100 kvadred-flex-column'}>*/}
-        {/*{!!bestCompanies.length && (*/}
-        {/*  <Block*/}
-        {/*    label={'Компании под ключ'}*/}
-        {/*    header*/}
-        {/*  >*/}
-        {/*    <div*/}
-        {/*      style={{*/}
-        {/*        display: 'grid',*/}
-        {/*        gridTemplateColumns: 'repeat(3, 1fr)',*/}
-        {/*        rowGap: '16px',*/}
-        {/*        justifyContent: 'space-between',*/}
-        {/*        width: '100%',*/}
-        {/*      }}*/}
-        {/*    >*/}
-        {/*      {bestCompanies.map((bestComp, index) => (*/}
-        {/*        <CompanyCard key={`best-${index}`} company={bestComp} />*/}
-        {/*      ))}*/}
-        {/*    </div>*/}
-        {/*  </Block>*/}
-        {/*)}*/}
-        {/*<Block shrink label={'Компании под ключ'}>*/}
-        {/*  <div*/}
-        {/*    style={{*/}
-        {/*      display: 'grid',*/}
-        {/*      gridTemplateColumns: 'repeat(3, 1fr)',*/}
-        {/*      rowGap: '16px',*/}
-        {/*      justifyContent: 'space-between',*/}
-        {/*      width: '100%',*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    {companies.map((bestComp, index) => (*/}
-        {/*      <CompanyCard key={`best-${index}`} company={bestComp} />*/}
-        {/*    ))}*/}
-        {/*  </div>*/}
-        {/*</Block>*/}
 
         <Block
           className={'kvadred-mt-16 kvadred-mb-16'}
@@ -233,9 +178,9 @@ function MainPage() {
               ))}
           </div>
         </Block>
-        {/*</div>*/}
       </div>
-      <div className={'kvadred-flex kvadred-gap-16'}>
+
+      <div className={'row-wrapper'}>
         <Block
           transparent
           padding={false}
@@ -243,24 +188,6 @@ function MainPage() {
           className={'kvadred-mt-16 kvadred-mb-16'}
           width={65}
         >
-          {/*<div className="chart">*/}
-          {/*  {chartTasks.map((task, index) => (*/}
-          {/*    <div*/}
-          {/*      key={index}*/}
-          {/*      className="task"*/}
-          {/*      style={{*/}
-          {/*        width: `calc(${task.width} - 30px)`,*/}
-          {/*        top: `${index * 60}px`, // Stacks vertically*/}
-          {/*        left: index === 0 ? '0' : index === 1 ? `25%` : '60%',*/}
-          {/*      }}*/}
-          {/*    >*/}
-          {/*      <span className="task-label">{task.name}</span>*/}
-          {/*      <span className="task-duration">{`${(task.duration * area) / 100} д`}</span>*/}
-          {/*    </div>*/}
-          {/*  ))}*/}
-          {/*  <span className="total-duration">{`${area} дней`}</span>*/}
-          {/*  <img src={'/1.png'} alt={'grid'} style={{ width: '100%' }} />*/}
-          {/*</div>*/}
           <div className="progress-chart">
             {chartTasks.map((task, index) => (
               <div key={index} className="progress-item">

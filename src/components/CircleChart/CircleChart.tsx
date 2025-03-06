@@ -52,10 +52,12 @@ const CircleChart = ({
           {value}%
         </text>
       </svg>
-      <div className="chart-label">{label}</div>
-      {!!labelPostfix && (
-        <div className="chart-label-postfix">{labelPostfix}</div>
-      )}
+      <div className={'chart-label-wrapper'}>
+        <div className="chart-label">{label}</div>
+        {!!labelPostfix && (
+          <div className="chart-label-postfix">{labelPostfix}</div>
+        )}
+      </div>
     </div>
   );
 };

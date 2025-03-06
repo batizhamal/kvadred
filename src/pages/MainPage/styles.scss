@@ -1,17 +1,11 @@
-//.chart {
-//  color: #164850;
-//  border-radius: 10px;
-//  width: 100%;
-//  position: relative;
-//  overflow-x: auto;
-//  height: 220px;
-//  display: flex;
-//  flex-direction: column;
-//
-//  &--fixed-width {
-//    width: 320px;
-//  }
-//}
+.smeta-company-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex: 1 1 auto;
+  min-height: calc(100vh - 140px);
+  overflow: hidden;
+}
 
 .task {
   z-index: 2;
@@ -66,7 +60,7 @@
   color: #164850;
 
   & .title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
   }
 
@@ -148,6 +142,7 @@
   font-weight: bold;
   color: #1b3a47;
   min-width: 150px;
+  font-size: 14px;
 }
 
 .progress-bar-wrapper {
@@ -196,4 +191,38 @@
   gap: 20px;
   overflow: scroll;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .row-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: unset;
+    min-height: max-content;
+    overflow: unset;
+  }
+
+  .progress-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+  }
+
+  .progress-title {
+    font-weight: bold;
+    color: #1b3a47;
+    min-width: 150px;
+    align-self: flex-start;
+  }
+
+  .bubble-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: scroll;
+    justify-content: center;
+  }
 }
