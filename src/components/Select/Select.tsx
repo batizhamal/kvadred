@@ -132,6 +132,7 @@ function Select(props: SelectProps) {
                   onSearch={(text) => {
                     onSearch(text);
                   }}
+                  searchOnChange
                 />
               </div>
               <Divider className={'kvadred-select__divider'} />
