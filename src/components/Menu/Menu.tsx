@@ -30,18 +30,31 @@ function Menu(props: Props) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const toggle = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <div className={classNames('menu', { 'menu--collapsed': collapsed })}>
-      <button className="menu__toggle" onClick={() => setCollapsed(!collapsed)}>
-        {collapsed ? <FaBars /> : <FaChevronLeft />}
-      </button>
       <img
         src={'/bg_waves.jpg'}
         alt={'background'}
         className="menu__background"
       />
       <div className={'menu__wrapper'}>
-        {!collapsed && <img src={'/logo.svg'} alt={'logo'} height={'64px'} />}
+        <div className={'logo-wrapper'}>
+          {!collapsed && (
+            <img
+              src={'/logo.svg'}
+              alt={'logo'}
+              height={'64px'}
+              className={'logo'}
+            />
+          )}
+          <button type="button" className="menu__toggle" onClick={toggle}>
+            {collapsed ? <FaBars /> : <FaChevronLeft />}
+          </button>
+        </div>
         <div className={'menu__items'}>
           {items
             .filter((item) => item.path !== '/contacts')
