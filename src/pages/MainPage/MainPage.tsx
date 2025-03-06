@@ -123,155 +123,166 @@ function MainPage() {
           fetchProjects(ar);
         }}
       />
-      <div className={'smeta-company-wrapper row-wrapper'}>
-        <Block
-          label={'Смета'}
-          className={'kvadred-mt-16 kvadred-mb-16'}
-          transparent
-          padding={false}
-          scrollable
-          rightControls={[
-            <Button
-              text={'Скачать'}
-              icon={FaFileDownload}
-              size={'small'}
-              variant={'text'}
-              onClick={download}
-            />,
-          ]}
-          width={65}
-        >
-          {loading && <Loader center color={'#2B2D42'} size={48} />}
-          {errorMessage && !loading && (
-            <Callout variant={'alert'}>{errorMessage}</Callout>
-          )}
-          {!loading && !!project && !errorMessage && (
-            <SmetaTable project={project} />
-          )}
-        </Block>
+      {loading && (
+        <div className={'loader-wrapper'}>
+          <Loader center color={'#2B2D42'} size={48} />
+        </div>
+      )}
+      {!loading && (
+        <>
+          <div className={'smeta-company-wrapper row-wrapper'}>
+            <Block
+              label={'Смета'}
+              className={'kvadred-mt-16 kvadred-mb-16'}
+              transparent
+              padding={false}
+              scrollable
+              rightControls={[
+                <Button
+                  text={'Скачать'}
+                  icon={FaFileDownload}
+                  size={'small'}
+                  variant={'text'}
+                  onClick={download}
+                />,
+              ]}
+              width={65}
+            >
+              {errorMessage && !loading && (
+                <Callout variant={'alert'}>{errorMessage}</Callout>
+              )}
+              {!loading && !!project && !errorMessage && (
+                <SmetaTable project={project} />
+              )}
+            </Block>
 
-        <Block
-          className={'kvadred-mt-16 kvadred-mb-16'}
-          label={'Компании под ключ'}
-          width={32}
-          scrollable
-          // rightControls={[
-          //   <Button text={'Написать всем'} size={'small'} color={'default'} />,
-          // ]}
-          transparent
-          padding={false}
-        >
-          <div
-            className={
-              'kvadred-flex kvadred-flex-column kvadred-gap-16 kvadred-flex-w-100 kvadred-mt-8'
-            }
-          >
-            {companies
-              .sort((a, b) => a.price - b.price)
-              .map((bestComp, index) => (
-                <CompanyCard
-                  area={area}
-                  key={`best-${index}`}
-                  company={bestComp}
-                  bestIn={index === 0 ? 'price' : undefined}
-                />
-              ))}
-          </div>
-        </Block>
-      </div>
-
-      <div className={'row-wrapper'}>
-        <Block
-          transparent
-          padding={false}
-          label={'Приблизительные сроки'}
-          className={'kvadred-mt-16 kvadred-mb-16'}
-          width={65}
-        >
-          <div className="progress-chart">
-            {chartTasks.map((task, index) => (
-              <div key={index} className="progress-item">
-                <div className="progress-title">{task.name}</div>
-                <div className={'progress-bar-wrapper'}>
-                  <div className="progress-description">{task.description}</div>
-                  <div className="progress-bar-container">
-                    <div
-                      className="progress-bar"
-                      style={{
-                        width: `calc(${task.width})`,
-                        background: task.progressColor,
-                        left: index === 0 ? '0' : index === 1 ? `30%` : '70%',
-                      }}
-                    ></div>
-                  </div>
-                </div>
-                <div className="progress-duration">{`${(task.duration * area) / 100} д`}</div>
+            <Block
+              className={'kvadred-mt-16 kvadred-mb-16'}
+              label={'Компании под ключ'}
+              width={32}
+              scrollable
+              // rightControls={[
+              //   <Button text={'Написать всем'} size={'small'} color={'default'} />,
+              // ]}
+              transparent
+              padding={false}
+            >
+              <div
+                className={
+                  'kvadred-flex kvadred-flex-column kvadred-gap-16 kvadred-flex-w-100 kvadred-mt-8'
+                }
+              >
+                {companies
+                  .sort((a, b) => a.price - b.price)
+                  .map((bestComp, index) => (
+                    <CompanyCard
+                      area={area}
+                      key={`best-${index}`}
+                      company={bestComp}
+                      bestIn={index === 0 ? 'price' : undefined}
+                    />
+                  ))}
               </div>
-            ))}
+            </Block>
           </div>
-        </Block>
-        <Block
-          transparent
-          padding={false}
-          label={'Приблизительная стоимость'}
-          className={'kvadred-mt-16 kvadred-mb-16'}
-          width={35}
-        >
-          <svg width="0" height="0">
-            <defs>
-              <linearGradient
-                id="fuelGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#074C4E" />
-                <stop offset="100%" stopColor="#C1C1C1" />
-              </linearGradient>
-              <linearGradient
-                id="coolantGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#4DA9C2" />
-                <stop offset="100%" stopColor="#C1C1C1" />
-              </linearGradient>
-              <linearGradient
-                id="brakeGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#F6E27F" />
-                <stop offset="100%" stopColor="#C1C1C1" />
-              </linearGradient>
-              <linearGradient
-                id="oilGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#E86B39" />
-                <stop offset="100%" stopColor="#C1C1C1" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div className="bubble-container">
-            {bubbleTasks.map((item, index) => (
-              <CircleChart
-                key={index}
-                {...item}
-                labelPostfix={`${formatDigitCommas((total * item.value) / 100)} ₸`}
-              />
-            ))}
+
+          <div className={'row-wrapper'}>
+            <Block
+              transparent
+              padding={false}
+              label={'Приблизительные сроки'}
+              className={'kvadred-mt-16 kvadred-mb-16'}
+              width={65}
+            >
+              <div className="progress-chart">
+                {chartTasks.map((task, index) => (
+                  <div key={index} className="progress-item">
+                    <div className="progress-title">{task.name}</div>
+                    <div className={'progress-bar-wrapper'}>
+                      <div className="progress-description">
+                        {task.description}
+                      </div>
+                      <div className="progress-bar-container">
+                        <div
+                          className="progress-bar"
+                          style={{
+                            width: `calc(${task.width})`,
+                            background: task.progressColor,
+                            left:
+                              index === 0 ? '0' : index === 1 ? `30%` : '70%',
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                    <div className="progress-duration">{`${(task.duration * area) / 100} д`}</div>
+                  </div>
+                ))}
+              </div>
+            </Block>
+            <Block
+              transparent
+              padding={false}
+              label={'Приблизительная стоимость'}
+              className={'kvadred-mt-16 kvadred-mb-16'}
+              width={35}
+            >
+              <svg width="0" height="0">
+                <defs>
+                  <linearGradient
+                    id="fuelGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#074C4E" />
+                    <stop offset="100%" stopColor="#C1C1C1" />
+                  </linearGradient>
+                  <linearGradient
+                    id="coolantGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#4DA9C2" />
+                    <stop offset="100%" stopColor="#C1C1C1" />
+                  </linearGradient>
+                  <linearGradient
+                    id="brakeGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#F6E27F" />
+                    <stop offset="100%" stopColor="#C1C1C1" />
+                  </linearGradient>
+                  <linearGradient
+                    id="oilGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#E86B39" />
+                    <stop offset="100%" stopColor="#C1C1C1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="bubble-container">
+                {bubbleTasks.map((item, index) => (
+                  <CircleChart
+                    key={index}
+                    {...item}
+                    labelPostfix={`${formatDigitCommas((total * item.value) / 100)} ₸`}
+                  />
+                ))}
+              </div>
+            </Block>
           </div>
-        </Block>
-      </div>
+        </>
+      )}
     </LayoutDefault>
   );
 }
