@@ -80,7 +80,7 @@ const SmetaTable: React.FC<Props> = ({ project }) => {
 
           {type.expanded && (
             <>
-              <div className="grid-row grid-row--child">
+              <div className="grid-row grid-row--child grid-row--child-labels">
                 <div className="grid-cell grid-cell--bold">Материалы</div>
                 <div className="grid-cell grid-cell--bold">Цена</div>
                 <div className="grid-cell grid-cell--bold">Количество</div>
@@ -90,12 +90,20 @@ const SmetaTable: React.FC<Props> = ({ project }) => {
 
               {type.materials.map((material) => (
                 <div key={material.name} className="grid-row grid-row--child">
-                  <div className="grid-cell">{material.name}</div>
-                  <div className="grid-cell">{`${formatDigitCommas(material.price)} ₸`}</div>
-                  <div className="grid-cell">{material.quantity}</div>
-                  <div className="grid-cell">{`${formatDigitCommas(
-                    material.total_cost
-                  )} ₸`}</div>
+                  <div className="grid-cell" data-label="Материалы">
+                    {material.name}
+                  </div>
+                  <div
+                    className="grid-cell"
+                    data-label="Цена"
+                  >{`${formatDigitCommas(material.price)} ₸`}</div>
+                  <div className="grid-cell" data-label="Количество">
+                    {material.quantity}
+                  </div>
+                  <div
+                    className="grid-cell"
+                    data-label="Стоимость"
+                  >{`${formatDigitCommas(material.total_cost)} ₸`}</div>
                   <div className="grid-cell"></div>
                 </div>
               ))}

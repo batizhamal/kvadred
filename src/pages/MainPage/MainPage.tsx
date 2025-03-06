@@ -123,7 +123,7 @@ function MainPage() {
           fetchProjects(ar);
         }}
       />
-      <div className={'row-wrapper'}>
+      <div className={'smeta-company-wrapper row-wrapper'}>
         <Block
           label={'Смета'}
           className={'kvadred-mt-16 kvadred-mb-16'}

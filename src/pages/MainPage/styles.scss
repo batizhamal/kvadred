@@ -1,3 +1,9 @@
+.row-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
 .smeta-company-wrapper {
   display: flex;
   flex-direction: row;
