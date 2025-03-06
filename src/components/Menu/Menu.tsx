@@ -3,7 +3,8 @@ import { HeaderItem } from '@app/hooks';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { FaCalculator, FaHome, FaPhoneAlt } from 'react-icons/fa';
-import { FaPeopleGroup } from 'react-icons/fa6';
+import { FaBars, FaChevronLeft, FaPeopleGroup } from 'react-icons/fa6';
+import { useEffect, useState } from 'react';
 
 interface Props {
   items: HeaderItem[];
@@ -19,25 +20,28 @@ const icons: { [key: string]: any } = {
 function Menu(props: Props) {
   const { items } = props;
   const location = useLocation();
+  const [collapsed, setCollapsed] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCollapsed(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
-    <div className={'menu'}>
+    <div className={classNames('menu', { 'menu--collapsed': collapsed })}>
+      <button className="menu__toggle" onClick={() => setCollapsed(!collapsed)}>
+        {collapsed ? <FaBars /> : <FaChevronLeft />}
+      </button>
       <img
         src={'/bg_waves.jpg'}
         alt={'background'}
-        style={{
-          objectFit: 'cover',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: 1,
-          opacity: 0.1,
-        }}
+        className="menu__background"
       />
       <div className={'menu__wrapper'}>
-        <img src={'/logo.svg'} alt={'logo'} height={'64px'} />
+        {!collapsed && <img src={'/logo.svg'} alt={'logo'} height={'64px'} />}
         <div className={'menu__items'}>
           {items
             .filter((item) => item.path !== '/contacts')
@@ -52,17 +56,11 @@ function Menu(props: Props) {
                 })}
               >
                 {icons[item.path]}
-                {item.label}
+                {!collapsed && item.label}
               </Link>
             ))}
         </div>
       </div>
-      {/*<div className={'menu__footer'}>*/}
-      {/*  <Link className={'menu__item'} to={'/contacts'}>*/}
-      {/*    <FaPhoneAlt />*/}
-      {/*    Контакты*/}
-      {/*  </Link>*/}
-      {/*</div>*/}
     </div>
   );
 }

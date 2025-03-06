@@ -86,7 +86,7 @@ function SimplifiedAdvancedSearch(props: Props) {
           },
         ]}
       >
-        <div className={'kvadred-flex kvadred-gap-8'}>
+        <div className={'search-wrapper'}>
           <TextField
             label={'100 кв. м'}
             value={values.area}
@@ -108,11 +108,7 @@ function SimplifiedAdvancedSearch(props: Props) {
             }}
           />
         </div>
-        <div
-          className={
-            'kvadred-flex kvadred-flex-row kvadred-flex-w-100 kvadred-gap-8'
-          }
-        >
+        <div className={'search-wrapper'}>
           <Select
             options={complexOptions}
             withSearch
