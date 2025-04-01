@@ -31,6 +31,8 @@ function MainPage() {
   const [bestCompanies, setBestCompanies] = useState<Company[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
 
+  const [companiesToCompare, setCompaniesToCompare] = useState<string[]>([]);
+
   const [isComparing, setIsComparing] = useState(false);
 
   const chartTasks = [
@@ -118,6 +120,17 @@ function MainPage() {
 
   const [total, setTotal] = useState<number>(0);
 
+  const addCompanyToCompare = (company: Company) => {
+    if (companiesToCompare.includes(company._id)) {
+      setCompaniesToCompare((prev) => prev.filter((id) => id !== company._id));
+      return;
+    }
+    if (companiesToCompare.length === 3) {
+      return;
+    }
+    setCompaniesToCompare((prev) => [...prev, company._id]);
+  };
+
   return (
     <LayoutDefault scrollable>
       <SimplifiedAdvancedSearch
@@ -171,17 +184,20 @@ function MainPage() {
                   size={'small'}
                   color={'default'}
                   onClick={() => {
-                    setIsComparing(true);
+                    setIsComparing(!isComparing);
+                    setCompaniesToCompare([]);
                   }}
                 />,
-                <Button
-                  icon={FaChevronRight}
-                  size={'small'}
-                  color={'default'}
-                  onClick={() => {
-                    setIsComparing(true);
-                  }}
-                />,
+                companiesToCompare.length ? (
+                  <Button
+                    icon={FaChevronRight}
+                    size={'small'}
+                    color={'default'}
+                    onClick={() => {
+                      setIsComparing(!isComparing);
+                    }}
+                  />
+                ) : null,
               ]}
               transparent
               padding={false}
@@ -199,7 +215,18 @@ function MainPage() {
                         'kvadred-flex kvadred-flex-w-100 kvadred-gap-12'
                       }
                     >
-                      {isComparing && <Checkbox />}
+                      {isComparing && (
+                        <Checkbox
+                          checked={companiesToCompare.includes(bestComp._id)}
+                          disabled={
+                            !companiesToCompare.includes(bestComp._id) &&
+                            companiesToCompare.length === 3
+                          }
+                          onChange={() => {
+                            addCompanyToCompare(bestComp);
+                          }}
+                        />
+                      )}
                       <CompanyCard
                         area={area}
                         key={`best-${index}`}
