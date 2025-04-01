@@ -205,12 +205,12 @@ function MainPage() {
                     setCompaniesToCompare([]);
                     // updateCompanyNumber(0);
                   }}
-                  badge={
-                    !!companiesToCompare.length
-                      ? companiesToCompare.length.toString()
-                      : undefined
-                  }
-                  badgeColor={'danger'}
+                  // badge={
+                  //   !!companiesToCompare.length
+                  //     ? companiesToCompare.length.toString()
+                  //     : undefined
+                  // }
+                  // badgeColor={'danger'}
                 />,
                 companiesToCompare.length ? (
                   <Button
@@ -218,6 +218,13 @@ function MainPage() {
                     size={'small'}
                     color={'default'}
                     onClick={goToCompare}
+                    badge={
+                      !!companiesToCompare.length
+                        ? companiesToCompare.length.toString()
+                        : undefined
+                    }
+                    badgeColor={'danger'}
+                    badgePosition={'left'}
                   />
                 ) : null,
               ]}
