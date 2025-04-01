@@ -48,6 +48,8 @@ function Compare(props: Props) {
     }
   };
 
+  const yesOrNo = ['/icons/cross.svg', '/icons/checkmark.svg'];
+
   return (
     <LayoutDefault>
       {/*<div className={'grid-table'}>*/}
@@ -206,6 +208,38 @@ function Compare(props: Props) {
               </div>
             ))}
           </div>
+
+          <div className={'compare__row-title'}>Материалы</div>
+
+          {[
+            ['Черновые материалы', 'rough_materials'],
+            ['Напольное покрытие', 'flooring'],
+            ['Стены', 'walls'],
+            ['Потолок', 'ceiling'],
+            ['Двери', 'doors'],
+            ['Освещение', 'lighting'],
+            ['Электрика', 'electricity'],
+            ['Сантехника', 'plumbing'],
+            ['Кухня', 'kitchen'],
+            ['ТВ-зона', 'tv_zone'],
+            ['Тёплый пол', 'heated_floor'],
+            ['Плинтус', 'baseboard'],
+            ['Керамогранит', 'porcelain_tiles'],
+          ].map(([label, key]) => (
+            <div className={'compare__row'} key={`material-${label}`}>
+              {companies.map((company, index) => (
+                <div className={'compare__item'} key={`${label}-${index}`}>
+                  <div className={'compare__item-media'}>
+                    <img
+                      alt={'logo'}
+                      src={yesOrNo[Math.floor(Math.random() * 2)]}
+                    />
+                  </div>
+                  <div className={'compare__item-description'}>{label}</div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       )}
     </LayoutDefault>
