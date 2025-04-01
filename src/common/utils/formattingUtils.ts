@@ -9,7 +9,7 @@ export const formatDigitsGrouping = (number: number | string): string => {
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
-  return `${formattedNumber} ₸`;
+  return `${formattedNumber}`;
 };
 
 export const formatMaxFloat = (number: number | string): string => {

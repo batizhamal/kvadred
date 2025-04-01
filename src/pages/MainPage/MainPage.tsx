@@ -15,9 +15,10 @@ import {
   getProjects,
   Project,
 } from '@app/api';
-import { FaFileDownload } from 'react-icons/fa';
+import { FaChevronRight, FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
 import { formatDigitCommas } from '../../common/utils/formattingUtils.ts';
+import { Checkbox } from 'antd';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -29,6 +30,8 @@ function MainPage() {
 
   const [bestCompanies, setBestCompanies] = useState<Company[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
+
+  const [isComparing, setIsComparing] = useState(false);
 
   const chartTasks = [
     {
@@ -161,9 +164,25 @@ function MainPage() {
               label={'Компании под ключ'}
               width={32}
               scrollable
-              // rightControls={[
-              //   <Button text={'Написать всем'} size={'small'} color={'default'} />,
-              // ]}
+              rightControls={[
+                // <Button text={'Написать всем'} size={'small'} color={'default'} />,
+                <Button
+                  text={'Сравнить'}
+                  size={'small'}
+                  color={'default'}
+                  onClick={() => {
+                    setIsComparing(true);
+                  }}
+                />,
+                <Button
+                  icon={FaChevronRight}
+                  size={'small'}
+                  color={'default'}
+                  onClick={() => {
+                    setIsComparing(true);
+                  }}
+                />,
+              ]}
               transparent
               padding={false}
             >
@@ -175,12 +194,19 @@ function MainPage() {
                 {companies
                   .sort((a, b) => a.price - b.price)
                   .map((bestComp, index) => (
-                    <CompanyCard
-                      area={area}
-                      key={`best-${index}`}
-                      company={bestComp}
-                      bestIn={index === 0 ? 'price' : undefined}
-                    />
+                    <div
+                      className={
+                        'kvadred-flex kvadred-flex-w-100 kvadred-gap-12'
+                      }
+                    >
+                      {isComparing && <Checkbox />}
+                      <CompanyCard
+                        area={area}
+                        key={`best-${index}`}
+                        company={bestComp}
+                        bestIn={index === 0 ? 'price' : undefined}
+                      />
+                    </div>
                   ))}
               </div>
             </Block>
