@@ -1,10 +1,10 @@
 import './styles.scss';
-import { HeaderItem } from '@app/hooks';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Button from '../Button';
 import classNames from 'classnames';
 import { FaChevronDown } from 'react-icons/fa';
 import { useState } from 'react';
+import { HeaderItem } from '../../providers/HeaderProvider.tsx';
 
 interface Props {
   items: HeaderItem[];
