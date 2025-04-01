@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaChevronLeft } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
-import { HeaderItem } from '../../providers/HeaderProvider.tsx';
+import { HeaderItem } from '@app/providers';
 import Chip from '../Chip';
 
 interface Props {

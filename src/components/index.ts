@@ -35,3 +35,5 @@ export { default as Tabs } from './Tabs';
 export { default as Menu } from './Menu';
 
 export { default as CircleChart } from './CircleChart';
+
+export { default as Rating } from './Rating';

@@ -48,7 +48,7 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
       font-weight: 400;
       font-size: 12px;
       line-height: 16px;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 4px 8px;
 
       &::before {
@@ -66,7 +66,7 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
       font-weight: 500;
       font-size: 12px;
       line-height: 16px;
-      border-radius: 56px;
+      border-radius: 8px;
       padding: 6px 8px;
       border: 1px solid ${theme('color.gray')};
 
@@ -86,7 +86,7 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
       font-weight: 700;
       font-size: 12px;
       line-height: 16px;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 2px 8px;
       color: ${switchProp('$color', {
         default: theme('color.gray'),
@@ -197,7 +197,7 @@ const StyledChipText = styled.span.withConfig({
         warning: '#262626',
         default: '#262626',
         success: theme('color.green'),
-        danger: theme('color.red'),
+        danger: '#ffffff',
         primary: theme('color.blue'),
       },
       theme('color.redLight')

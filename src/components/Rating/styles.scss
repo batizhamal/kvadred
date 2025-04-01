@@ -1,0 +1,38 @@
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.star-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.star-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.star-fill img {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rating {
+  font-size: 32px;
+  font-weight: bold;
+  color: #173C47;
+}

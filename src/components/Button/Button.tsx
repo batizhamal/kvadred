@@ -1,5 +1,7 @@
 import './styles.scss';
 import { FunctionComponent, SVGProps } from 'react';
+import Chip, { ChipColor } from '../Chip';
+import { ChipVariant } from '../Chip/Chip.tsx';
 
 interface Props {
   variant?: 'contained' | 'outlined' | 'text';
@@ -11,6 +13,10 @@ interface Props {
   postIcon?: FunctionComponent<SVGProps<SVGSVGElement>>;
   className?: string;
   disabled?: boolean;
+  badge?: string;
+  badgeColor?: ChipColor;
+  badgeVariant?: ChipVariant;
+  badgePosition?: 'left' | 'right';
 }
 
 function Button(props: Props) {
@@ -24,6 +30,10 @@ function Button(props: Props) {
     postIcon: PostIcon,
     className = '',
     disabled = false,
+    badge = '',
+    badgeColor = 'default',
+    badgeVariant = 'default',
+    badgePosition = 'right',
   } = props;
 
   return (
@@ -32,6 +42,14 @@ function Button(props: Props) {
       onClick={onClick}
       disabled={disabled}
     >
+      {!!badge && badgePosition === 'left' && (
+        <Chip
+          text={badge}
+          color={badgeColor}
+          variant={badgeVariant}
+          className={'kvadred-ml-4'}
+        />
+      )}
       {Icon && (
         <span className="button__icon">
           <Icon />
@@ -42,6 +60,14 @@ function Button(props: Props) {
         <span className="button__icon">
           <PostIcon />
         </span>
+      )}
+      {!!badge && badgePosition === 'right' && (
+        <Chip
+          text={badge}
+          color={badgeColor}
+          variant={badgeVariant}
+          className={'kvadred-ml-4'}
+        />
       )}
     </button>
   );

@@ -1,12 +1,14 @@
 import '@app/scss';
 import './global.css';
 import Router from './Router';
-import { HeaderProvider } from './providers/HeaderProvider.tsx';
+import { CompaniesProvider, HeaderProvider } from '@app/providers';
 
 export const App = (): JSX.Element => {
   return (
     <HeaderProvider>
-      <Router />
+      <CompaniesProvider>
+        <Router />
+      </CompaniesProvider>
     </HeaderProvider>
   );
 };

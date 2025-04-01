@@ -1,1 +1,2 @@
-export { HeaderProvider, useHeader } from './HeaderProvider';
+export * from './HeaderProvider';
+export * from './CompaniesProvider';

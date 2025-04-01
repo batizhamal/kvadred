@@ -1,0 +1,124 @@
+@import '@app/scss';
+
+//.grid-table {
+//  display: block;
+//  width: 100%;
+//  //overflow: hidden;
+//  font-size: $base-font-size;
+//}
+//
+//.grid-row-companies {
+//  display: grid;
+//  grid-template-columns: 3fr 1fr 1fr 1fr 1fr auto;
+//  align-items: center;
+//  padding: 10px;
+//  border-radius: 10px;
+//  margin-bottom: 8px;
+//  background-color: #F6F8F7;
+//
+//  &--parent {
+//    cursor: pointer;
+//  }
+//
+//  &--child {
+//    margin-left: $base-offset * 1.5;
+//  }
+//}
+//
+//.grid-cell {
+//  padding: 10px;
+//  color: #969897;
+//  text-wrap: wrap;
+//
+//  &--toggle {
+//    text-align: center;
+//    cursor: pointer;
+//  }
+//
+//  &--bold {
+//    font-weight: bold;
+//    color: #323D3D;
+//  }
+//}
+//
+//@media (max-width: 768px) {
+//  .grid-row--child {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: start;
+//  }
+//
+//  .grid-row--child-labels {
+//    display: none;
+//  }
+//
+//  .grid-row--child .grid-cell::before {
+//    content: attr(data-label);
+//    font-weight: bold;
+//    display: block;
+//    color: #323D3D;
+//  }
+//}
+
+.compare {
+  width: calc(100% - 256px);
+  height: calc(100% - 64px);
+  overflow: scroll;
+  padding: 64px 128px 0 128px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3%;
+  }
+
+  &__row-title {
+    font-size: 14px;
+    color: #173C47;
+    font-weight: bold;
+    border-bottom: $base-border;
+    padding: 16px 0;
+    margin-bottom: 16px;
+  }
+
+  &__item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px 0;
+    gap: 8px;
+  }
+
+  &__item-media {
+    width: 36px;
+    height: 36px;
+
+    & img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  &__item-description {
+    font-size: 12px;
+  }
+
+  &__logo {
+    width: 80px;
+    height: 80px;
+
+    & img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: bold;
+    color: #173C47;
+  }
+}

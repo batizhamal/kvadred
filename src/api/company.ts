@@ -18,6 +18,7 @@ export interface Company {
   __v: number;
   top: boolean;
   phone: string;
+  materials: string[]; // temporary
 }
 
 export function getBestCompanies(): Promise<Company[]> {

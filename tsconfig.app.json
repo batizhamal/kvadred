@@ -49,6 +49,9 @@
       ],
       "@app/api": [
         "src/api/index.ts"
+      ],
+      "@app/providers": [
+        "src/providers/index.ts"
       ]
     }
   },

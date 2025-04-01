@@ -19,7 +19,8 @@ import { FaChevronRight, FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
 import { formatDigitCommas } from '../../common/utils/formattingUtils.ts';
 import { Checkbox } from 'antd';
-import { useHeader } from '../../providers';
+import { useCompanies, useHeader } from '../../providers';
+import { useNavigate } from 'react-router-dom';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -32,9 +33,13 @@ function MainPage() {
   const [bestCompanies, setBestCompanies] = useState<Company[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
 
-  const [companiesToCompare, setCompaniesToCompare] = useState<string[]>([]);
+  const [companiesToCompare, setCompaniesToCompare] = useState<Company[]>([]);
 
   const [isComparing, setIsComparing] = useState(false);
+
+  const { updateCompanyNumber } = useHeader();
+  const { updateCompaniesToCompare } = useCompanies();
+  const navigate = useNavigate();
 
   const chartTasks = [
     {
@@ -81,7 +86,6 @@ function MainPage() {
     setErrorMessage('');
     try {
       const res = await getProjects(value);
-      console.log(res);
       // TODO: temporarily, by default 1st project is smeta
       setProject(res?.[0]);
 
@@ -122,10 +126,10 @@ function MainPage() {
   const [total, setTotal] = useState<number>(0);
 
   const addCompanyToCompare = (company: Company) => {
-    if (companiesToCompare.includes(company._id)) {
+    if (companiesToCompare.includes(company)) {
       setCompaniesToCompare((prev) => {
-        updateCompanyNumber(prev.length - 1);
-        return prev.filter((id) => id !== company._id);
+        // updateCompanyNumber(prev.length - 1);
+        return prev.filter((item) => item._id !== company._id);
       });
       return;
     }
@@ -133,12 +137,16 @@ function MainPage() {
       return;
     }
     setCompaniesToCompare((prev) => {
-      updateCompanyNumber(prev.length + 1);
-      return [...prev, company._id];
+      // updateCompanyNumber(prev.length + 1);
+      return [...prev, company];
     });
   };
 
-  const { updateCompanyNumber } = useHeader();
+  const goToCompare = () => {
+    setIsComparing(false);
+    updateCompaniesToCompare(companiesToCompare);
+    navigate('/compare');
+  };
 
   return (
     <LayoutDefault scrollable>
@@ -189,23 +197,27 @@ function MainPage() {
               rightControls={[
                 // <Button text={'Написать всем'} size={'small'} color={'default'} />,
                 <Button
-                  text={'Сравнить'}
+                  text={isComparing ? 'Отмена' : 'Сравнить'}
                   size={'small'}
                   color={'default'}
                   onClick={() => {
                     setIsComparing(!isComparing);
                     setCompaniesToCompare([]);
-                    updateCompanyNumber(0);
+                    // updateCompanyNumber(0);
                   }}
+                  badge={
+                    !!companiesToCompare.length
+                      ? companiesToCompare.length.toString()
+                      : undefined
+                  }
+                  badgeColor={'danger'}
                 />,
                 companiesToCompare.length ? (
                   <Button
                     icon={FaChevronRight}
                     size={'small'}
                     color={'default'}
-                    onClick={() => {
-                      setIsComparing(!isComparing);
-                    }}
+                    onClick={goToCompare}
                   />
                 ) : null,
               ]}
@@ -234,12 +246,14 @@ function MainPage() {
                     >
                       {isComparing && (
                         <Checkbox
-                          checked={companiesToCompare.includes(bestComp._id)}
+                          checked={companiesToCompare.includes(bestComp)}
                           disabled={
-                            !companiesToCompare.includes(bestComp._id) &&
+                            !companiesToCompare.includes(bestComp) &&
                             companiesToCompare.length === 3
                           }
-                          onChange={() => {
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            event.preventDefault();
                             addCompanyToCompare(bestComp);
                           }}
                         />

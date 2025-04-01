@@ -15,6 +15,7 @@ export default defineConfig({
       '@app/hooks': path.resolve(__dirname, 'src/hooks/index.ts'),
       '@app/helpers': path.resolve(__dirname, 'src/helpers/index.ts'),
       '@app/api': path.resolve(__dirname, 'src/api/index.ts'),
+      '@app/providers': path.resolve(__dirname, 'src/providers/index.ts'),
     },
   },
   server: {
