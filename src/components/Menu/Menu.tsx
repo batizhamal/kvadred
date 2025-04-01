@@ -1,9 +1,10 @@
 import './styles.scss';
-import { HeaderItem } from '@app/hooks';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaChevronLeft } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
+import { HeaderItem } from '../../providers/HeaderProvider.tsx';
+import Chip from '../Chip';
 
 interface Props {
   items: HeaderItem[];
@@ -15,6 +16,9 @@ const icons: { [key: string]: any } = {
     <img src="/icons/bar-chart.svg" alt="Smeta" className="menu__icon" />
   ),
   '/team': <img src="/icons/users.svg" alt="Team" className="menu__icon" />,
+  '/compare': (
+    <img src="/icons/compare.svg" alt="Compare" className="menu__icon" />
+  ),
 };
 
 function Menu(props: Props) {
@@ -70,6 +74,9 @@ function Menu(props: Props) {
               >
                 {icons[item.path]}
                 {!collapsed && item.label}
+                {!collapsed && item.badge && (
+                  <Chip color={'danger'} text={!collapsed && item.badge} />
+                )}
               </Link>
             ))}
         </div>

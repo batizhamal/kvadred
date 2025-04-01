@@ -19,6 +19,7 @@ import { FaChevronRight, FaFileDownload } from 'react-icons/fa';
 import { downloadExcel } from '@app/helpers';
 import { formatDigitCommas } from '../../common/utils/formattingUtils.ts';
 import { Checkbox } from 'antd';
+import { useHeader } from '../../providers';
 
 function MainPage() {
   const [area, setArea] = useState<number>(100);
@@ -122,14 +123,22 @@ function MainPage() {
 
   const addCompanyToCompare = (company: Company) => {
     if (companiesToCompare.includes(company._id)) {
-      setCompaniesToCompare((prev) => prev.filter((id) => id !== company._id));
+      setCompaniesToCompare((prev) => {
+        updateCompanyNumber(prev.length - 1);
+        return prev.filter((id) => id !== company._id);
+      });
       return;
     }
     if (companiesToCompare.length === 3) {
       return;
     }
-    setCompaniesToCompare((prev) => [...prev, company._id]);
+    setCompaniesToCompare((prev) => {
+      updateCompanyNumber(prev.length + 1);
+      return [...prev, company._id];
+    });
   };
+
+  const { updateCompanyNumber } = useHeader();
 
   return (
     <LayoutDefault scrollable>
@@ -186,6 +195,7 @@ function MainPage() {
                   onClick={() => {
                     setIsComparing(!isComparing);
                     setCompaniesToCompare([]);
+                    updateCompanyNumber(0);
                   }}
                 />,
                 companiesToCompare.length ? (
@@ -214,6 +224,13 @@ function MainPage() {
                       className={
                         'kvadred-flex kvadred-flex-w-100 kvadred-gap-12'
                       }
+                      onClick={() => {
+                        isComparing && addCompanyToCompare(bestComp);
+                      }}
+                      style={{
+                        cursor: isComparing ? 'pointer' : 'default',
+                      }}
+                      key={`company-${index}`}
                     >
                       {isComparing && (
                         <Checkbox
@@ -229,7 +246,6 @@ function MainPage() {
                       )}
                       <CompanyCard
                         area={area}
-                        key={`best-${index}`}
                         company={bestComp}
                         bestIn={index === 0 ? 'price' : undefined}
                       />

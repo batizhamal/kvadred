@@ -2,9 +2,9 @@ import './styles.scss';
 import { Button, Header } from '@app/components';
 import { useNavigate } from 'react-router-dom';
 import { FaInstagram } from 'react-icons/fa';
-import { useHeader } from '@app/hooks';
 import { FaArrowRight, FaWhatsapp } from 'react-icons/fa6';
 import { Block1, Block3 } from './partials';
+import { useHeader } from '../../providers';
 
 function Landing() {
   const navigate = useNavigate();

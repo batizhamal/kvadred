@@ -57,7 +57,7 @@ const StyledChip = styled.span<{ $color: string; $variant: string }>`
           primary: theme('color.blueLight'),
           info: theme('color.blueGreen'),
           success: '#F1F3F3',
-          danger: theme('color.redLight'),
+          danger: '#CC423C',
           warning: theme('color.yellowLight'),
         })};
       }

@@ -1,9 +1,12 @@
 import '@app/scss';
-import './global.css'
-import Router from "./Router";
+import './global.css';
+import Router from './Router';
+import { HeaderProvider } from './providers/HeaderProvider.tsx';
 
 export const App = (): JSX.Element => {
   return (
-    <Router/>
+    <HeaderProvider>
+      <Router />
+    </HeaderProvider>
   );
-}
+};

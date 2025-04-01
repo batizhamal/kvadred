@@ -1,8 +1,8 @@
 import './styles.scss';
-import { useHeader } from '@app/hooks';
 import { Menu } from '@app/components';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
+import { useHeader } from '../../providers';
 
 interface Props extends PropsWithChildren {
   scrollable?: boolean;
