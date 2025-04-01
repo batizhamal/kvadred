@@ -63,10 +63,6 @@ function Company(props: Props) {
         </div>
       </div>
       <div className={'company__right-content'}>
-        <a className={'company-card__link'} href={company.IGlink}>
-          <FaInstagram color={'#4598FF'} />
-          Instagram
-        </a>
         {!!bestIn && (
           <Chip
             text={bestInText[bestIn]}
@@ -82,12 +78,20 @@ function Company(props: Props) {
             variant={'outlined'}
           />
         )}
-        <FaWhatsapp
-          style={{ cursor: 'pointer' }}
-          onClick={() => {
-            window.open(`https://wa.me/${company.phone}`, '_blank');
-          }}
-        />
+        <div className={'kvadred-flex kvadred-gap-4'}>
+          <FaInstagram
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              window.open(company.IGlink, '_blank');
+            }}
+          />
+          <FaWhatsapp
+            style={{ cursor: 'pointer' }}
+            onClick={() => {
+              window.open(`https://wa.me/${company.phone}`, '_blank');
+            }}
+          />
+        </div>
       </div>
       {/*{!!company.bestIn && (*/}
       {/*  <div className={'company-card__best-in kvadred-mt-8'}>*/}
