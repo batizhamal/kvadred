@@ -70,6 +70,19 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3%;
+    position: relative;
+
+    &::before {
+      content: attr(data-label);
+      display: unset;
+      position: absolute;
+      left: -96px;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 64px;
+      color: #323D3D;
+      font-size: 14px;
+    }
   }
 
   &__row-title {

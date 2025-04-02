@@ -226,7 +226,11 @@ function Compare(props: Props) {
             ['Плинтус', 'baseboard'],
             ['Керамогранит', 'porcelain_tiles'],
           ].map(([label, key]) => (
-            <div className={'compare__row'} key={`material-${label}`}>
+            <div
+              className={'compare__row'}
+              key={`material-${label}`}
+              data-label={label}
+            >
               {companies.map((company, index) => (
                 <div className={'compare__item'} key={`${label}-${index}`}>
                   <div className={'compare__item-media'}>
@@ -235,7 +239,7 @@ function Compare(props: Props) {
                       src={yesOrNo[Math.floor(Math.random() * 2)]}
                     />
                   </div>
-                  <div className={'compare__item-description'}>{label}</div>
+                  {/*<div className={'compare__item-description'}>{label}</div>*/}
                 </div>
               ))}
             </div>
